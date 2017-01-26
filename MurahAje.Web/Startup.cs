@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
-
+using MurahAje.Web.Tools;
 
 namespace MurahAje.Web
 {
@@ -42,7 +42,7 @@ namespace MurahAje.Web
                          provider => serializer,
                          ServiceLifetime.Transient));
 
-            
+            ObjectContainer.Register<SocialHub>(new SocialHub());
 
             services.AddSignalR(options =>
             {

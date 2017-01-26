@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using System.Net.Http;
 using MurahAje.Web.Entities;
 using MurahAje.Web.Tools;
+using Microsoft.AspNetCore.SignalR.Hubs;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MurahAje.Web.Controllers
@@ -33,9 +34,16 @@ namespace MurahAje.Web.Controllers
             Enkripsi en = new Enkripsi();
             if (nama != null)
             {
+                SocialHub hub = ObjectContainer.Get<SocialHub>();
                 nama = en.Decrypt(nama);
+                var node = hub.GetUserByEmail(nama);
+                return new OutputData() { Data = node, IsSucceed = true };
             }
-            return new OutputData() { Data = nama, IsSucceed = true };
+            else
+            {
+                return new OutputData() { Data = nama, IsSucceed = false };
+            }
+           
         }
 
         [ActionName("LogOut")]

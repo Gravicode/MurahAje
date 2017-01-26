@@ -962,7 +962,7 @@ namespace MurahAje.Web
         #endregion
         #region User
         [HubMethodName("VerifyUser")]
-        public int VerifyUser(string LoginName, string Name, string Phone, string Email, string PicUrl)
+        public int VerifyUser(string LoginName, string Name, string Phone, string Email, string PicUrl,string AuthType)
         {
 
             var datas = from c in db.GetAllData<SocialUser>()
@@ -970,7 +970,7 @@ namespace MurahAje.Web
                         select c;
             if (datas != null && datas.Count() > 0) return 1;
 
-            var hasil = db.InsertData<SocialUser>(new SocialUser() { Id = db.GetSequence<SocialUser>(), Email = Email, LoginName = LoginName, FullName = Name, PicUrl = PicUrl, Phone = Phone, Follow = new SocialFollow() { Hashtags = new HashSet<string>(), Users = new HashSet<string>() } });
+            var hasil = db.InsertData<SocialUser>(new SocialUser() { Id = db.GetSequence<SocialUser>(), AuthType=AuthType, Email = Email, LoginName = LoginName, FullName = Name, PicUrl = PicUrl, Phone = Phone, Follow = new SocialFollow() { Hashtags = new HashSet<string>(), Users = new HashSet<string>() } });
             return hasil ? 1 : 0;
         }
         [HubMethodName("GetUserList")]

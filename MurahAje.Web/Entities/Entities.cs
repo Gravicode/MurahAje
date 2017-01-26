@@ -92,6 +92,7 @@ namespace MurahAje.Web.Entities
         public string MySiteUrl { set; get; }
         public string Email { set; get; }
         public string Phone { set; get; }
+        public string AuthType { set; get; }
         public SocialFollow Follow { set; get; }
     }
 
