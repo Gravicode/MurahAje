@@ -1,0 +1,5 @@
+google api auth
+id: 171107259405-1ck0hvfh19kpqe20i7d1pn8f0a1ejhc0.apps.googleusercontent.com
+secret : _6INYQDdXVzMe-Q5ODtyb_RU
+
+redis-murahaje.redis.cache.windows.net:6380,password=vFfVFMQI5xC/Q4Ib4Y08mcrup6hNixMV8zYu7lqte4g=,ssl=True,abortConnect=False

@@ -1,0 +1,58 @@
+﻿
+    <div asp-area="" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a id="uname" asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">XXX!</a>
+            </li>
+            <li>
+                <button id="btnLogOff" class="btn btn-link navbar-btn navbar-link">Log off</a>
+            </li>
+        </ul>
+    </div>
+
+    <ul id="divreg" class="nav navbar-nav navbar-right">
+        <div class="g-signin2" style="display:none;"></div>
+        <li><a asp-area="" asp-controller="Manage" asp-action="Register">Log in</a></li>
+    </ul>
+
+<script type="text/javascript">
+   
+    function signOut() {
+
+        console.log('User signed out.');
+        $.getJSON("/api/Auth/LogOut", function (data) {
+            if (data.isSucceed) {
+                $('#alertdiv').html('user log out');
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    location.reload();
+                });
+            }
+
+        });
+    }
+    $(function () {
+
+        $('#btnLogOff').click(function () {
+            signOut();
+        });
+
+        var hub = $.connection.SocialHub;
+
+        $.connection.hub.logging = true;
+        $.connection.hub.start().done(function () {
+            console.log('connection ready..');
+            $.getJSON("/api/Auth/GetAuth", function (data) {
+                if (data.isSucceed && data.data) {
+                    $('#logoutForm').show();
+                    $('#uname').html('Hello '+data.data);
+                    $('#divreg').hide();
+                } else {
+                    $('#logoutForm').hide();
+                    $('#divreg').show();
+                }
+            });
+        });
+    });
+
+</script>

@@ -1,0 +1,29 @@
+[Store]
+IDUser
+IDStore
+Title
+Desc
+StoreCategory
+LowestPrice
+HighestPrice
+Address (Title, Longitude, Latitude, City, Country)
+Rating (IDUser, Rating)
+Comments (IDComment, IDUser, Message, CreatedDate, UrlPic)
+
+[Products]
+IDProduct
+IDStore
+Title
+Desc
+ProductCategory
+Ratings (IDUser, Rating)
+Comments (IDComment, IDUser, Message, CreatedDate, UrlPic)
+
+[Users]
+IDUser
+Username
+Email
+Address
+Phone
+UrlPic
+Desc

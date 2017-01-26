@@ -1,0 +1,9 @@
+E:\Experiment\MurahAje\MurahAje.Web\bin\Release\netcoreapp1.0\MurahAje.Web.deps.json
+E:\Experiment\MurahAje\MurahAje.Web\bin\Release\netcoreapp1.0\MurahAje.Web.runtimeconfig.json
+E:\Experiment\MurahAje\MurahAje.Web\bin\Release\netcoreapp1.0\MurahAje.Web.runtimeconfig.dev.json
+E:\Experiment\MurahAje\MurahAje.Web\bin\Release\netcoreapp1.0\MurahAje.Web.dll
+E:\Experiment\MurahAje\MurahAje.Web\bin\Release\netcoreapp1.0\MurahAje.Web.pdb
+E:\Experiment\MurahAje\MurahAje.Web\obj\Release\netcoreapp1.0\MurahAje.Web.csprojResolveAssemblyReference.cache
+E:\Experiment\MurahAje\MurahAje.Web\obj\Release\netcoreapp1.0\MurahAje.Web.AssemblyInfo.cs
+E:\Experiment\MurahAje\MurahAje.Web\obj\Release\netcoreapp1.0\MurahAje.Web.dll
+E:\Experiment\MurahAje\MurahAje.Web\obj\Release\netcoreapp1.0\MurahAje.Web.pdb
