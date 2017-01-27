@@ -10646,6 +10646,7 @@
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0",
       "ServiceStack.Redis.Core >= 1.0.10",
       "Swashbuckle.AspNetCore >= 1.0.0-rc1",
+      "System.Reflection.Emit >= 4.3.0",
       "morelinq >= 2.0.0"
     ]
   },
@@ -10694,6 +10695,10 @@
           "Microsoft.AspNetCore.Server.Kestrel": {
             "target": "Package",
             "version": "1.0.1"
+          },
+          "System.Reflection.Emit": {
+            "target": "Package",
+            "version": "4.3.0"
           },
           "Microsoft.AspNetCore.Diagnostics": {
             "target": "Package",

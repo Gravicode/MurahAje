@@ -1,0 +1,4 @@
+Publish via FTP
+---------------
+url ftp : waws-prod-sg1-021.ftp.azurewebsites.windows.net
+userName="murahaje\$murahaje" userPWD="KJmpkL0kWoDpWWs2sl4yNav3dfnelgLdPMvzG6orbh1d8pvPuQdxsK5wshPA"
