@@ -20,7 +20,7 @@
     function signOut() {
 
         console.log('User signed out.');
-        $.getJSON("/api/Auth/LogOut", function (data) {
+        $.getJSON("/Auth/LogOut", function (data) {
             if (data.isSucceed) {
                 var tipe = $('#auth').html();
                 if (tipe == 'google') {
@@ -50,7 +50,7 @@
         $.connection.hub.logging = true;
         $.connection.hub.start().done(function () {
             console.log('connection ready..');
-            $.getJSON("/api/Auth/GetAuth", function (data) {
+            $.getJSON("/Auth/GetAuth", function (data) {
                 if (data.isSucceed && data.data) {
                     $('#logoutForm').show();
                     $('#uname').html('Hello ' + data.data.fullName);

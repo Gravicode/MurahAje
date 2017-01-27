@@ -8,14 +8,19 @@ using System.Net.Http;
 using MurahAje.Web.Entities;
 using MurahAje.Web.Tools;
 using Microsoft.AspNetCore.SignalR.Hubs;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Net;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MurahAje.Web.Controllers
 {
-    [Route("api/[controller]/[action]")]
+   
     public class AuthController : Controller
     {
         // GET: api/values
+        [SwaggerOperation("SetAuth")]
+        [SwaggerResponse((int)HttpStatusCode.OK)]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [ActionName("SetAuth")]
         [HttpGet]
         public OutputData SetAuth(string uname, bool persist=true)
@@ -26,6 +31,10 @@ namespace MurahAje.Web.Controllers
             WriteCookies("uname", en.Encrypt(uname), persist);
             return new OutputData() { Data = "", IsSucceed = true };
         }
+
+        [SwaggerOperation("GetAuth")]
+        [SwaggerResponse((int)HttpStatusCode.OK)]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [ActionName("GetAuth")]
         [HttpGet]
         public OutputData GetAuth()
@@ -46,6 +55,9 @@ namespace MurahAje.Web.Controllers
            
         }
 
+        [SwaggerOperation("LogOut")]
+        [SwaggerResponse((int)HttpStatusCode.OK)]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [ActionName("LogOut")]
         [HttpGet]
         public OutputData LogOut()
@@ -78,31 +90,6 @@ namespace MurahAje.Web.Controllers
                 return Vals;
             }
             return null;
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

@@ -48,8 +48,9 @@ namespace MurahAje.Web
             {
                 options.Hubs.EnableDetailedErrors = true;
             });
-            
-            
+
+            services.AddCors();
+
             // Add framework services.
             services.AddMvc();
             // Register the Swagger generator, defining one or more Swagger documents
@@ -70,19 +71,19 @@ namespace MurahAje.Web
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseWebSockets();
             app.UseSignalR();
-           
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                         name: "default",
-                        template:  "{controller=Home}/{action=Index}/{id?}"
+                        template: "{controller=Home}/{action=Index}/{id?}"
                 );
-                routes.MapRoute(name: "web", template: "api/{controller}/{action}/{id?}");
+
             });
             if (env.IsDevelopment())
             {
@@ -101,6 +102,8 @@ namespace MurahAje.Web
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Murah Aje API V1");
             });
+
+            app.UseCors(builder => builder.WithOrigins("http://murahaje.azurewebsites.net"));
         }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace MurahAje.Web.Entities
 {
@@ -85,6 +87,7 @@ namespace MurahAje.Web.Entities
     
     public class SocialUser
     {
+        [Required]
         public long Id { set; get; }
         public string LoginName { set; get; }
         public string FullName { set; get; }
