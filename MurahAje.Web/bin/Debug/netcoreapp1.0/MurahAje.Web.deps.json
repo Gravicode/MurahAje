@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "667a3fecf9be4e099338e151355ea755ccf7b43c"
+    "signature": "d54e2b2a52ec2ce084c26d43884733bb6a8be603"
   },
   "compilationOptions": {
     "defines": [
@@ -23,11 +23,13 @@
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+          "Microsoft.AspNetCore.Identity": "1.0.0",
           "Microsoft.AspNetCore.Mvc": "1.0.1",
           "Microsoft.AspNetCore.Routing": "1.0.1",
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.1",
+          "Microsoft.AspNetCore.Session": "1.0.0",
           "Microsoft.AspNetCore.SignalR.Server": "0.2.0-preview2-22683",
           "Microsoft.AspNetCore.StaticFiles": "1.0.0",
           "Microsoft.AspNetCore.WebSockets": "1.0.0",
@@ -131,6 +133,20 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
+        }
+      },
+      "microsoft.aspnetcore.cryptography.keyderivation/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "1.1.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0",
+          "System.Text.Encoding.Extensions": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
         }
       },
       "microsoft.aspnetcore.dataprotection/1.1.0": {
@@ -342,6 +358,20 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.AspNetCore.HttpOverrides.dll": {}
+        }
+      },
+      "microsoft.aspnetcore.identity/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.0.0",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "1.1.0",
+          "System.Text.RegularExpressions": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.dll": {}
         }
       },
       "microsoft.aspnetcore.jsonpatch/1.0.0": {
@@ -692,6 +722,22 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.AspNetCore.Server.Kestrel.Https.dll": {}
+        }
+      },
+      "microsoft.aspnetcore.session/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.DataProtection": "1.1.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "1.1.0",
+          "Microsoft.Extensions.Caching.Abstractions": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "1.1.0",
+          "Microsoft.Extensions.Options": "1.1.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Session.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Session.dll": {}
         }
       },
       "microsoft.aspnetcore.signalr.messaging/0.2.0-preview2-22683": {
@@ -3594,6 +3640,13 @@
       "path": "microsoft.aspnetcore.cryptography.internal/1.1.0",
       "hashPath": "microsoft.aspnetcore.cryptography.internal.1.1.0.nupkg.sha512"
     },
+    "microsoft.aspnetcore.cryptography.keyderivation/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OUBTk5RS7b3+Q9Z7F1jAL9JzdWlkITNpUw8EO5Yu1sP4Rq2jaidXKLiEw7oKFbD1Wmcee2s+U/UyHQfy/og7Sw==",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/1.0.0",
+      "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.1.0.0.nupkg.sha512"
+    },
     "microsoft.aspnetcore.dataprotection/1.1.0": {
       "type": "package",
       "serviceable": true,
@@ -3684,6 +3737,13 @@
       "sha512": "sha512-gHpdaaAzhaTWJZuJVo3ler2zzdQWrm8wnsoSjcNtoZZdTOkwImndRwK8o4GYoM18dfmfNheM7i4EENI7XHM/lA==",
       "path": "microsoft.aspnetcore.httpoverrides/1.0.0",
       "hashPath": "microsoft.aspnetcore.httpoverrides.1.0.0.nupkg.sha512"
+    },
+    "microsoft.aspnetcore.identity/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qQXsxDocbx3xMPBVBZ2Es6vw5QalV+z9mGXUPbn/XRbjY1viwQjVToE7BrCanqr7q97ds0ciI2AgQhvny0kkqw==",
+      "path": "microsoft.aspnetcore.identity/1.0.0",
+      "hashPath": "microsoft.aspnetcore.identity.1.0.0.nupkg.sha512"
     },
     "microsoft.aspnetcore.jsonpatch/1.0.0": {
       "type": "package",
@@ -3831,6 +3891,13 @@
       "sha512": "sha512-SIe6uWcQD86/rS/EoQgAzGnoSsTbhyx9lYU4kd6u8nHjCSX7YFlpbEPg07lMkV/HvMCKYlirMhecJYqeR1LhfQ==",
       "path": "microsoft.aspnetcore.server.kestrel.https/1.0.1",
       "hashPath": "microsoft.aspnetcore.server.kestrel.https.1.0.1.nupkg.sha512"
+    },
+    "microsoft.aspnetcore.session/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RPoUeyNC0OXCcelURzsf5PZnrFC97HNUhQJMMEhBjmDNSAhFpKxgLJydKC3J/G7FxPkO4ciXu37zafPlA8AZqw==",
+      "path": "microsoft.aspnetcore.session/1.0.0",
+      "hashPath": "microsoft.aspnetcore.session.1.0.0.nupkg.sha512"
     },
     "microsoft.aspnetcore.signalr.messaging/0.2.0-preview2-22683": {
       "type": "package",

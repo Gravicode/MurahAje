@@ -62,7 +62,15 @@ namespace MurahAje.Web
                     License = new License { Name = "Free for Everyone", Url = "http://gravicode.com/murahaje" }
                 });
             });
+            // Adds a default in-memory implementation of IDistributedCache.
+            services.AddDistributedMemoryCache();
 
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.CookieHttpOnly = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,12 +79,18 @@ namespace MurahAje.Web
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            app.UseSession();
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseWebSockets();
             app.UseSignalR();
-
+            // Configure the HTTP request pipeline.
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationScheme = "Cookie",
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

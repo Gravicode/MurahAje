@@ -10,6 +10,8 @@ using MurahAje.Web.Tools;
 using Microsoft.AspNetCore.SignalR.Hubs;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Net;
+using Microsoft.AspNetCore.Http.Authentication;
+using System.Security.Claims;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MurahAje.Web.Controllers
@@ -23,13 +25,35 @@ namespace MurahAje.Web.Controllers
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [ActionName("SetAuth")]
         [HttpGet]
-        public OutputData SetAuth(string uname, bool persist=true)
+        public async Task<OutputData> SetAuth(string uname, bool persist = true)
         {
+            const string Issuer = "https://murahaje.com";
+          
+            var claims = new List<Claim> {
+                new Claim(ClaimTypes.Name, uname, ClaimValueTypes.String, Issuer)
+                };
+
+            var userIdentity = new ClaimsIdentity(claims, "Passport");
+            var userPrincipal = new ClaimsPrincipal(userIdentity);
+            
+            await HttpContext.Authentication.SignInAsync("Cookie", userPrincipal,
+                new AuthenticationProperties
+                {
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+                    IsPersistent = false,
+                    AllowRefresh = false
+                });
+
             var aes = System.Security.Cryptography.Aes.Create();
             Enkripsi en = new Enkripsi();
 
             WriteCookies("uname", en.Encrypt(uname), persist);
             return new OutputData() { Data = "", IsSucceed = true };
+            /*
+             Cara pake session di netcore
+             HttpContext.Session.SetString(SessionKeyName, "Rick");
+             var name = HttpContext.Session.GetString(SessionKeyName);
+             */
         }
 
         [SwaggerOperation("GetAuth")]
@@ -39,6 +63,10 @@ namespace MurahAje.Web.Controllers
         [HttpGet]
         public OutputData GetAuth()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return new OutputData() { Data = "", IsSucceed = false };
+            }
             var nama = ReadCookies("uname");
             Enkripsi en = new Enkripsi();
             if (nama != null)
@@ -60,8 +88,15 @@ namespace MurahAje.Web.Controllers
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [ActionName("LogOut")]
         [HttpGet]
-        public OutputData LogOut()
+        public async Task<OutputData> LogOut()
         {
+            await HttpContext.Authentication.SignOutAsync("Cookie", 
+              new AuthenticationProperties
+              {
+                  ExpiresUtc = DateTime.UtcNow.AddMinutes(20),
+                  IsPersistent = false,
+                  AllowRefresh = false
+              });
             Response.Cookies.Delete("uname");
             return new OutputData() { Data = "", IsSucceed = true };
         }

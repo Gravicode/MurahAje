@@ -960,6 +960,7 @@ namespace MurahAje.Web
             Clients.Caller.Notify("delete Category : " + hasil);
         }
         #endregion
+
         #region User
         [HubMethodName("VerifyUser")]
         public int VerifyUser(string LoginName, string Name, string Phone, string Email, string PicUrl,string AuthType)
@@ -1018,6 +1019,33 @@ namespace MurahAje.Web
                         select c;
             return datas.SingleOrDefault();
         }
+        #endregion
+
+        #region Store
+        [HubMethodName("GetAllStores")]
+        public IEnumerable<Store> GetAllStores()
+        {
+            var datas = db.GetAllData<Store>().OrderBy(x => x.Title);
+            return datas;
+        }
+        [HubMethodName("GetStoreByKeyword")]
+        public IEnumerable<Store> GetStoreByKeyword(string Keyword)
+        {
+            var datas = from x in db.GetAllData<Store>()
+                        where x.Title.Contains(Keyword, StringComparison.CurrentCultureIgnoreCase)
+                        orderby x ascending
+                        select x;
+            return datas;
+        }
+        [HubMethodName("AddStore")]
+        public OutputData AddStore(string Title, string Category, string Desc, string Address, string City, double HighP, double LowP)
+        {
+            string Username = Context.User.Identity.Name;
+            var node = new Store() { Id = db.GetSequence<Store>(), Title = Title, Desc = Desc, Address = new SocialAddress() { Location = Address, City = City }, HighestPrice = HighP, LowestPrice = LowP, Ratings = new List<SocialRating>(), Comments = new List<SocialComment>(), LoginName = Username, StoreCategory = Category };
+            db.InsertData<Store>(node);
+            return new OutputData() { Data = node, IsSucceed = true };
+        }
+
         #endregion
     }
 }
