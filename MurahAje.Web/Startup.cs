@@ -61,6 +61,7 @@ namespace MurahAje.Web
                     Contact = new Contact { Name = "Mif", Email = "mifmasterz@gmail.com", Url = "http://twitter.com/gravicode" },
                     License = new License { Name = "Free for Everyone", Url = "http://gravicode.com/murahaje" }
                 });
+                
             });
             // Adds a default in-memory implementation of IDistributedCache.
             services.AddDistributedMemoryCache();
@@ -97,7 +98,10 @@ namespace MurahAje.Web
                         name: "default",
                         template: "{controller=Home}/{action=Index}/{id?}"
                 );
-
+                routes.MapRoute(
+                       name: "api",
+                       template: "api/{controller=Home}/{action=Index}/{id?}"
+               );
             });
             if (env.IsDevelopment())
             {

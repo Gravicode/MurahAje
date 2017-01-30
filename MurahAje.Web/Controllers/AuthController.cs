@@ -63,7 +63,7 @@ namespace MurahAje.Web.Controllers
         [HttpGet]
         public OutputData GetAuth()
         {
-            if (!HttpContext.User.Identity.IsAuthenticated)
+        if (!HttpContext.User.Identity.IsAuthenticated)
             {
                 return new OutputData() { Data = "", IsSucceed = false };
             }

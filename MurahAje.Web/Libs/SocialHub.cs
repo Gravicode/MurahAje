@@ -1046,6 +1046,34 @@ namespace MurahAje.Web
             return new OutputData() { Data = node, IsSucceed = true };
         }
 
+        [HubMethodName("UpdateStore")]
+        public OutputData UpdateStore(int IdStore, string Title, string Category, string Desc, string Address, string City, double HighP, double LowP)
+        {
+            Store temp = null;
+            var datas = from x in db.GetAllData<Store>()
+                        where x.Id==IdStore
+                        select x;
+            foreach(var node in datas)
+            {
+                node.Title = Title;
+                node.Desc = Desc;
+                node.Address.Location = Address;
+                node.Address.City = City;
+                node.HighestPrice = HighP;
+                node.LowestPrice = LowP;
+                node.StoreCategory = Category;
+                db.InsertData<Store>(node);
+                temp = node;
+                return new OutputData() { Data = temp, IsSucceed = true };
+            }
+            return new OutputData() { Data = temp, IsSucceed = false };
+        }
+        [HubMethodName("DeleteStore")]
+        public OutputData DeleteStore(int IdStore)
+        {
+            var hasil = db.DeleteData<Store>(IdStore);
+            return new OutputData() { Data = IdStore, IsSucceed = hasil };
+        }
         #endregion
     }
 }
