@@ -963,7 +963,7 @@ namespace MurahAje.Web
 
         #region User
         [HubMethodName("VerifyUser")]
-        public int VerifyUser(string LoginName, string Name, string Phone, string Email, string PicUrl,string AuthType)
+        public int VerifyUser(string LoginName, string Name, string Phone, string Email, string PicUrl, string AuthType)
         {
 
             var datas = from c in db.GetAllData<SocialUser>()
@@ -971,7 +971,7 @@ namespace MurahAje.Web
                         select c;
             if (datas != null && datas.Count() > 0) return 1;
 
-            var hasil = db.InsertData<SocialUser>(new SocialUser() { Id = db.GetSequence<SocialUser>(), AuthType=AuthType, Email = Email, LoginName = LoginName, FullName = Name, PicUrl = PicUrl, Phone = Phone, Follow = new SocialFollow() { Hashtags = new HashSet<string>(), Users = new HashSet<string>() } });
+            var hasil = db.InsertData<SocialUser>(new SocialUser() { Id = db.GetSequence<SocialUser>(), AuthType = AuthType, Email = Email, LoginName = LoginName, FullName = Name, PicUrl = PicUrl, Phone = Phone, Follow = new SocialFollow() { Hashtags = new HashSet<string>(), Users = new HashSet<string>() } });
             return hasil ? 1 : 0;
         }
         [HubMethodName("GetUserList")]
@@ -980,7 +980,7 @@ namespace MurahAje.Web
             var currentuser = db.GetAllData<SocialUser>().Where(x => x.LoginName == LoginName).SingleOrDefault();
             var datas = from c in db.GetAllData<SocialUser>()
                         orderby c.LoginName
-                        select new People() { Id = c.Id, Phone = c.Phone, Email = c.Email, Follow = c.Follow, LoginName = c.LoginName, MySiteUrl = c.MySiteUrl, PicUrl = c.PicUrl,  FullName = c.FullName, TotalFollowers = GetTotalFollowers(c.LoginName), TotalFollowing = GetTotalFollowing(c.LoginName), TotalPost = GetPostByLoginName(c.LoginName).Count, IsFollowing = currentuser.Follow.Users.Contains(c.LoginName) };
+                        select new People() { Id = c.Id, Phone = c.Phone, Email = c.Email, Follow = c.Follow, LoginName = c.LoginName, MySiteUrl = c.MySiteUrl, PicUrl = c.PicUrl, FullName = c.FullName, TotalFollowers = GetTotalFollowers(c.LoginName), TotalFollowing = GetTotalFollowing(c.LoginName), TotalPost = GetPostByLoginName(c.LoginName).Count, IsFollowing = currentuser.Follow.Users.Contains(c.LoginName) };
             Console.WriteLine("hasil=" + datas.Count());
             Clients.Caller.DisplayUsers(datas.ToList());
         }
@@ -1015,7 +1015,7 @@ namespace MurahAje.Web
         public SocialUser GetUserByEmail(string Mail)
         {
             var datas = from c in db.GetAllData<SocialUser>()
-                        where c.Email.Equals(Mail,StringComparison.CurrentCultureIgnoreCase)
+                        where c.Email.Equals(Mail, StringComparison.CurrentCultureIgnoreCase)
                         select c;
             return datas.SingleOrDefault();
         }
@@ -1051,9 +1051,9 @@ namespace MurahAje.Web
         {
             Store temp = null;
             var datas = from x in db.GetAllData<Store>()
-                        where x.Id==IdStore
+                        where x.Id == IdStore
                         select x;
-            foreach(var node in datas)
+            foreach (var node in datas)
             {
                 node.Title = Title;
                 node.Desc = Desc;
@@ -1073,6 +1073,14 @@ namespace MurahAje.Web
         {
             var hasil = db.DeleteData<Store>(IdStore);
             return new OutputData() { Data = IdStore, IsSucceed = hasil };
+        }
+        #endregion
+
+        #region Others
+        [HubMethodName("GetServerTime")]
+        public string GetServerTime()
+        {
+            return DateTime.Now.ToString("dd MM yyyy HH:mm:ss");
         }
         #endregion
     }

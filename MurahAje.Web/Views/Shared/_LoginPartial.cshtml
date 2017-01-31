@@ -1,98 +1,29 @@
-﻿
-    <div asp-area="" id="logoutForm" class="navbar-right">
+﻿@using Microsoft.AspNetCore.Identity
+@using MurahAje.Web;
+@using MurahAje.Web.ManageViewModels;
+@using MurahAje.Web.AccountViewModels;
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a id="uname" asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">XXX!</a>
+                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li>
-                <button id="btnLogOff" class="btn btn-link navbar-btn navbar-link">Log off</a><div style="display:none;" id="auth"></div>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
             </li>
         </ul>
-    </div>
-
-    <ul id="divreg" class="nav navbar-nav navbar-right">
-        <div class="g-signin2" style="display:none;"></div>
-        <li><a asp-area="" asp-controller="Manage" asp-action="Register">Log in</a></li>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
     </ul>
-
-<script type="text/javascript">
-   
-    function signOut() {
-
-        console.log('User signed out.');
-        $.getJSON("/Auth/LogOut", function (data) {
-            if (data.isSucceed) {
-                var tipe = $('#auth').html();
-                if (tipe == 'google') {
-                    $('#alertdiv').html('user log out');
-                    var auth2 = gapi.auth2.getAuthInstance();
-                    auth2.signOut().then(function () {
-                        location.reload();
-                    });
-                } else {
-                    FB.logout(function (response) {
-                        // user is now logged out
-                        location.reload();
-                    });
-                }
-            }
-
-        });
-    }
-    $(function () {
-
-        $('#btnLogOff').click(function () {
-            signOut();
-        });
-
-        var hub = $.connection.SocialHub;
-
-        $.connection.hub.logging = true;
-        $.connection.hub.start().done(function () {
-            console.log('connection ready..');
-            $.getJSON("/Auth/GetAuth", function (data) {
-                if (data.isSucceed && data.data) {
-                    $('#logoutForm').show();
-                    $('#uname').html('Hello ' + data.data.fullName);
-                    $('#divreg').hide();
-                    $('#auth').html(data.data.authType);
-                } else {
-                    $('#logoutForm').hide();
-                    $('#divreg').show();
-                }
-            });
-        });
-
-        //FB login
-        // This is called with the results from from FB.getLoginStatus().
-        function StatusChange(response) {
-            console.log('statusChangeCallback');
-            console.log(response);
-            
-        }
-        
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1774424142771994',
-                cookie: true,  // enable cookies to allow the server to access 
-                // the session
-                xfbml: true,  // parse social plugins on this page
-                version: 'v2.8' // use graph api version 2.8
-            });
-
-            FB.getLoginStatus(function (response) {
-                StatusChange(response);
-            });
-        };
-
-        // Load the SDK asynchronously
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        } (document, 'script', 'facebook-jssdk'));
-    });
-
-</script>
+}

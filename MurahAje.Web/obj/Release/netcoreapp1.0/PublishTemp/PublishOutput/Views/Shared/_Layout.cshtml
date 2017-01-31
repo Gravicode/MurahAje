@@ -66,10 +66,37 @@
         @RenderBody()
         <hr />
         <footer>
+            <div id="timetxt"></div>
             <p>&copy; 2017 - MurahAje.Web</p>
         </footer>
     </div>
 
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+
+      
+        $(function () {
+            
+            var hub = $.connection.SocialHub;
+
+            $.connection.hub.logging = true;
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                GetTime();
+            });
+
+            function GetTime() {
+                hub.server.GetServerTime().done(function (time) {
+                    $('#timetxt').html(time);
+                });              
+                setTimeout(
+                    function () {
+                        GetTime();
+                    }, 1000);
+            }
+            
+        });
+
+    </script>
 </body>
 </html>

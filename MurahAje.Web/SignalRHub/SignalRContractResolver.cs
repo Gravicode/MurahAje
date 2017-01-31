@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using Microsoft.AspNetCore.SignalR.Infrastructure;
 using Newtonsoft.Json.Serialization;
+
 namespace MurahAje.Web
 {
     public class SignalRContractResolver : IContractResolver
