@@ -59,7 +59,7 @@ namespace MurahAje.Web
                 .AddRedisStores(MurahAje.Web.Entities.SocialDb.RedisConStr)
                 .AddDefaultTokenProviders();
 
-            UserStore<IdentityUser>.AppNamespace = "urn:app:";
+            UserStore<ApplicationUser>.AppNamespace = "urn:app:";
 
             services.Configure<IdentityOptions>(options => {
                 options.Password.RequireDigit = false;

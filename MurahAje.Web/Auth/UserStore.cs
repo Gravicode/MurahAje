@@ -81,6 +81,7 @@ namespace Redis.AspNetCore.Identity
         public Task AddLoginAsync(TUser user, UserLoginInfo login, CancellationToken cancellationToken)
         {
             CheckDisposed(user);
+           
             if (!user.Logins.Any(x => x.LoginProvider == login.LoginProvider && x.ProviderKey == login.ProviderKey))
             {
                 user.Logins.Add(login);
@@ -130,17 +131,51 @@ namespace Redis.AspNetCore.Identity
         public TUser CreateOrUpdate(TUser user, string userId=null)
         {
             var baseKey = RedisKey.Build(Keys.AspNetUsers);
+            //insert
             if (string.IsNullOrEmpty(userId))
+            {
                 user.Id = db.IncrementValue(baseKey).ToString();
+                var uniqueId = string.Format("{0}:{1}", user.UserName, user.Id);
+                db.Add<TUser>(RedisKey.Build(Keys.AspNetUsers, id: uniqueId), user);
+            }
             else
+            {
+                //update
                 user.Id = userId;
-            var uniqueId = string.Format("{0}:{1}", user.UserName, user.Id);
-            db.Add<TUser>(RedisKey.Build(Keys.AspNetUsers, id: uniqueId), user);
+                var NewUser = (TUser)Activator.CreateInstance(typeof(TUser));
+                NewUser.Id = user.Id;
+                NewUser.Email = user.Email;
+                NewUser.NormalizedUserName = user.NormalizedUserName;
+                NewUser.PasswordHash = user.PasswordHash;
+                NewUser.SecurityStamp = user.SecurityStamp;
+                NewUser.UserName = user.UserName;
 
+                //logins
+                
+                for (int i = 0; i < user.Logins.Count; i++)
+                {
+                    UserLoginInfo info = new UserLoginInfo(user.Logins[i].LoginProvider, user.Logins[i].ProviderKey, user.Logins[i].ProviderDisplayName);
+                    NewUser.Logins.Add(info);
+                }
+                //roles
+                for (int i = 0; i < user.Roles.Count; i++)
+                {
+                    NewUser.Roles.Add((user.Roles[i]));
+                }
+                //claim
+                for (int i = 0; i < user.Claims.Count; i++)
+                {
+                    NewUser.Claims.Add((user.Claims[i]));
+                }
+
+                var uniqueId = string.Format("{0}:{1}", NewUser.UserName, NewUser.Id);
+                db.Set<TUser>(RedisKey.Build(Keys.AspNetUsers, id: uniqueId), NewUser);
+            }
+            
             //Add UserLogin Key-Value
             foreach (var login in user.Logins)
             {
-                db.Add(RedisKey.Build(Keys.UserLoginInfo, entity: login), user.Id);
+                db.Set(RedisKey.Build(Keys.UserLoginInfo, entity: login), user.Id);
             }
             return user;
         }
