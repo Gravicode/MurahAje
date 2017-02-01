@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MurahAje.Web</title>
     <meta name="google-signin-client_id" content="171107259405-1ck0hvfh19kpqe20i7d1pn8f0a1ejhc0.apps.googleusercontent.com">
-   
+
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -64,6 +64,9 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+        <div style="text-align:right;padding-right:10px;">
+            <iframe style="height:350px;" src='https://webchat.botframework.com/embed/MurahAjeBot?s=PdoslQXzVHA.cwA.te4.9ZxKLPuaY7lNCNQpPSGWtJ7ttjgcmCuS9W9i_ufPojk'></iframe>
+        </div>
         <hr />
         <footer>
             <div id="timetxt"></div>
@@ -74,9 +77,9 @@
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
 
-      
+
         $(function () {
-            
+
             var hub = $.connection.SocialHub;
 
             $.connection.hub.logging = true;
@@ -88,13 +91,13 @@
             function GetTime() {
                 hub.server.GetServerTime().done(function (time) {
                     $('#timetxt').html(time);
-                });              
+                });
                 setTimeout(
                     function () {
                         GetTime();
                     }, 1000);
             }
-            
+
         });
 
     </script>

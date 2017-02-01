@@ -7,3 +7,8 @@ redis-murahaje.redis.cache.windows.net:6380,password=vFfVFMQI5xC/Q4Ib4Y08mcrup6h
 fb api
 id: 1774424142771994
 pass : 572f3ba4b7d34a8f572521cd769d1001
+
+BOT
+App: MurahAjeBot
+APPID: 32b1a419-4f71-4a59-b159-2dccaabddd00
+PASS: UD643Kxm6iCa3wDnihmHwVu
