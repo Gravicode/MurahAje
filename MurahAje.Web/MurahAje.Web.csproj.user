@@ -3,7 +3,6 @@
   <PropertyGroup>
     <NameOfLastUsedPublishProfile>murahaje - Web Deploy</NameOfLastUsedPublishProfile>
     <ActiveDebugProfile>MurahAje.Web</ActiveDebugProfile>
-    <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

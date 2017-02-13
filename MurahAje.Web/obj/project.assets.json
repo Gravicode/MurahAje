@@ -1753,29 +1753,6 @@
           "lib/netstandard1.0/Newtonsoft.Json.dll": {}
         }
       },
-      "RestSharp.NetCore/105.2.3": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.0",
-          "Newtonsoft.Json": "9.0.1",
-          "System.Collections.Specialized": "4.0.1",
-          "System.ComponentModel.TypeConverter": "4.1.0",
-          "System.Net.Requests": "4.0.11",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Emit": "4.0.1",
-          "System.Runtime.InteropServices": "4.1.0",
-          "System.Runtime.Serialization.Formatters": "4.0.0-rc4-24217-03",
-          "System.Runtime.Serialization.Primitives": "4.1.1",
-          "System.Runtime.Serialization.Xml": "4.1.1",
-          "System.Xml.XmlSerializer": "4.0.11"
-        },
-        "compile": {
-          "lib/netstandard1.6/RestSharp.NetCore.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/RestSharp.NetCore.dll": {}
-        }
-      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -3451,22 +3428,6 @@
           "lib/netstandard1.3/System.Runtime.Numerics.dll": {}
         }
       },
-      "System.Runtime.Serialization.Formatters/4.3.0-preview1-24530-04": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.3.0-preview1-24530-04",
-          "System.Reflection": "4.3.0-preview1-24530-04",
-          "System.Resources.ResourceManager": "4.3.0-preview1-24530-04",
-          "System.Runtime": "4.3.0-preview1-24530-04",
-          "System.Runtime.Serialization.Primitives": "4.3.0-preview1-24530-04"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Runtime.Serialization.Formatters.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.4/System.Runtime.Serialization.Formatters.dll": {}
-        }
-      },
       "System.Runtime.Serialization.Primitives/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -4102,7 +4063,7 @@
           "System.Xml.XmlDocument": "4.0.1"
         },
         "compile": {
-          "ref/netstandard1.3/System.Xml.XmlSerializer.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
@@ -4146,19 +4107,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
-        }
-      },
-      "Twilio.NetCore/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "RestSharp.NetCore": "105.2.3"
-        },
-        "compile": {
-          "lib/netstandard1.6/Twilio.NetCore.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Twilio.NetCore.dll": {}
         }
       }
     }
@@ -5625,16 +5573,6 @@
         "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
         "tools/install.ps1"
-      ]
-    },
-    "RestSharp.NetCore/105.2.3": {
-      "sha512": "XAutnXRVeS6Nhqjzg1l0OUOEWWLUDl4ZUvopMTRea0N3qiX+lD1U1Z5HrdyNwLX3eUUHI1w6h1DfEWEIe8JUSA==",
-      "type": "package",
-      "path": "restsharp.netcore/105.2.3",
-      "files": [
-        "lib/netstandard1.6/RestSharp.NetCore.dll",
-        "restsharp.netcore.105.2.3.nupkg.sha512",
-        "restsharp.netcore.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -9324,33 +9262,6 @@
         "system.runtime.numerics.nuspec"
       ]
     },
-    "System.Runtime.Serialization.Formatters/4.3.0-preview1-24530-04": {
-      "sha512": "qFoIqgI8GlsgPvamhPuEA1cIjCLWadwBTo6kmdgFmQHwI1B0BTgXdp85Bz2cwwpizPnsKNqBWAJxbkj9v2t3Sw==",
-      "type": "package",
-      "path": "system.runtime.serialization.formatters/4.3.0-preview1-24530-04",
-      "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net46/System.Runtime.Serialization.Formatters.dll",
-        "lib/netstandard1.4/System.Runtime.Serialization.Formatters.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net46/System.Runtime.Serialization.Formatters.dll",
-        "ref/netstandard1.3/System.Runtime.Serialization.Formatters.dll",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.runtime.serialization.formatters.4.3.0-preview1-24530-04.nupkg.sha512",
-        "system.runtime.serialization.formatters.nuspec"
-      ]
-    },
     "System.Runtime.Serialization.Primitives/4.3.0": {
       "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
       "type": "package",
@@ -10800,16 +10711,6 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
       ]
-    },
-    "Twilio.NetCore/1.0.0": {
-      "sha512": "aisQgyZs+iHm/S9V7hFGm+EIU4cFzQRFJ1wFRMrnOM8FzmJCcDIL9qQolNWkXPrvFDf6jwfW7LM127Erin2lbg==",
-      "type": "package",
-      "path": "twilio.netcore/1.0.0",
-      "files": [
-        "lib/netstandard1.6/Twilio.NetCore.dll",
-        "twilio.netcore.1.0.0.nupkg.sha512",
-        "twilio.netcore.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -10842,8 +10743,6 @@
       "ServiceStack.Redis.Core >= 1.0.10",
       "Swashbuckle.AspNetCore >= 1.0.0-rc1",
       "System.Reflection.Emit >= 4.3.0",
-      "System.Xml.XDocument >= 4.3.0",
-      "Twilio.NetCore >= 1.0.0",
       "morelinq >= 2.0.0"
     ]
   },
@@ -10901,10 +10800,6 @@
             "target": "Package",
             "version": "1.1.0"
           },
-          "System.Xml.XDocument": {
-            "target": "Package",
-            "version": "4.3.0"
-          },
           "System.Reflection.Emit": {
             "target": "Package",
             "version": "4.3.0"
@@ -10942,10 +10837,6 @@
             "version": "1.0.0-rc1"
           },
           "Microsoft.AspNetCore.WebSockets": {
-            "target": "Package",
-            "version": "1.0.0"
-          },
-          "Twilio.NetCore": {
             "target": "Package",
             "version": "1.0.0"
           },
