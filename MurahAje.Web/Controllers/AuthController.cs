@@ -28,7 +28,7 @@ namespace MurahAje.Web.Controllers
         public async Task<OutputData> SetAuth(string uname, bool persist = true)
         {
             const string Issuer = "https://murahaje.com";
-          
+            
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.Name, uname, ClaimValueTypes.String, Issuer)
                 };
