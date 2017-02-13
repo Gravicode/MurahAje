@@ -7,3 +7,12 @@ E:\Experiment\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.Assembl
 E:\Experiment\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.pdb
 E:\Experiment\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.dll
 E:\Experiment\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.pdb
+C:\Users\gilan\Source\Repos\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.deps.json
+C:\Users\gilan\Source\Repos\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.runtimeconfig.json
+C:\Users\gilan\Source\Repos\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.runtimeconfig.dev.json
+C:\Users\gilan\Source\Repos\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.dll
+C:\Users\gilan\Source\Repos\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.pdb
+C:\Users\gilan\Source\Repos\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.csprojResolveAssemblyReference.cache
+C:\Users\gilan\Source\Repos\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.AssemblyInfo.cs
+C:\Users\gilan\Source\Repos\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.dll
+C:\Users\gilan\Source\Repos\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.pdb
