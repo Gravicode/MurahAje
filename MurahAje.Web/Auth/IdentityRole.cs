@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Redis.AspNetCore.Identity
+namespace Gravicode.AspNetCore.Identity.Redis
 {
     /// <summary>
     /// The default implementation of <see cref="IdentityRole{TKey}"/> which uses a string as the primary key.

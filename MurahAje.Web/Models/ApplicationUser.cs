@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Redis.AspNetCore.Identity;
+using Gravicode.AspNetCore.Identity.Redis;
 
 namespace MurahAje.Web
 {
-    public class ApplicationUser:IdentityUser
+    public class Application:IdentityUser
     {
     }
 }

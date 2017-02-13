@@ -4,7 +4,7 @@
 using System;
 using System.Security.Claims;
 
-namespace Redis.AspNetCore.Identity
+namespace Gravicode.AspNetCore.Identity.Redis
 {
     /// <summary>
     /// Represents a claim that is granted to all users within a role.

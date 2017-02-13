@@ -4,10 +4,9 @@
 using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
-using Redis.AspNetCore.Identity;
+using Gravicode.AspNetCore.Identity.Redis;
 using ServiceStack.Redis;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using MurahAje.Web;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -25,16 +24,14 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IdentityBuilder AddRedisStores(this IdentityBuilder builder, string RedisCon)
 
         {
-            //AddStores(builder.Services, builder.UserType, builder.RoleType, typeof(TContext));
-            var mgr = new PooledRedisClientManager(RedisCon);
-            var client = mgr.GetClient();
-            builder.Services.TryAddSingleton<IUserStore<ApplicationUser>>(new UserStore<ApplicationUser>(client));
-            builder.Services.TryAddSingleton<IRoleStore<IdentityRole>>(new RoleStore<IdentityRole>(client));
+            AddStores(builder.Services, builder.UserType, builder.RoleType, RedisCon);
+          
             return builder;
         }
-        /*
-        private static void AddStores(IServiceCollection services, Type userType, Type roleType, Type contextType)
+        
+        private static void AddStores(IServiceCollection services, Type userType, Type roleType,string RedisCon)
         {
+            /*
             var identityUserType = FindGenericBaseType(userType, typeof(IdentityUser));
             if (identityUserType == null)
             {
@@ -44,14 +41,19 @@ namespace Microsoft.Extensions.DependencyInjection
             if (identityRoleType == null)
             {
                 throw new InvalidOperationException("not identity role");
-            }
-
+            }*/
+            var mgr = new PooledRedisClientManager(RedisCon);
+            var client = mgr.GetClient();
+            services.TryAddSingleton<IUserStore<IdentityUser>>(new UserStore<IdentityUser>(client));
+            services.TryAddSingleton<IRoleStore<IdentityRole>>(new RoleStore<IdentityRole>(client));
+            /*
             services.TryAddScoped(
                 typeof(IUserStore<>).MakeGenericType(userType),
                 typeof(UserStore<>).MakeGenericType(userType));
             services.TryAddScoped(
                 typeof(IRoleStore<>).MakeGenericType(roleType),
                 typeof(RoleStore<>).MakeGenericType(roleType));
+            */
         }
 
         private static TypeInfo FindGenericBaseType(Type currentType, Type genericBaseType)
@@ -67,6 +69,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 }
             }
             return null;
-        }*/
+        }
     }
 }

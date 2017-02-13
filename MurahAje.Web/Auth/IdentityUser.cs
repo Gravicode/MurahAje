@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ServiceStack.Redis;
 
-namespace Redis.AspNetCore.Identity
+namespace Gravicode.AspNetCore.Identity.Redis
 {
     public class IdentityUser
     {

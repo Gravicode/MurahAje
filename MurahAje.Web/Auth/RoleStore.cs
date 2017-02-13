@@ -10,10 +10,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Internal;
-using Redis.AspNetCore.Identity;
+using Gravicode.AspNetCore.Identity.Redis;
 using ServiceStack.Redis;
 
-namespace Redis.AspNetCore.Identity
+namespace Gravicode.AspNetCore.Identity.Redis
 {
     /// <summary>
     /// Creates a new instance of a persistence store for roles.
