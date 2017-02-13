@@ -13,7 +13,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using MurahAje.Web.Tools;
 using MurahAje.Web;
 using MurahAje.Web.Services;
-using Redis.AspNetCore.Identity;
+using Gravicode.AspNetCore.Identity.Redis;
 using Microsoft.AspNetCore.Identity;
 
 namespace MurahAje.Web
@@ -55,11 +55,11 @@ namespace MurahAje.Web
             //var fbid = Configuration["Authentication:Google:ClientId"];
             ObjectContainer.Register<SocialHub>(new SocialHub());
             //redis auth
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddRedisStores(MurahAje.Web.Entities.SocialDb.RedisConStr)
                 .AddDefaultTokenProviders();
 
-            UserStore<ApplicationUser>.AppNamespace = "urn:app:";
+            UserStore<IdentityUser>.AppNamespace = "urn:app:";
 
             services.Configure<IdentityOptions>(options => {
                 options.Password.RequireDigit = false;

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Redis.AspNetCore.Identity
+namespace Gravicode.AspNetCore.Identity.Redis
 {
     public enum Keys
     {

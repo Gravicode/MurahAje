@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Redis.AspNetCore.Identity
+namespace Gravicode.AspNetCore.Identity.Redis
 {
     /// <summary>
     /// Represents the link between a user and a role.
