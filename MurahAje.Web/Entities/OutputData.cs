@@ -9,5 +9,6 @@ namespace MurahAje.Web.Entities
     {
         public bool IsSucceed{set;get;}
         public object Data { set; get; }
+        public string ErrorMessage { set; get; }
     }
 }

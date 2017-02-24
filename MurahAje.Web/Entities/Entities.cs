@@ -17,10 +17,42 @@ namespace MurahAje.Web.Entities
         public double LowestPrice { set; get; }
         public double HighestPrice { set; get; }
         public SocialAddress Address { set; get; }
-        public List<SocialRating> Ratings { set; get; }
+        public List<SocialRating> MurahMeter { set; get; }
+        public List<SocialRecommendation> Recommendation { set; get; }
+        public List<SocialRating> Kenikmatan { set; get; }
         public List<SocialComment> Comments { set; get; }
+        public List<SocialCheckIn> Visitors { set; get; }
+        public HashSet<StoreFacilities> Facilities { set; get; }
     }
-
+    public enum StoreFacilities
+    {
+        ParkirLuas, PorsiBesar, Prasmanan
+    }
+    public enum RatingType
+    {
+        MurahMeter,Kenikmatan
+    }
+    public class SocialBookmark
+    {
+        public string LoginName { set; get; }
+        public List<SocialBookmarkDetail> Bookmarks { set; get; }
+    }
+    public class SocialBookmarkDetail
+    {
+        public int IDEntity { set; get; }
+        public string Category { set; get; }
+    }
+    public class SocialRecommendation
+    {
+        public string LoginName { set; get; }
+        public string Messages { set; get; }
+        public DateTime CreatedDate { set; get; }
+    }
+    public class SocialCheckIn
+    {
+        public string LoginName { set; get; }
+        public DateTime CreatedDate { set; get; }
+    }
     public class SocialAddress
     {
         public string Location  {set;get;}
@@ -48,6 +80,7 @@ namespace MurahAje.Web.Entities
         public long Id { set; get; }
         public string LoginName { set; get; }
         public int RatingValue { set; get; }
+        public HashSet<RatingType> Type { set; get; }
 
     }
     public class SocialPost
