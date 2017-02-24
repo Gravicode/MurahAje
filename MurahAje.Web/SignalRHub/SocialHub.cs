@@ -1028,6 +1028,54 @@ namespace MurahAje.Web
             var datas = db.GetAllData<Store>().OrderBy(x => x.Title);
             return datas;
         }
+
+        [HubMethodName("SearchStores")]
+        public IEnumerable<Store> SearchStores(string sTitle, string SortBy, string sStoreCategory, string sLowestPrice, string sHighestPrice)
+        {
+            var datas = db.GetAllData<Store>().Where(x => x.Title.Contains(sTitle) && x.StoreCategory == sStoreCategory);
+            if (!string.IsNullOrEmpty(SortBy))
+            {
+                switch (SortBy)
+                {
+                    case "Terdekat":
+                        {
+                            datas.OrderBy(x => x.Title);
+                            return datas;
+                        }
+                    case "Terjauh":
+                        {
+                            datas = datas.OrderBy(x => x.Title);
+                            return datas;
+                        }
+                    case "Termurah":
+                        {
+                            datas = datas.OrderBy(x => x.LowestPrice);
+                            return datas;
+                        }
+                    case "Termahal":
+                        {
+                            datas = datas.OrderByDescending(x => x.HighestPrice);
+                            return datas;
+                        }
+                    case "Terpopuler":
+                        {
+                            datas = datas.OrderByDescending(x => x.Visitors);
+                            return datas;
+                        }
+                    default:
+                        {
+                            datas.OrderBy(x => x.Title);
+                            return datas;
+                        }
+                }
+            }
+            else
+            {
+                datas.OrderBy(x => x.Title);
+                return datas;
+            }
+        }
+
         [HubMethodName("GetStoreByKeyword")]
         public IEnumerable<Store> GetStoreByKeyword(string Keyword)
         {
@@ -1038,10 +1086,35 @@ namespace MurahAje.Web
             return datas;
         }
         [HubMethodName("AddStore")]
-        public OutputData AddStore(string Title, string Category, string Desc, string Address, string City, double HighP, double LowP)
+        public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, double sLowestPrice, double sHighestPrice, string sCity, double sMurahMeter, double sRecommendation, double sKenikmatan, string sComments, double sVisitors, string sFacilities)
         {
             string Username = Context.User.Identity.Name;
-            var node = new Store() { Id = db.GetSequence<Store>(), Title = Title, Desc = Desc, Address = new SocialAddress() { Location = Address, City = City }, HighestPrice = HighP, LowestPrice = LowP, Ratings = new List<SocialRating>(), Comments = new List<SocialComment>(), LoginName = Username, StoreCategory = Category };
+            var node = new Store()
+            {
+                LoginName = Username,
+                Id = db.GetSequence<Store>(),
+                Title = sTitle,
+                Desc = sDesc,
+                HighestPrice = sHighestPrice,
+                LowestPrice = sLowestPrice,
+                Address = new SocialAddress()
+                {
+                    City = sCity
+                },
+                MurahMeter = new List<SocialRating>()
+                {
+                    
+                },
+                Recommendation = new List<SocialRecommendation>(),
+                Kenikmatan = new List<SocialRating>(),
+                Comments = new List<SocialComment>(),
+                Visitors = new List<SocialCheckIn>(),
+                Facilities = new HashSet<StoreFacilities>()
+                {
+                    
+                },
+                StoreCategory = sStoreCategory
+            };
             db.InsertData<Store>(node);
             return new OutputData() { Data = node, IsSucceed = true };
         }
@@ -1074,6 +1147,13 @@ namespace MurahAje.Web
             var hasil = db.DeleteData<Store>(IdStore);
             return new OutputData() { Data = IdStore, IsSucceed = hasil };
         }
+
+        [HubMethodName("DeleteAllStore")]
+        public OutputData DeleteAllStore()
+        {
+            var hasil = db.DeleteAllData<Store>();
+            return new OutputData() { IsSucceed = hasil };
+        }
         #endregion
 
         #region Others
@@ -1081,6 +1161,12 @@ namespace MurahAje.Web
         public string GetServerTime()
         {
             return DateTime.Now.ToString("dd MM yyyy HH:mm:ss");
+        }
+
+        [HubMethodName("GetTest")]
+        public string GetTest()
+        {
+            return "test boss";
         }
         #endregion
     }

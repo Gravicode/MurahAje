@@ -1,0 +1,380 @@
+﻿<div>
+    <div>
+        @{
+            ViewData["Title"] = "Tambah Toko";
+        }
+        <h2>@ViewData["Title"].</h2>
+        <table>
+            <tr>
+                <td>
+                    Title
+                </td>
+                <td>
+                    <input id="title" type="text"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Desc
+                </td>
+                <td>
+                    <input id="desc" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    StoreCategory
+                </td>
+
+                <td>
+                    <select id="StoreCategory">
+                        <option disabled selected>
+                            Pilih satu:
+                        </option>
+                        <option>
+                            Warteg
+                        </option>
+                        <option>
+                            Warung Nasi
+                        </option>
+                        <option>
+                            Kaki Lima
+                        </option>
+                        <option>
+                            Pedagang Keliling
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    LowestPrice
+                </td>
+
+                <td>
+                    <input id="LowestPrice" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    HighestPrice
+                </td>
+                <td>
+                    <input id="HighestPrice" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City
+                </td>
+                <td>
+                    <input id="City" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    MurahMeter
+                </td>
+
+                <td>
+                    <input id="MurahMeter" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Recommendation
+                </td>
+
+                <td>
+                    <input id="Recommendation" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Kenikmatan
+                </td>
+                <td>
+                    <input id="Kenikmatan" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Comments
+                </td>
+
+                <td>
+                    <input id="Comments" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Visitors
+                </td>
+
+                <td>
+                    <input id="Visitors" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Facilities
+                </td>
+
+                <td>
+                    <input id="Facilities" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <button type="button" id="BtnTambahToko">Button</button>
+                    <button type="button" id="BtnDeleteAll">DeleteAll</button>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="PanelFilter">
+        <h2>Filter Berdasrkan</h2>
+        <table>
+            <tr>
+                <td>Cari    </td>
+                <td>
+                    <input id="txtTitle" type="text"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Jenis Tempat Makanan </td>
+                <td>
+                    <select id="StoreCategory2">
+                        <option disabled selected>
+                            Pilih satu:
+                        </option>
+                        <option>
+                            Warteg
+                        </option>
+                        <option>
+                            Warung Nasi
+                        </option>
+                        <option>
+                            Kaki Lima
+                        </option>
+                        <option>
+                            Pedagang Keliling
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Urutkan </td>
+                <td>
+                    <select id="sortby">
+                        <option disabled selected>Pilih Satu</option>
+                        <option>Terdekat</option>
+                        <option>Terjauh</option>
+                        <option>Termurah</option>
+                        <option>Termahal</option>
+                        <option>Terpopuler</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Kisaran Harga </td>
+            </tr>
+            <tr>
+                <td>
+                    Minimal : <br/>
+                    <input type="text"/>
+                </td>
+                <td>
+                    Maksimal : <br />
+                    <input type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="vehicle" value="Bike"> Porsi Besar<br>
+                    <input type="checkbox" name="vehicle" value="Car" > Prasmanan<br>
+                    <input type="checkbox" name="vehicle" value="Car" > Parkir Luas<br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="BtnSearch" type="button">Button</button>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div>
+        <h3>Search Result</h3>
+    
+        <div id="SearchResult">
+
+        </div>
+
+        <h3>All Store</h3>
+
+        <div id="DataStore">
+
+        </div>
+
+
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    $(function () {
+        var hub = $.connection.SocialHub;
+        $.connection.hub.logging = true;
+        //initial
+        Init();
+
+        function Init() {
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                Page_Load();
+            });
+        }
+
+        function Page_Load() {
+            //SearchStores();
+            GetAllStores();
+        }
+
+        function SearchStores() {
+            var StoreCategory = $('#StoreCategory2 option:selected').text().trim();
+            var Title = $('#txtTitle').val();
+            var SortBy = $('#sortby option:selected').text();
+
+            msg = "";
+            hub.server.SearchStores(Title, SortBy, StoreCategory, 1, 1).done(function (datas) {
+                $('#DataStore').empty();
+                msg += "<table class='ui celled table' border=1>"
+                msg += "<tr>";
+                msg += "<th>LoginName</th>";
+                msg += "<th>Id</th>";
+                msg += "<th>Title</th>";
+                msg += "<th>Desc</th>";
+                msg += "<th>StoreCategory</th>";
+                msg += "<th>LowestPrice</th>";
+                msg += "<th>HighestPrice</th>";
+                msg += "<th>City</th>";
+                msg += "<th>MurahMeter</th>";
+                msg += "<th>Recommendation</th>";
+                msg += "<th>Kenikmatan</th>";
+                msg += "<th>Comments</th>";
+                msg += "<th>Visitors</th>";
+                msg += "<th>Facilities</th>";
+                msg += "<tr>";
+                $.each(datas, function (i, obj) {
+                    msg += "<tr>";
+                    msg += "<td>" + obj.loginname + "</td>";
+                    msg += "<td>" + obj.id + "</td>";
+                    msg += "<td>" + obj.title + "</td>";
+                    msg += "<td>" + obj.desc + "</td>";
+                    msg += "<td>" + obj.storeCategory + "</td>";
+                    msg += "<td>" + obj.lowestPrice + "</td>";
+                    msg += "<td>" + obj.highestPrice + "</td>";
+                    msg += "<td>" + obj.address["city"] + "</td>";
+                    msg += "<td>" + obj/*.SocialRating["MurahMeter"]*/ + "</td>";
+                    msg += "<td>" + obj/*.SocialRecommendation["Recommendation"]*/ + "</td>";
+                    msg += "<td>" + obj/*.SocialRating["Kenikmatan"] */ + "</td>";
+                    msg += "<td>" + obj/*.SocialComment["Comments"]*/ + "</td>";
+                    msg += "<td>" + obj/*.SocialCheckIn["Visitors"]*/ + "</td>";
+                    msg += "<td>" + obj/*.StoreFacilities["Facilities"]*/ + "</td>";
+                    msg += "</tr>";
+                });
+                msg += "</table>";
+                $('#DataStore').html(msg);
+
+            });
+        }
+        function GetAllStores() {
+            msg = "";
+            hub.server.GetAllStores().done(function (datas) {
+                $('#DataStore').empty();
+                msg += "<table class='ui celled table' border=1>"
+                msg += "<tr>";
+                msg += "<th>LoginName</th>";
+                msg += "<th>Id</th>";
+                msg += "<th>Title</th>";
+                msg += "<th>Desc</th>";
+                msg += "<th>StoreCategory</th>";
+                msg += "<th>LowestPrice</th>";
+                msg += "<th>HighestPrice</th>";
+                msg += "<th>City</th>";
+                msg += "<th>MurahMeter</th>";
+                msg += "<th>Recommendation</th>";
+                msg += "<th>Kenikmatan</th>";
+                msg += "<th>Comments</th>";
+                msg += "<th>Visitors</th>";
+                msg += "<th>Facilities</th>";
+                msg += "<tr>";
+                $.each(datas, function (i, obj) {
+                    msg += "<tr>";
+                    msg += "<td>" + obj.loginname + "</td>";
+                    msg += "<td>" + obj.id + "</td>";
+                    msg += "<td>" + obj.title + "</td>";
+                    msg += "<td>" + obj.desc + "</td>";
+                    msg += "<td>" + obj.storeCategory + "</td>";
+                    msg += "<td>" + obj.lowestPrice + "</td>";
+                    msg += "<td>" + obj.highestPrice + "</td>";
+                    msg += "<td>" + obj.address["city"] + "</td>";
+                    msg += "<td>" + obj/*.SocialRating["MurahMeter"]*/ + "</td>";
+                    msg += "<td>" + obj/*.SocialRecommendation["Recommendation"]*/ + "</td>";
+                    msg += "<td>" + obj/*.SocialRating["Kenikmatan"] */ + "</td>";
+                    msg += "<td>" + obj/*.SocialComment["Comments"]*/ + "</td>";
+                    msg += "<td>" + obj/*.SocialCheckIn["Visitors"]*/ + "</td>";
+                    msg += "<td>" + obj/*.StoreFacilities["Facilities"]*/ + "</td>";
+                    msg += "</tr>";
+                });
+                msg += "</table>";
+                $('#DataStore').html(msg);
+
+            });
+        }
+        //event
+        $('#BtnSearch').click(function () {
+            
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                SearchStores();
+            });
+        });
+        $('#BtnTambahToko').click(function () {
+            var title = $('#title').val().trim();
+            var desc = $('#desc').val().trim();
+            var StoreCategory = $('#StoreCategory option:selected').text().trim();
+            var LowestPrice = $('#LowestPrice').val();
+            var HighestPrice = $('#HighestPrice').val();
+            var City = $('#City').val();
+            var MurahMeter = $('#MurahMeter').val();
+            var Recommendation = $('#Recommendation').val();
+            var Kenikmatan = $('#Kenikmatan').val();
+            var Comments = $('#Comments').val();
+            var Visitors = $('#Visitors').val();
+            var Facilities = $('#Facilities').val();
+
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                hub.server.AddStore(title, desc, StoreCategory, LowestPrice, HighestPrice, City, MurahMeter, Recommendation, Kenikmatan, Comments, Visitors, Facilities).done(function (Data) {
+                    
+                });
+            });
+        });
+        $('#BtnDeleteAll').click(function () {
+            
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                hub.server.DeleteStore(10).done(function(data){
+                    
+                });
+            });
+        });
+    });
+
+</script>

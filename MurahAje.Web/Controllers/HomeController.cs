@@ -27,6 +27,13 @@ namespace MurahAje.Web.Controllers
             return View();
         }
 
+        public IActionResult AddStore()
+        {
+            ViewData["Message"] = "Test Store.";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();
