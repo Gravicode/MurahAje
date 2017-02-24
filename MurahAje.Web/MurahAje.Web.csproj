@@ -39,4 +39,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0-rc1" />
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\scripts\" />
+  </ItemGroup>
 </Project>
