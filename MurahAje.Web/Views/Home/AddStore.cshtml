@@ -121,7 +121,9 @@
                 </td>
 
                 <td>
-                    <input id="Facilities" type="text" />
+                    <input type="checkbox" class="Facilities" name="Facilities" value="PL"> Parkir Luas<br>
+                    <input type="checkbox" class="Facilities" name="Facilities" value="PB"> Porsi Besar<br>
+                    <input type="checkbox" class="Facilities" name="Facilities" value="PM"> Prasmanan<br>
                 </td>
             </tr>
             <tr>
@@ -186,11 +188,11 @@
             <tr>
                 <td>
                     Minimal : <br/>
-                    <input type="text"/>
+                    <input id="Minimal" type="text"/>
                 </td>
                 <td>
                     Maksimal : <br />
-                    <input type="text" />
+                    <input id="Maksimal" type="text" />
                 </td>
             </tr>
             <tr>
@@ -249,9 +251,10 @@
             var StoreCategory = $('#StoreCategory2 option:selected').text().trim();
             var Title = $('#txtTitle').val();
             var SortBy = $('#sortby option:selected').text();
-
+            var LowestPrice = $('#Minimal').val();
+            var HighestPrice = $('#Maksimal').val();
             msg = "";
-            hub.server.SearchStores(Title, SortBy, StoreCategory, 1, 1).done(function (datas) {
+            hub.server.SearchStores(Title, SortBy, StoreCategory, parseInt(LowestPrice), parseInt(HighestPrice)).done(function (datas) {
                 $('#DataStore').empty();
                 msg += "<table class='ui celled table' border=1>"
                 msg += "<tr>";
@@ -270,7 +273,31 @@
                 msg += "<th>Visitors</th>";
                 msg += "<th>Facilities</th>";
                 msg += "<tr>";
+
                 $.each(datas, function (i, obj) {
+                    var msgf = "";
+                    $.each(obj.facilities, function (f, objf) {
+                        var data = "";
+                        switch (obj.facilities[f]) {
+                            case 0:
+                                {
+                                    data = "Parkir Luas <br/>";
+                                }
+                                break;
+                            case 1:
+                                {
+                                    data = "Porsi Besar <br/>";
+                                }
+                                break;
+                            case 2:
+                                {
+                                    data = "Prasmanan <br/>";
+                                }
+                        }
+                        msgf += data;
+
+                    });
+
                     msg += "<tr>";
                     msg += "<td>" + obj.loginname + "</td>";
                     msg += "<td>" + obj.id + "</td>";
@@ -285,7 +312,7 @@
                     msg += "<td>" + obj/*.SocialRating["Kenikmatan"] */ + "</td>";
                     msg += "<td>" + obj/*.SocialComment["Comments"]*/ + "</td>";
                     msg += "<td>" + obj/*.SocialCheckIn["Visitors"]*/ + "</td>";
-                    msg += "<td>" + obj/*.StoreFacilities["Facilities"]*/ + "</td>";
+                    msg += "<td>" + msgf + "</td>";
                     msg += "</tr>";
                 });
                 msg += "</table>";
@@ -315,6 +342,30 @@
                 msg += "<th>Facilities</th>";
                 msg += "<tr>";
                 $.each(datas, function (i, obj) {
+                    var msgf = "";
+                    $.each(obj.facilities, function (f, objf) {
+                        var data = "";
+                        switch (obj.facilities[f])
+                        {
+                            case 0:
+                                {
+                                    data = "Parkir Luas <br/>";
+                                }
+                                break;
+                            case 1:
+                                {
+                                    data = "Porsi Besar <br/>";
+                                }
+                                break;
+                            case 2:
+                                {
+                                    data = "Prasmanan <br/>";
+                                }
+                        }
+                        msgf += data;
+
+                    });
+
                     msg += "<tr>";
                     msg += "<td>" + obj.loginname + "</td>";
                     msg += "<td>" + obj.id + "</td>";
@@ -329,7 +380,7 @@
                     msg += "<td>" + obj/*.SocialRating["Kenikmatan"] */ + "</td>";
                     msg += "<td>" + obj/*.SocialComment["Comments"]*/ + "</td>";
                     msg += "<td>" + obj/*.SocialCheckIn["Visitors"]*/ + "</td>";
-                    msg += "<td>" + obj/*.StoreFacilities["Facilities"]*/ + "</td>";
+                    msg += "<td>" + msgf + "</td>";
                     msg += "</tr>";
                 });
                 msg += "</table>";
@@ -345,7 +396,13 @@
                 SearchStores();
             });
         });
+
         $('#BtnTambahToko').click(function () {
+            //fasilitas
+            var Fas = $('input:checkbox:checked.Facilities').map(function () {
+                return this.value;
+            }).get();
+
             var title = $('#title').val().trim();
             var desc = $('#desc').val().trim();
             var StoreCategory = $('#StoreCategory option:selected').text().trim();
@@ -357,7 +414,7 @@
             var Kenikmatan = $('#Kenikmatan').val();
             var Comments = $('#Comments').val();
             var Visitors = $('#Visitors').val();
-            var Facilities = $('#Facilities').val();
+            var Facilities = Fas;
 
             $.connection.hub.start().done(function () {
                 console.log('connection ready..');

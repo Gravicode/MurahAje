@@ -1030,9 +1030,35 @@ namespace MurahAje.Web
         }
 
         [HubMethodName("SearchStores")]
-        public IEnumerable<Store> SearchStores(string sTitle, string SortBy, string sStoreCategory, string sLowestPrice, string sHighestPrice)
+        public IEnumerable<Store> SearchStores(string sTitle, string SortBy, string sStoreCategory, int sLowestPrice, int sHighestPrice)
         {
-            var datas = db.GetAllData<Store>().Where(x => x.Title.Contains(sTitle) && x.StoreCategory == sStoreCategory);
+            //StoreFacilities value = new StoreFacilities();
+            //var sf = new HashSet<StoreFacilities>();
+            //foreach (string option in sStoreFacilities)
+            //{
+            //    switch (option)
+            //    {
+            //        case "PL":
+            //            {
+            //                value = StoreFacilities.ParkirLuas;
+            //            }
+            //            break;
+            //        case "PB":
+            //            {
+            //                value = StoreFacilities.PorsiBesar;
+            //            }
+            //            break;
+            //        case "PM":
+            //            {
+            //                value = StoreFacilities.Prasmanan;
+            //            }
+            //            break;
+            //    }
+            //    sf.Add(value);
+            //}
+
+
+            var datas = db.GetAllData<Store>().Where(x => x.Title.Contains(sTitle) && x.StoreCategory == sStoreCategory );
             if (!string.IsNullOrEmpty(SortBy))
             {
                 switch (SortBy)
@@ -1040,40 +1066,43 @@ namespace MurahAje.Web
                     case "Terdekat":
                         {
                             datas.OrderBy(x => x.Title);
-                            return datas;
                         }
+                        break;
                     case "Terjauh":
                         {
                             datas = datas.OrderBy(x => x.Title);
-                            return datas;
                         }
+                        break;
                     case "Termurah":
                         {
                             datas = datas.OrderBy(x => x.LowestPrice);
-                            return datas;
                         }
+                        break;
                     case "Termahal":
                         {
                             datas = datas.OrderByDescending(x => x.HighestPrice);
-                            return datas;
                         }
+                        break;
                     case "Terpopuler":
                         {
                             datas = datas.OrderByDescending(x => x.Visitors);
-                            return datas;
                         }
+                        break;
                     default:
                         {
                             datas.OrderBy(x => x.Title);
-                            return datas;
                         }
+                        break;
                 }
             }
-            else
+            if (sHighestPrice > 0)
             {
-                datas.OrderBy(x => x.Title);
-                return datas;
+                datas = datas.Where(x => x.LowestPrice >= sLowestPrice && x.HighestPrice <= sHighestPrice);
             }
+            //datas = from x in datas
+            //        where x.Facilities.Contains(sf)
+            //        select x;
+            return datas;
         }
 
         [HubMethodName("GetStoreByKeyword")]
@@ -1086,8 +1115,35 @@ namespace MurahAje.Web
             return datas;
         }
         [HubMethodName("AddStore")]
-        public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, double sLowestPrice, double sHighestPrice, string sCity, double sMurahMeter, double sRecommendation, double sKenikmatan, string sComments, double sVisitors, string sFacilities)
+        public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, double sLowestPrice, double sHighestPrice, string sCity, double sMurahMeter, double sRecommendation, double sKenikmatan, string sComments, double sVisitors, string [] sFacilities)
         {
+            //insert facilities
+            StoreFacilities value = new StoreFacilities();
+            var sf = new HashSet<StoreFacilities>();
+            foreach (string option in sFacilities)
+            {
+                switch (option)
+                {
+                    case "PL":
+                        {
+                            value = StoreFacilities.ParkirLuas;
+                        }
+                        break;
+                    case "PB":
+                        {
+                            value = StoreFacilities.PorsiBesar;
+                        }
+                        break;
+                    case "PM":
+                        {
+                            value = StoreFacilities.Prasmanan;
+                        }
+                        break;
+                }
+                sf.Add(value);
+            }
+            //end
+            
             string Username = Context.User.Identity.Name;
             var node = new Store()
             {
@@ -1109,10 +1165,7 @@ namespace MurahAje.Web
                 Kenikmatan = new List<SocialRating>(),
                 Comments = new List<SocialComment>(),
                 Visitors = new List<SocialCheckIn>(),
-                Facilities = new HashSet<StoreFacilities>()
-                {
-                    
-                },
+                Facilities = sf,
                 StoreCategory = sStoreCategory
             };
             db.InsertData<Store>(node);
