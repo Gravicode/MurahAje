@@ -111,6 +111,7 @@ namespace MurahAje.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             app.UseSession();
+        
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseIdentity();
