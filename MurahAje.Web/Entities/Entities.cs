@@ -64,7 +64,7 @@ namespace MurahAje.Web.Entities
     public class Product
     {
         public long Id { set; get; }
-        public string IDStore { set; get; }
+        public long IDStore { set; get; }
         public string Title { set; get; }
         public string Desc { set; get; }
         public string ProductCategory { set; get; }
@@ -78,10 +78,8 @@ namespace MurahAje.Web.Entities
     public class SocialRating
     {
         public long Id { set; get; }
-        public string LoginName { set; get; }
+        public string LoginName { set; get; }   
         public int RatingValue { set; get; }
-        public HashSet<RatingType> Type { set; get; }
-
     }
     public class SocialPost
     {
@@ -131,7 +129,6 @@ namespace MurahAje.Web.Entities
         public string AuthType { set; get; }
         public SocialFollow Follow { set; get; }
     }
-
     
     public class People : SocialUser
     {
@@ -139,7 +136,6 @@ namespace MurahAje.Web.Entities
         public int TotalFollowing { set; get; }
         public int TotalPost { set; get; }
         public bool IsFollowing { set; get; }
-
     }
 
     

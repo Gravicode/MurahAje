@@ -1,0 +1,148 @@
+﻿<p>Detail Toko</p>
+<div id="Content">
+
+</div>
+<div id="TambahKomentar">
+        <table>
+            <tr>
+                <td>Komentar Anda</td>
+                <td>
+                    <textarea id="Komentar" rows="2"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Murahmeter</td>
+                <td><input id="Murahmeter" type="text"/><td>
+            </tr>
+            <tr>
+                <td>Kenikmatan</td>
+                <td><input id="Kenikmatan" type="text" /></td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <button id="BtnKomentar">Komentar</button>
+                </td>
+            </tr>
+        </table>
+</div>
+
+<br /><br /><br />
+<p>Komentar Pengunjung :</p>
+<br/>
+<div id="PanelKomentar"></div>
+<script>
+    $(function () {
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+        var hub = $.connection.SocialHub;
+
+        $.connection.hub.logging = true;
+        $.connection.hub.start().done(function () {
+            console.log('connection ready..');
+            SearchStoresByID();
+        });
+        $('#BtnKomentar').click(function () {
+            var Komentar = $('#Komentar').val().trim();
+            var MurahMeter = $('#Murahmeter').val();
+            var Kenikmatan = $('#Kenikmatan').val();
+            var IdStore = getUrlVars()["IdStore"];
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                hub.server.UpdateStoreComment(IdStore, Komentar, MurahMeter, Kenikmatan).done(function (Data) {
+                    SearchStoresByID();
+                });
+            });
+        });
+        function SearchStoresByID() {
+            var IdStore = getUrlVars()["IdStore"];
+            hub.server.SearchStoresByID(IdStore).done(function (datas) {
+                $('#Content').empty();
+                $('#PanelKomentar').empty();
+                var msg = "";
+                var msg2 = "";
+                msg += "<table class='ui celled table' border=1>"
+                msg += "<tr>";
+                msg += "<th>LoginName</th>";
+                msg += "<th>Id</th>";
+                msg += "<th>Title</th>";
+                msg += "<th>Desc</th>";
+                msg += "<th>StoreCategory</th>";
+                msg += "<th>LowestPrice</th>";
+                msg += "<th>HighestPrice</th>";
+                msg += "<th>City</th>";
+                msg += "<th>MurahMeter</th>";
+                msg += "<th>Recommendation</th>";
+                msg += "<th>Kenikmatan</th>";
+                msg += "<th>Comments</th>";
+                msg += "<th>Visitors</th>";
+                msg += "<th>Facilities</th>";
+                msg += "<tr>";
+                $.each(datas, function (i, obj) {
+                    var msgf = "";
+                    $.each(obj.facilities, function (f, objf) {
+                        var data = "";
+                        switch (obj.facilities[f]) {
+                            case 0:
+                                {
+                                    data = "Parkir Luas <br/>";
+                                }
+                                break;
+                            case 1:
+                                {
+                                    data = "Porsi Besar <br/>";
+                                }
+                                break;
+                            case 2:
+                                {
+                                    data = "Prasmanan <br/>";
+                                }
+                        }
+                        msgf += data;
+
+                    });
+
+                    msg += "<tr>";
+                    msg += "<td>" + obj.loginname + "</td>";
+                    msg += "<td>" + obj.id + "</td>";
+                    msg += "<td>" + obj.title + "</td>";
+                    msg += "<td>" + obj.desc + "</td>";
+                    msg += "<td>" + obj.storeCategory + "</td>";
+                    msg += "<td>" + obj.lowestPrice + "</td>";
+                    msg += "<td>" + obj.highestPrice + "</td>";
+                    msg += "<td>" + obj.address["city"] + "</td>";
+                    msg += "<td>" + obj/*.SocialRating["MurahMeter"]*/ + "</td>";
+                    msg += "<td>" + obj/*.SocialRecommendation["Recommendation"]*/ + "</td>";
+                    msg += "<td>" + obj/*.SocialRating["Kenikmatan"] */ + "</td>";
+                    msg += "<td>" + obj/*.SocialComment["Comments"]*/ + "</td>";
+                    msg += "<td>" + obj/*.SocialCheckIn["Visitors"]*/ + "</td>";
+                    msg += "<td>" + msgf + "</td>";
+                    msg += "</tr>";
+
+                    $.each(obj.murahMeter, function (f, objm) {
+                        $('#Content').append();
+                        msg2 += "Murah Meter :" + objm.ratingValue + "</br>";
+                        msg2 += " Kenikmatan :" + obj.kenikmatan[f]['ratingValue'] + "</br>";
+                        msg2 += " Komentar :" + obj.comments[f]['message'] + "</br>";
+                        msg2 += "</br></br></br>";
+                    });
+                });
+                $('#Content').html(msg);
+                $('#PanelKomentar').html(msg2);
+
+            });
+        }
+    });
+
+</script>

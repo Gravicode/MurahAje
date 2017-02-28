@@ -1029,35 +1029,17 @@ namespace MurahAje.Web
             return datas;
         }
 
+        [HubMethodName("SearchStoresByID")]
+        public IEnumerable<Store> SearchStoresById(long sId)
+        {
+            var datas = db.GetAllData<Store>().Where(x => x.Id == sId);
+            return datas;
+        }
+
+
         [HubMethodName("SearchStores")]
         public IEnumerable<Store> SearchStores(string sTitle, string SortBy, string sStoreCategory, int sLowestPrice, int sHighestPrice)
         {
-            //StoreFacilities value = new StoreFacilities();
-            //var sf = new HashSet<StoreFacilities>();
-            //foreach (string option in sStoreFacilities)
-            //{
-            //    switch (option)
-            //    {
-            //        case "PL":
-            //            {
-            //                value = StoreFacilities.ParkirLuas;
-            //            }
-            //            break;
-            //        case "PB":
-            //            {
-            //                value = StoreFacilities.PorsiBesar;
-            //            }
-            //            break;
-            //        case "PM":
-            //            {
-            //                value = StoreFacilities.Prasmanan;
-            //            }
-            //            break;
-            //    }
-            //    sf.Add(value);
-            //}
-
-
             var datas = db.GetAllData<Store>().Where(x => x.Title.Contains(sTitle) && x.StoreCategory == sStoreCategory );
             if (!string.IsNullOrEmpty(SortBy))
             {
@@ -1099,9 +1081,7 @@ namespace MurahAje.Web
             {
                 datas = datas.Where(x => x.LowestPrice >= sLowestPrice && x.HighestPrice <= sHighestPrice);
             }
-            //datas = from x in datas
-            //        where x.Facilities.Contains(sf)
-            //        select x;
+
             return datas;
         }
 
@@ -1110,6 +1090,16 @@ namespace MurahAje.Web
         {
             var datas = from x in db.GetAllData<Store>()
                         where x.Title.Contains(Keyword, StringComparison.CurrentCultureIgnoreCase)
+                        orderby x ascending
+                        select x;
+            return datas;
+        }
+
+        [HubMethodName("GetProductByIDStore")]
+        public IEnumerable<Product> GetProductByIDStore(long sIDStore)
+        {
+            var datas = from x in db.GetAllData<Product>()
+                        where x.IDStore == sIDStore
                         orderby x ascending
                         select x;
             return datas;
@@ -1143,7 +1133,6 @@ namespace MurahAje.Web
                 sf.Add(value);
             }
             //end
-            
             string Username = Context.User.Identity.Name;
             var node = new Store()
             {
@@ -1157,10 +1146,10 @@ namespace MurahAje.Web
                 {
                     City = sCity
                 },
-                MurahMeter = new List<SocialRating>()
-                {
+                //MurahMeter = new List<SocialRating>()
+                //{
                     
-                },
+                //},
                 Recommendation = new List<SocialRecommendation>(),
                 Kenikmatan = new List<SocialRating>(),
                 Comments = new List<SocialComment>(),
@@ -1188,6 +1177,43 @@ namespace MurahAje.Web
                 node.HighestPrice = HighP;
                 node.LowestPrice = LowP;
                 node.StoreCategory = Category;
+                db.InsertData<Store>(node);
+                temp = node;
+                return new OutputData() { Data = temp, IsSucceed = true };
+            }
+            return new OutputData() { Data = temp, IsSucceed = false };
+        }
+        [HubMethodName("UpdateStoreComment")]
+        public OutputData UpdateStoreComment(int IdStore, string sMessage, int sMurahMeter, int sKenikmatan)
+        {
+            string Username = Context.User.Identity.Name;
+            SocialComment sc = new SocialComment()
+            {
+                Message = sMessage,
+                CreatedDate = DateTime.Now,
+                LoginName = Username,
+                Name = Context.User.Identity.Name
+            };
+            SocialRating mm = new SocialRating()
+            {
+                LoginName = Username,
+                RatingValue = sMurahMeter
+            };
+            SocialRating km = new SocialRating()
+            {
+                LoginName = Username,
+                RatingValue = sKenikmatan
+            };
+
+            Store temp = null;
+            var datas = from x in db.GetAllData<Store>()
+                        where x.Id == IdStore
+                        select x;
+            foreach (var node in datas)
+            {
+                node.MurahMeter.Add(mm);
+                node.Kenikmatan.Add(km);
+                node.Comments.Add(sc);
                 db.InsertData<Store>(node);
                 temp = node;
                 return new OutputData() { Data = temp, IsSucceed = true };
