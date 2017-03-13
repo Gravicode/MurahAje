@@ -24,6 +24,27 @@ namespace MurahAje.Bot
             {
                 await Conversation.SendAsync(activity, () => new RootDialog());
             }
+            else if (activity.Type == ActivityTypes.ConversationUpdate)
+            {
+
+                var client = new ConnectorClient(new Uri(activity.ServiceUrl));
+                IConversationUpdateActivity update = activity;
+                if (update.MembersAdded.Any())
+                {
+                    var reply = activity.CreateReply();
+                    var newMembers = update.MembersAdded?.Where(t => t.Id != activity.Recipient.Id);
+                    foreach (var newMember in newMembers)
+                    {
+                        reply.Text = "Selamat datang";
+                        if (!string.IsNullOrEmpty(newMember.Name))
+                        {
+                            reply.Text += $" {newMember.Name}";
+                        }
+                        reply.Text += "!";
+                        await client.Conversations.ReplyToActivityAsync(reply);
+                    }
+                }
+            }
             else
             {
                 this.HandleSystemMessage(activity);

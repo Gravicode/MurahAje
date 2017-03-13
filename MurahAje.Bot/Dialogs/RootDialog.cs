@@ -12,6 +12,7 @@
     {
         const string LaporanOption = "Mau Laporan";
         const string OrderOption = "Mau Order";
+        const string FAQOption = "Mau Tanya";
         public async Task StartAsync(IDialogContext context)
         {
             context.Wait(this.MessageReceivedAsync);
@@ -33,7 +34,7 @@
 
         private void ShowOptions(IDialogContext context)
         {
-            PromptDialog.Choice(context, this.OnOptionSelected, new List<string>() { LaporanOption , OrderOption }, "Halo bos, ada yang bisa dibantu ?", "Pilihan yang tidak tepat bos.", 3);
+            PromptDialog.Choice(context, this.OnOptionSelected, new List<string>() { LaporanOption , OrderOption, FAQOption }, "Halo bos, ada yang bisa dibantu ?", "Pilihan yang tidak tepat bos.",3);
         }
 
         private async Task OnOptionSelected(IDialogContext context, IAwaitable<string> result)
@@ -50,6 +51,9 @@
 
                     case OrderOption:
                         context.Call(new OrderDialog(), this.ResumeAfterOptionDialog);
+                        break;
+                    case FAQOption:
+                        context.Call(new FAQDialog(), this.ResumeAfterOptionDialog);
                         break;
                 }
             }
