@@ -1,0 +1,548 @@
+/*font roboto*/
+@font-face{font-family: 'Roboto-Regular';font-style: normal;src:url('../fonts/Roboto-Regular.ttf');}
+@font-face{font-family: 'Roboto-Medium';font-style: normal;src:url('../fonts/Roboto-Medium.ttf');}
+@font-face{font-family: 'Roboto-Bold';font-style: normal;src:url('../fonts/Roboto-Bold.ttf');}
+@font-face{font-family: 'Raleway-Regular';font-style: normal;src:url('../fonts/Raleway-Regular.ttf');}
+@font-face{font-family: 'Raleway-Medium';font-style: normal;src:url('../fonts/Raleway-Medium.ttf');}
+@font-face{font-family: 'Raleway-Bold';font-style: normal;src:url('../fonts/Raleway-Bold.ttf');}
+@font-face{font-family: 'Montserrat-Regular';font-style: normal;src:url('../fonts/Montserrat-Regular.ttf');}
+@font-face{font-family: 'Montserrat-Medium';font-style: normal;src:url('../fonts/Montserrat-Regular.ttf');}
+@font-face{font-family: 'Montserrat-Bold';font-style: normal;src:url('../fonts/Montserrat-Bold.ttf');}
+
+/**/
+
+/* Header Menu*/
+
+.ui.top.left.pointing.dropdown>.menu.dropdown-notif
+{
+  top:40px;
+  width:80%;
+}
+
+.ui.link.items.notif-items
+{
+  width:70%;
+  margin-left:30px;
+  margin-bottom:30px !important;
+}
+   
+.item.menu-account
+{
+  margin-left:100px;
+}
+.ui.input input
+{
+  font-family: 'Roboto-Medium';
+}
+.ui.huge.menu
+{
+    min-height:100px;
+    background-color:rgb(77,122,255);
+    border-radius: 0 !important;
+}
+.ui.search .prompt,.search-lokasi .prompt
+{
+  border-radius:0 !important;
+}
+.ui.button.home, .button.chat, .button.notif
+{
+  background: white !important;
+  font-size: .92857143rem !important;
+}
+.ui.button.home,.button.chat, .button.notif i
+{
+  color:#4D7AFF;
+  font-size:24px;
+}
+.material-icons.blue 
+{ 
+  color:#4D7AFF;;
+   }
+
+.ui.floating.label.account-menu
+{
+  top:2.5em;
+  background-color:#FF7373!important;
+  border-color: #FF7373!important;
+}
+.ui.avatar.image
+{
+  border-radius: .3125em;
+  width: 55px;
+}
+.ui.image.photo-profile
+{
+  cursor:pointer;
+}
+.ui.list >.item .header.photo-user
+{
+  color:#F0F0E1;
+  font-family: 'Montserrat-Regular';
+}
+.ui.image.photo-profile.logout
+{
+  color:#9AB4FF;
+  font-family: 'Montserrat-Regular';
+}
+.ui.image.photo-profile, .ui.image.photo-profile.logout span:hover
+{
+  color:white;
+}
+.ui.list >.item .header.photo-user
+{
+  color:#F0F0E1;
+  font-family: 'Roboto-Medium';
+}
+
+
+/* Content Wrapper*/
+/*sidebar menu */
+
+.big.ellipsis.horizontal.icon.category-icon
+{
+  color:#868695;
+  float:right;
+}
+
+.ui.form .grouped.fields.side-part .title-category
+{
+  font-size:10pt;
+  font-family: 'Montserrat-Regular';
+  text-transform: uppercase;
+  font-weight:600;
+  color:#4E4E4E;
+}
+
+.ui.selection.dropdown.tempat-makan
+{
+  margin-top:25px;
+  border:0 !important;
+  border-radius:0 !important;
+  width:90% !important;
+}
+
+.ui.form .grouped.fields.side-part .default.text, .ui.form .grouped.fields.side-part .ui.input
+{
+  color:#4E4E4E;
+  margin-top:8px;
+}
+.ui.form .grouped.fields.side-part .caption-category
+{
+  margin-top: 15px;
+  margin-left:20px;
+  color:#A8A8B7;
+  width:80%;
+  line-height:20px;
+}
+
+.ui.form .grouped.fields.side-part .field
+{
+  margin-top:20px;
+  font-family: 'Montserrat-Regular';
+  font-weight:600;
+}
+
+.ui.form .grouped.fields.side-part
+{
+  margin-left:40px;
+}
+{
+  margin-left:30px
+}
+
+.ui.form .grouped.fields.side-part .ui.input
+{
+ width:90% !important;
+ margin-top:25px;
+}
+
+.ui.form .grouped.fields.side-part .ui.input.harga input::-webkit-input-placeholder
+{
+  color:#4E4E4E;
+  font-family: 'Montserrat-Regular';
+  font-weight:600;
+}
+
+.ui.form .grouped.fields.side-part .ui.input.harga input
+{
+  border-radius:0 !important;
+  border:0 !important;
+  height:40px;
+}
+.ui.accordion.menu .item .title.header-sidebar span.text.title.sidebar, .ui.accordion.menu .item .title.header-child-sidebar span.text.title.sidebar
+{
+    position: relative;
+    left: 10%;
+    top:35%;
+    color:white;
+    font-family: 'Raleway-Regular';
+    font-size:14pt;
+    font-weight:800;
+}
+.ui.accordion.menu .item .title>.ellipsis.horizontal.icon.sidebar-icon
+{
+    float: right;
+    position: relative;
+    right: 5%;
+    top: 25%;
+}
+.ui.accordion.menu .item .title.header-sidebar
+{
+    background-color: #3568FF;
+    margin-top: -1px;
+    margin-right: -1px;
+    height: 57px;
+    -moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+
+}
+.ui.accordion.menu .item .title.header-child-sidebar
+{
+  background-color: #3568FF;
+  margin-top: -1px;
+  margin-right: -1px;
+  height: 57px;
+}
+.ui.vertical.menu .item.sidebar-menu
+{
+  padding :0;
+}
+.ui.vertical.accordion.menu
+{
+  width:100%;
+  padding:0px;
+  margin-bottom:100px;
+  background-color: #EEEEEE;
+}
+.four.wide.computer.grey.column.sidebar-area, .twelve.wide.computer.column.content-area
+{
+  padding:0px;
+  margin-bottom:30px;
+}
+.ui.grid>.grey.column, .ui.grid>.grey.row, .ui.grid>.row>.grey.column.sidebar-area
+{
+  background-color:#EEEEEE !important;
+  top:12px;
+}
+
+/*breadcrumb*/
+ @media only screen and (max-width: 767px) and (min-width: 320px) {
+  .sixteen.wide.mobile.content-area
+  {
+    top:-110px !important;
+  }
+  .column.caraousel-area .content-caraousel
+  {
+    top:70px;
+    width:300px !important;
+    font-size:10pt !important;
+  }
+  .column.caraousel-area .content-caraousel .header-caraousel
+  {
+    font-size:16pt !important;
+  }
+  
+  .column.caraousel-area .content-caraousel .title-caraousel
+  {
+    font-size:14pt !important;
+  }
+}
+.column .breadcrumb-area
+{
+  background-size: cover;
+  background-position: 50% 25%;
+  
+}
+
+.ui.breadcrumb
+{
+  background:#3568FF;
+  width:100%;
+  padding:20px;
+  -moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+.ui.breadcrumb .active.section, .ui.breadcrumb .section
+{
+  color:white;
+  font-family: 'Montserrat-Medium';
+  font-size:15px;
+}
+.ui.breadcrumb .section a, .ui.breadcrumb .active.section a
+{
+  color:#FAE262;
+  font-family: 'Raleway-Regular';
+  font-size:15px;
+  text-transform: uppercase;
+}
+.stretched.row.content-wrapper
+{
+  height: auto;
+  padding:0px;
+}
+@media (min-height: 320px) {
+  .ui.footer.segment{ /* Increased specificity for SO snippet priority */
+    margin-top:0px;
+    padding-top:45px;
+    width: 100%;
+    background: #4D7AFF !important;
+    
+  }
+}
+@media only screen and (max-width: 767px) {
+  .ui.stackable.menu .right.menu,
+  .ui.stackable.menu .right.item {
+    display: block;
+  }
+}
+
+/*Caraousel slider*/
+.column.caraousel-area
+{
+  margin-top:7px;
+  width:100%;
+  padding:0 !important;
+}
+.column.caraousel-area .content-caraousel
+{
+  position:absolute;
+  left:45%;
+  text-align:left;
+  color:white;
+  font-family: 'Montserrat-Medium';
+  font-size:16px;
+  width:600px;
+  line-height:25px;
+}
+
+.column.caraousel-area .content-caraousel .header-caraousel
+{
+  line-height:50px;  
+  font-family: 'Raleway-Regular';
+  font-size:32pt;
+}
+.column.caraousel-area .content-caraousel .link-caraousel
+{
+  float:right;  
+  font-family: 'Raleway-Bold';
+  font-size:14pt;
+}
+.column.caraousel-area .content-caraousel .link-caraousel a
+{
+  color:white;
+}
+
+.column.caraousel-area .content-caraousel .title-caraousel
+{
+  margin-bottom:10px;
+  font-family: 'Raleway-Regular';
+  font-size:24pt;
+  border-left:5px solid #FF724E;
+  padding-left:35px;
+  left:30%;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  margin:0 !important;
+      }
+  .swiper-pagination
+  {
+    left:-10% !important;
+  }
+  .swiper-slide {
+  font-size: 18px;
+  background: #fff;
+   /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+   -webkit-box-align: center;
+   -ms-flex-align: center;
+   -webkit-align-items: center;
+   align-items: center;
+      }
+   .swiper-pagination-bullet {
+   font-family: 'Montserrat-Medium';
+   font-weight:800;
+   width: 30px;
+   height: 30px;
+   padding : 5px;
+   border-radius: 0 !important;
+   text-align: center;
+   line-height: 20px;
+   font-size: 12px;
+   color:#000;
+   opacity: 1;
+   background: #AABFFF;
+      }
+   .swiper-pagination-bullet-active {
+  color:#fff;
+  background: #3568FF;
+   }
+
+/*contentmenu*/
+.column.contentmenu-area
+{
+  padding-left: 20px;
+  padding-right: 35px;
+  padding-top: 10px;
+}
+.column.contentmenu-title h1
+{
+  font-family:'Raleway-Medium';
+  font-size:16pt;
+  font-weight: 600;
+}
+.column.contentmenu-title
+{
+  margin-top:20px;
+  padding-left:20px;
+}
+.ui.card
+{
+  border-radius:0 !important;
+  
+}
+.ui.header.jenis-tempat, .ui.header.nama-tempat, .ui.header.murah-meter, .ui.header.kenikmatan-meter, .ui.header.rekomendasi-title, .ui.header.rekomendasi-result, .ui.header.label-option
+{
+  font-family: 'Montserrat-Medium';
+  font-size:10pt;
+}
+.ui.header.jenis-tempat, .ui.header.murah-meter, .ui.header.murah-meter, .ui.header.rekomendasi-title
+{  
+  color:#444444;
+}
+.ui.header.nama-tempat, .ui.header.rekomendasi-result
+{
+  color:#799BFF;
+}
+.ui.card>.image>img, .ui.cards>.card>.image>img
+{
+  border-radius:0 !important;
+  min-height:100px;
+}
+.ui.bottom.attached.label.title-food
+{
+  text-align: left;
+  border-radius:0 !important;
+  background-color:#4D7AFF;
+  text-transform: uppercase;
+  color:white;
+  font-family: 'Raleway-Regular';
+  min-height:30px;
+  font-size:12pt;
+}
+.ui.header.label-option .ui.label, .ui.header.label-option a.ui.label
+{
+  border-radius:0 !important;
+  margin-left:0 !important;
+}
+.ui.header.label-option a.ui.label
+{
+  text-transform:uppercase;
+}
+ .ui.header.kenikmatan-meter, .ui.header.rekomendasi-title, .ui.header.rekomendasi-result
+ {
+   margin-top:5px;
+ }
+
+.MurahRating, .KenikmatanRating {
+  background: url("../img/MurahMeter-icon.png") repeat-x 0 0;
+  width: 100px;
+  margin: 0 auto;
+}
+.MurahRating
+{
+  background: url("../img/MurahMeter-icon.png") repeat-x 0 0;
+}
+.KenikmatanRating
+{
+  background: url("../img/KenikmatanRating-icon.png") repeat-x 0 0;
+}
+.MurahRating input[type="radio"], .KenikmatanRating input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.MurahRating input[type="radio"].coin-5:checked ~ span, .KenikmatanRating input[type="radio"].food-5:checked ~ span {
+  width: 100%;
+}
+.MurahRating input[type="radio"].coin-4:checked ~ span,.KenikmatanRating input[type="radio"].food-4:checked ~ span {
+  width: 80%;
+}
+.MurahRating input[type="radio"].coin-3:checked ~ span, .KenikmatanRating input[type="radio"].food-3:checked ~ span {
+  width: 60%;
+}
+.MurahRating input[type="radio"].coin-2:checked ~ span, .KenikmatanRating input[type="radio"].food-2:checked ~ span {
+  width: 40%;
+}
+.MurahRating input[type="radio"].coin-1:checked ~ span, .KenikmatanRating input[type="radio"].food-1:checked ~ span {
+  width: 20%;
+}
+.MurahRating label, .KenikmatanRating label {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 0!important;
+  padding: 0!important;
+  text-indent: -999em;
+  float: left;
+  position: relative;
+  z-index: 10;
+  background: transparent!important;
+  cursor: pointer;
+}
+.MurahRating label:hover ~ span, .KenikmatanRating label:hover ~ span {
+  background-position: 0 -20px;
+}
+.MurahRating label.coin-5:hover ~ span, .KenikmatanRating label.food-5:hover ~ span {
+  width: 100% !important;
+}
+.MurahRating label.coin-4:hover ~ span, .KenikmatanRating label.food-4:hover ~ span {
+  width: 80% !important;
+}
+.MurahRating label.coin-3:hover ~ span, .KenikmatanRating label.food-3:hover ~ span {
+  width: 60% !important;
+}
+.MurahRating label.coin-2:hover ~ span, .KenikmatanRating label.food-2:hover ~ span {
+  width: 40% !important;
+}
+.MurahRating label.coin-1:hover ~ span, .KenikmatanRating label.food-1:hover ~ span  {
+  width: 20% !important;
+}
+.MurahRating span, .KenikmatanRating span{
+  display: block;
+  width: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 20px;
+  -webkit-transition: -webkit-width 0.5s;
+  -moz-transition: -moz-width 0.5s;
+  -ms-transition: -ms-width 0.5s;
+  -o-transition: -o-width 0.5s;
+  transition: width 0.5s;
+}
+ .KenikmatanRating span {
+  background: url("../img/KenikmatanRating-icon.png") repeat-x 0 -40px;
+}
+ .MurahRating span {
+  background: url("../img/MurahMeter-icon.png") repeat-x 0 -40px;
+}
+/*Footer*/
+
+.ui.horizontal.inverted.divider.footer-copyright
+{
+  text-transform:none;
+  
+}
+   

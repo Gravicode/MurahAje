@@ -1,0 +1,875 @@
+﻿<link rel="stylesheet" href="~/css/pedagang-detail.css">
+<div class="ui grid content-wrapper">
+    <div class="stretched row content-wrapper">
+        <div class="sixteen wide mobile four wide computer grey column sidebar-area">
+            <div class="ui vertical accordion menu">
+                <div class="item sidebar-menu">
+                    <a class="active title header-sidebar">
+                        <i class="inverted big ellipsis horizontal icon sidebar-icon"></i>
+                        <span class="text title sidebar">
+                            Makan Murah
+                        </span>
+                    </a>
+                    <div class="active content">
+                        <div class="ui form">
+                            <div class="grouped fields side-part Makan-Murah">
+                                <div class="field">
+                                    <div class="title-category">Jenis Tempat Makan</div>
+                                    <div class="ui selection dropdown tempat-makan">
+                                        <input type="hidden" name="tempat-makan">
+                                        <i class="big ellipsis horizontal icon category-icon"></i>
+                                        <div class="default text">Semua</div>
+                                        <div class="menu">
+                                            <div class="item" data-value="1">Warteg</div>
+                                            <div class="item" data-value="2">Kaki Lima</div>
+                                            <div class="item" data-value="3">Pedagang Keliling</div>
+                                            <div class="item" data-value="4">Nasi Padang</div>
+                                            <div class="item" data-value="5">Warung Sunda</div>
+                                        </div>
+                                    </div>
+                                    <div class="caption-category">
+                                        Warteg, Kaki Lima, Pedagang Keliling
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="title-category">Urutkan</div>
+                                    <div class="ui selection dropdown tempat-makan">
+                                        <input type="hidden" name="tempat-makan">
+                                        <i class="big ellipsis horizontal icon category-icon"></i>
+                                        <div class="default text">Standar</div>
+                                        <div class="menu">
+                                            <div class="item" data-value="1">Terdekat</div>
+                                            <div class="item" data-value="2">Terjauh</div>
+                                            <div class="item" data-value="3">Termurah</div>
+                                            <div class="item" data-value="4">Termahal</div>
+                                            <div class="item" data-value="5">Terpopuler</div>
+                                            <div class="item" data-value="6">Ascending</div>
+                                            <div class="item" data-value="7">Descending</div>
+                                        </div>
+                                    </div>
+                                    <div class="caption-category">
+                                        Terdekat, Terjauh, Termurah, Termahal, A-Z, Z-A
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="title-category">Kisaran Harga</div>
+                                    <div class="ui icon input harga">
+                                        <input type="text" placeholder="Minimal Rp">
+                                        <i class="big ellipsis horizontal icon category-icon"></i>
+                                    </div>
+                                    <div class="ui icon input harga">
+                                        <input type="text" placeholder="Maksimal Rp">
+                                        <i class="big ellipsis horizontal icon category-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="PB">
+                                        <label>Porsi Besar</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="Prs">
+                                        <label>Prasmanan</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="PL">
+                                        <label>Parkir Luas</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item sidebar-menu">
+                    <a class="title header-child-sidebar">
+                        <i class="inverted big ellipsis horizontal icon sidebar-icon"></i>
+                        <span class="text title sidebar">
+                            Nginep Murah
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ui form">
+                            <div class="grouped fields side-part Nginep Murah">
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="small">
+                                        <label>Red</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="medium">
+                                        <label>Orange</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="large">
+                                        <label>Green</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="x-large">
+                                        <label>Blue</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item sidebar-menu">
+                    <a class="title header-child-sidebar">
+                        <i class="inverted big ellipsis horizontal icon sidebar-icon"></i>
+                        <span class="text title sidebar">
+                            Cuci Gudang
+                        </span>
+                    </a>
+                    <div class="content">
+                        <div class="ui form">
+                            <div class="grouped fields side-part Cuci-Gudang">
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="small">
+                                        <label>Red</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="medium">
+                                        <label>Orange</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="large">
+                                        <label>Green</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" name="x-large">
+                                        <label>Blue</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sixteen wide mobile twelve wide computer column content-area">
+            <div class="three wide column row">
+                <div class="column breadcrumb-area">
+                    <div class="ui breadcrumb">
+                        <div class="active section">Anda Berada di : <a href="#">Beranda</a></div>
+                    </div>
+                </div>
+                <div class="column pedagang content-area">
+                    <div id="NamaToko"></div>
+                    <h1 class="ui right floated header">4.0 <span> /5.0</span></h1>
+                </div>
+                <div class="column thumbnail-image ">
+                    <div class="ui grid">
+                        <div class="sixteen wide mobile ten wide computer column big-image">
+                            <img class="ui fluid image" src="~/img/pedagang-menu.png">
+                            <h3 class="ui bottom attached header quote-image">
+                                <i class="quote left icon"></i>
+                                <div class="content">
+                                    Nasi Rames favorit saya, tongkol baladonya nendang, Porsi nasinya guede, sambelnya pedes, harganya sangat bersahabat <span>Uvuvwevwevwe Onyetenyevwe Ugwemubwen Ossas - Jasinga</span>
+                                </div>
+                            </h3>
+                        </div>
+                        <div class="sixteen wide mobile six wide computer column thumbnailmini-image">
+                            <div class="ui grid">
+                                <div class="four column row">
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/1/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/2/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/3/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/4/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/5/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/6/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/7/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/8/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/9/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/10/">
+                                    </div>
+                                    <div class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/">
+                                    </div>
+                                    <div id="dimmer" class="column mini-image">
+                                        <img class="ui small image" src="http://lorempixel.com/960/796/food/">
+                                        <div class="ui dimmer">
+                                            <div class="content">
+                                                <div class="center">
+                                                    <h2 class="ui inverted icon header" style=" font-family:'Raleway-Regular' !important;">
+                                                        +27
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script>$('#dimmer').dimmer('show');</script>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui sixteen wide column tab-menu">
+                            <div id="tab-pedagang">
+                                <div class="ui secondary labeled icon menu">
+                                    <a class="item active" data-tab="Detail">Detail<i class="material-icons">more_horiz</i></a>
+                                    <a class="item" data-tab="Menu">Menu<i class="material-icons">more_horiz</i></a>
+                                    <a class="item" data-tab="Ulasan">Ulasan<i class="material-icons">more_horiz</i></a>
+                                    <a class="item" data-tab="Foto">Foto<i class="material-icons">more_horiz</i></a>
+                                </div>
+                                <div id="TabDetail" class="ui active tab segment pedagang-detail" data-tab="Detail">
+                                    <h3 class="ui top attached header title-sekilas">
+                                        Sekilas
+                                    </h3>
+                                    <div id="Sekilas" class="ui attached segment description">
+                                        @*<p>Warung Nasi Ibu Ndut sudah sangat terkenal dikalangan mahasiswa sekitar. Rasa masakan ibu ndut memang sudah tidak perlu diragukan lagi, berbagai macam aneka masakan rumah tersedia disini, tempat bersih dan luas menjadikan warung nasi ibu ndut menjadi pilihan utama para mahasiswa disini. </p>*@
+                                    </div>
+                                    <div class="ui stackable four column grid">
+                                        <div class="four column row details-content">
+                                            <div class="column">
+                                                <div class="ui list">
+                                                    <div class="item">
+                                                        <div class="header">Jenis Tempat</div>
+                                                        <div id="JenisTempat"></div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="header">Jenis Hidangan</div>
+                                                        Masakan Indonesia, Masakan Sunda, Masakan Jawa
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="header">Hidangan Favorite</div>
+                                                        <div class="item">Soto Kambing Joget</div>
+                                                        <div class="item">Nasi Rames Dangdut</div>
+                                                        <div class="item">Cabe Rawit Goreng</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <div class="ui list">
+                                                    <div class="item">
+                                                        <div class="header">Jam Buka / Tutup </div>
+                                                        <div class="item" style=" margin-top:15px;">
+                                                            <div class="right floated content">09.00 - 21.00</div>
+                                                            <div class="content">senin</div>
+                                                        </div>
+                                                        <div class="item" style=" margin-top:15px;">
+                                                            <div class="right floated content">09.00 - 21.00</div>
+                                                            <div class="content">Selasa</div>
+                                                        </div>
+                                                        <div class="item" style=" margin-top:15px;">
+                                                            <div class="right floated content">09.00 - 21.00</div>
+                                                            <div class="content">Rabu</div>
+                                                        </div>
+                                                        <div class="item" style=" margin-top:15px;">
+                                                            <div class="right floated content">09.00 - 21.00</div>
+                                                            <div class="content">Kamis</div>
+                                                        </div>
+                                                        <div class="item" style=" margin-top:15px;">
+                                                            <div class="right floated content">09.00 - 21.00</div>
+                                                            <div class="content">Jum'at</div>
+                                                        </div>
+                                                        <div class="item" style=" margin-top:15px;">
+                                                            <div class="right floated content">09.00 - 21.00</div>
+                                                            <div class="content">Sabtu</div>
+                                                        </div>
+                                                        <div class="item" style=" margin-top:15px;">
+                                                            <div class="right floated content">09.00 - 21.00</div>
+                                                            <div class="content">Minggu</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="header">Keterangan</div>
+                                                        <div id="Fasilitas">
+                                                            @*<div class="item"><i class="check circle icon"></i>Parkir Luas</div>
+                                                            <div class="item"><i class="check circle icon"></i>Prasmanan</div>
+                                                            <div class="item"><i class="check circle icon"></i>Terima Pesanan</div>
+                                                            <div class="item"><i class="check circle icon"></i>Katering Haran</div>
+                                                            <div class="item"><i class="check circle icon"></i>Katering Bulanan</div>*@
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <div class="ui list">
+                                                    <div class="item">
+                                                        <div class="header">Lokasi</div>
+                                                        <div class="item">
+                                                            <div id="Alamat"></div>
+                                                            <iframe width="230" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=Jalan+H.+Koweng,+Pisangan,+Kota+Tangerang+Selatan,+Banten,+Indonesia&key=AIzaSyCct9lfqmtoJkPGB1neKrkBLIF4X_u7qZE" allowfullscreen></iframe>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="header">Telp</div>
+                                                        0877-1234-5678
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column pedagang-rating">
+                                                <div class="ui list">
+                                                    <div class="item">
+                                                        <div class="header">Murah Meter</div>
+                                                        <div class="MurahRating">
+                                                            @*<span style="width:40%" class="MurahMeter"></span>*@
+                                                        </div>
+                                                        <div id="Range">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="header">Nikmat Meter</div>
+                                                        <div class="KenikmatanRating">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <a class="ui label" href="#">
+                                                        <i class="big bookmark icon"></i>
+                                                        Tambahkan ke Favorit
+                                                    </a>
+                                                </div>
+                                                <div class="item">
+                                                    <a class="ui label" href="#">
+                                                        <i class="big warning sign icon"></i>
+                                                        Laporkan Tempat
+                                                    </a>
+                                                </div>
+                                                <div class="item">
+                                                    <a class="ui label" href="#">
+                                                        <i class="big map pin icon"></i>
+                                                        Klaim Tempat ini
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui tab segment menu-area" data-tab="Menu">
+                                    <div class="ui two column stackable grid menu-area-grid">
+                                        <div class="eleven wide column menu-details">
+                                            <div class="ui segment menu-andalan">
+                                                <h3 class="ui left aligned header menu-title">
+                                                    Menu Andalan
+                                                </h3>
+                                                <div id="tab-menu">
+                                                    <div class="ui secondary stackable menu">
+                                                        <a class="item active" data-tab="Semua">Semua</a>
+                                                        <a class="item" data-tab="Paket">Paket</a>
+                                                        <a class="item" data-tab="Lauk">Lauk</a>
+                                                        <a class="item" data-tab="Minuman">Minuman</a>
+                                                        <a href="#" class="item right floated"><i class="plus icon"></i>tambah menu</a>
+                                                    </div>
+                                                    <div class="ui active tab segment" data-tab="Semua">
+                                                        <div class="ui middle aligned divided list">
+                                                            <div class="item">
+                                                                <div class="right floated content">
+                                                                    <div class="menu-review">
+                                                                        <a href="#" id="review-1" class="ui mini fluid image">
+                                                                            <img src="~/img/reviewicon-menu.png">
+                                                                        </a>
+                                                                        <div class="ui modal review-1">
+                                                                            <i class="close icon"></i>
+                                                                            <div class="header">Ayam Kecap</div>
+                                                                            <div class="image content">
+                                                                                <img class="ui large fluid image" src="http://lorempixel.com/960/200/food/">
+                                                                                <div class="description">
+                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo labore reprehenderit est obcaecati. Odit rem animi omnis necessitatibus cumque voluptatibus tempore. Aperiam, quam? Doloribus quis dolore dolor, architecto obcaecati id.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-rating">
+                                                                        <div class="ui large heart rating menu-rate" data-rating="0" data-max-rating="1"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-harga">Rp 8.000</div>
+                                                                </div>
+                                                                <div class="content title-menu">Ayam Kecap</div>
+                                                            </div>
+                                                            <div class="item">
+                                                                <div class="right floated content">
+                                                                    <div class="menu-review">
+                                                                        <a href="#" id="review-2" class="ui mini fluid image">
+                                                                            <img src="~/img/reviewicon-menu.png">
+                                                                        </a>
+                                                                        <div class="ui modal review-2">
+                                                                            <i class="close icon"></i>
+                                                                            <div class="header">Ayam Goreng</div>
+                                                                            <div class="image content">
+                                                                                <img class="ui large fluid image" src="http://lorempixel.com/960/200/food/">
+                                                                                <div class="description">
+                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo labore reprehenderit est obcaecati. Odit rem animi omnis necessitatibus cumque voluptatibus tempore. Aperiam, quam? Doloribus quis dolore dolor, architecto obcaecati id.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-rating">
+                                                                        <div class="ui large heart rating menu-rate" data-rating="1" data-max-rating="1"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-harga">Rp 8.000</div>
+                                                                </div>
+                                                                <div class="content title-menu">Ayam Goreng</div>
+                                                            </div>
+                                                            <div class="item">
+                                                                <div class="right floated content">
+                                                                    <div class="menu-review">
+                                                                        <a href="#" id="review-3" class="ui mini fluid image">
+                                                                            <img src="~/img/reviewicon-menu.png">
+                                                                        </a>
+                                                                        <div class="ui modal review-3">
+                                                                            <i class="close icon"></i>
+                                                                            <div class="header">Ayam Batokok</div>
+                                                                            <div class="image content">
+                                                                                <img class="ui large fluid image" src="http://lorempixel.com/960/200/food/">
+                                                                                <div class="description">
+                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo labore reprehenderit est obcaecati. Odit rem animi omnis necessitatibus cumque voluptatibus tempore. Aperiam, quam? Doloribus quis dolore dolor, architecto obcaecati id.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-rating">
+                                                                        <div class="ui large heart rating menu-rate" data-rating="1" data-max-rating="1"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-harga">Rp 8.000</div>
+                                                                </div>
+                                                                <div class="content title-menu">Ayam Batokok</div>
+                                                            </div>
+                                                            <div class="item">
+                                                                <div class="right floated content">
+                                                                    <div class="menu-review">
+                                                                        <a href="#" id="review-4" class="ui mini fluid image">
+                                                                            <img src="~/img/reviewicon-menu.png">
+                                                                        </a>
+                                                                        <div class="ui modal review-4">
+                                                                            <i class="close icon"></i>
+                                                                            <div class="header">Ayam Balado</div>
+                                                                            <div class="image content">
+                                                                                <img class="ui large fluid image" src="http://lorempixel.com/960/200/food/">
+                                                                                <div class="description">
+                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo labore reprehenderit est obcaecati. Odit rem animi omnis necessitatibus cumque voluptatibus tempore. Aperiam, quam? Doloribus quis dolore dolor, architecto obcaecati id.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-rating">
+                                                                        <div class="ui large heart rating menu-rate" data-rating="1" data-max-rating="1"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-harga">Rp 8.000</div>
+                                                                </div>
+                                                                <div class="content title-menu">Ayam Balado</div>
+                                                            </div>
+                                                            <div class="item">
+                                                                <div class="right floated content">
+                                                                    <div class="menu-review">
+                                                                        <a href="#" id="review-5" class="ui mini fluid image">
+                                                                            <img src="~/img/reviewicon-menu.png">
+                                                                        </a>
+                                                                        <div class="ui modal review-5">
+                                                                            <i class="close icon"></i>
+                                                                            <div class="header">Dendeng Batokok</div>
+                                                                            <div class="image content">
+                                                                                <img class="ui large fluid image" src="http://lorempixel.com/960/200/food/">
+                                                                                <div class="description">
+                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo labore reprehenderit est obcaecati. Odit rem animi omnis necessitatibus cumque voluptatibus tempore. Aperiam, quam? Doloribus quis dolore dolor, architecto obcaecati id.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-rating">
+                                                                        <div class="ui large heart rating menu-rate" data-rating="1" data-max-rating="1"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-harga">Rp 8.000</div>
+                                                                </div>
+                                                                <div class="content title-menu">Dendeng Batokok</div>
+                                                            </div>
+                                                            <div class="item">
+                                                                <div class="right floated content">
+                                                                    <div class="menu-review">
+                                                                        <a href="#" id="review-img" class="ui mini fluid image">
+                                                                            <img src="~/img/reviewicon-menu.png">
+                                                                        </a>
+                                                                        <div class="ui modal review-makanan">
+                                                                            <i class="close icon"></i>
+                                                                            <div class="header">Cumi Saus Balado</div>
+                                                                            <div class="image content">
+                                                                                <img class="ui large fluid image" src="http://lorempixel.com/960/200/food/">
+                                                                                <div class="description">
+                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo labore reprehenderit est obcaecati. Odit rem animi omnis necessitatibus cumque voluptatibus tempore. Aperiam, quam? Doloribus quis dolore dolor, architecto obcaecati id.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-rating">
+                                                                        <div class="ui large heart rating menu-rate" data-rating="1" data-max-rating="1"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right floated content">
+                                                                    <div class="menu-harga">Rp 8.000</div>
+                                                                </div>
+                                                                <div class="content title-menu">Cumi Saus Balado Telor</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui tab segment" data-tab="Paket">
+                                                        5
+                                                    </div>
+                                                    <div class="ui tab segment" data-tab="Lauk">
+                                                        6
+                                                    </div>
+                                                    <div class="ui tab segment" data-tab="Minuman">
+                                                        7
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="five wide column menu-details">
+                                            <div class="ui segment menu-telusuri">
+                                                <h3 class="ui left aligned header menu-title">
+                                                    Telusuri
+                                                    <div class="sub header">Menu Favorit disekitar anda</div>
+                                                </h3>
+                                                <div class="ui section divider"></div>
+                                                <div class="ui divided link list">
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Soto Betawi
+                                                            <div class="description">Encang Sobri</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Nasi Rames Komplit
+                                                            <div class="description">Warung Nasi Kang Jajang</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Ayam Bakar
+                                                            <div class="description">Mas Bewok</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Sate Ayam
+                                                            <div class="description">Rumah Sate sedap Madura</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Dendeng Batokok
+                                                            <div class="description">Rumah Makan Padang Kapalo Duo</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Soto Betawi
+                                                            <div class="description">Encang Sobri</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Nasi Rames Komplit
+                                                            <div class="description">Warung Nasi Kang Jajang</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Ayam Bakar
+                                                            <div class="description">Mas Bewok</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Sate Ayam
+                                                            <div class="description">Rumah Sate sedap Madura</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="item" href="#">
+                                                        <div class="right floated content">
+                                                            <img class="ui fluid image" src="~/img/Nav-Telusuri.png">
+                                                        </div>
+                                                        <div class="content">
+                                                            Dendeng Batokok
+                                                            <div class="description">Rumah Makan Padang Kapalo Duo</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui tab segment" data-tab="Ulasan">
+                                    6
+                                </div>
+                                <div class="ui tab segment" data-tab="Foto">
+                                    7
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+      //  Script Searching find for details on web
+      var
+          content = [
+              {
+                  title: 'Pempek',
+                  description: 'Makanan Ringan',
+              },
+              {
+                  title: 'Seblak',
+                  description: 'Makanan Ringan',
+              },
+              {
+                  title: 'Nasi Goreng',
+                  description: 'Makanan Berat',
+              }
+          ]
+          ;
+      $('.ui.search')
+          .search({
+              source: content,
+              searchFields: [
+                  'title'
+              ],
+              searchFullText: false
+          })
+          ;
+
+      // Script searching lokasi
+
+
+      //script dropdown notifikasi
+
+      $('.dropdown')
+          .dropdown({
+              // you can use any ui transition
+              transition: 'drop'
+          })
+          ;
+
+      // ------ menu sidebar -------
+      $('.ui.accordion')
+          .accordion()
+          ;
+
+      //---------- caraousel with swiper -----------
+      var swiper = new Swiper('.swiper-container', {
+          pagination: '.swiper-pagination',
+          paginationClickable: true,
+          spaceBetween: 30,
+          centeredSlides: true,
+          autoplay: 2500,
+          autoplayDisableOnInteraction: false,
+          paginationBulletRender: function (swiper, index, className) {
+              return '<span class="' + className + '">' + (index + 1) + '</span>';
+          }
+
+      });
+      // --------------- tab menu ----------------
+
+
+      $('#tab-pedagang .menu .item')
+          .tab({
+              // special keyword works same as above
+              context: 'parent'
+          });
+      $('#tab-menu .menu .item')
+          .tab({
+              // special keyword works same as above
+              context: 'parent'
+          });
+
+
+      // ---- rating menu andalan----
+      $('.ui.rating.menu-rate')
+          .rating('setting', 'clearable', true);
+
+
+      // --- review makanan ----
+      $(function () {
+          for (i = 0; i < 5; i++) {
+              $("#review-" + i).click(function () {
+                  $(".review-" + i).modal('show');
+              });
+              $(".review-" + i).modal({
+                  closable: true
+              });
+          }
+
+      });
+
+</script>
+<script>
+      $(function () {
+          function getUrlVars() {
+              var vars = [], hash;
+              var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+              for (var i = 0; i < hashes.length; i++) {
+                  hash = hashes[i].split('=');
+                  vars.push(hash[0]);
+                  vars[hash[0]] = hash[1];
+              }
+              return vars;
+          }
+
+          var hub = $.connection.SocialHub;
+          $.connection.hub.logging = true;
+          Init();
+          function Init() {
+              $.connection.hub.start().done(function () {
+                  console.log('connection ready..');
+                  Page_Load();
+              });
+          }
+
+          function Page_Load()
+          {
+              TabDetail();
+          }
+          function TabDetail()
+          {
+              var IdStore = getUrlVars()["IdStore"];
+              var msg = "";
+              var fas = "";
+              hub.server.GetStoresByID(IdStore).done(function (datas) { 
+                  $('#Sekilas').empty();
+                  $('#NamaToko').empty();
+                  $.each(datas, function (i, obj) {
+                      $.each(obj.facilities, function (f, objf) {
+                          var data = "";
+                          switch (obj.facilities[f]) {
+                              case 0:
+                                  {
+                                      fas += '<div class="item"><i class="check circle icon"></i>Parkir Luas</div>';
+                                  }
+                                  break;
+                              case 1:
+                                  {
+                                      fas += '<div class="item"><i class="check circle icon"></i>Prasmanan</div>';
+                                  }
+                                  break;
+                              case 2:
+                                  {
+                                      fas += '<div class="item"><i class="check circle icon"></i>Porsi Besar</div>';
+                                  }
+                                  break;
+                          }
+
+                      });
+
+                      var AvgMurahMeter = 0;
+                      var AvgKenikmatan = 0;
+                      $.each(obj.murahMeter, function (f, objm) {
+                          AvgMurahMeter += objm.ratingValue;
+                          AvgKenikmatan += obj.kenikmatan[f]['ratingValue'];
+                      });
+                      //berdasarkan angka rata2
+                      try {
+                          AvgMurahMeter = AvgMurahMeter / obj.murahMeter.length;
+                          AvgKenikmatan = AvgKenikmatan / obj.kenikmatan.length;
+
+                          //berdasarkan persen
+                          AvgMurahMeter = AvgMurahMeter * 100 / 5;
+                          AvgKenikmatan = AvgKenikmatan * 100 / 5;
+                      }
+                      catch (err) {
+                      }
+                //end rating
+
+
+                      $('#Fasilitas').html(fas);
+                      $('#Sekilas').html(obj.desc);
+                      $('#NamaToko').html('<h1 class="ui left floated header blue">'+obj.title + '</h1><img class="ui mini spaced image" src="/img/iconcheckyellow.png">');
+                      $('#JenisTempat').html(obj.storeCategory);
+                      $('.MurahRating').html('<span style="width:' + AvgMurahMeter + '%" class="MurahMeter"></span>');
+                      $('.KenikmatanRating').html('<span style="width:' + AvgKenikmatan + '%" class="KenikmatanMeter"></span>');
+                      $('#Alamat').html(obj.address["city"]);
+                      $('#Range').html('<span>Rata - rata ' + obj.lowestPrice + ' - ' + obj.highestPrice+' perporsi</span>');
+
+                  });
+              });
+          }
+
+      });
+</script>

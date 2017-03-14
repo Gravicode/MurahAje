@@ -1,0 +1,266 @@
+.column.pedagang.content-area
+{   
+    background: url('../img/pedagang-detailheader.png');
+    background-size: cover !important;
+    height: 300px;
+    padding:40px;
+}
+
+.column.pedagang.content-area .column.header-content
+{
+    margin: 60px 40px 0px 40px;
+    padding: 0;
+}
+.thumbnail-image
+{
+    padding-left: 40px;
+    padding-right: 70px;
+    margin-top: -17%;
+}
+ @media only screen and (max-width: 767px) and (min-width: 320px) {
+    .thumbnail-image
+{
+    padding-left: 70px;
+    padding-right: 70px;
+    
+}
+.tab-menu
+{
+    margin-top: 0% !important;
+}
+ }
+.big-image, .thumbnailmini-image
+{
+    padding:0 !important;
+}
+.column.pedagang.content-area h1.ui.header
+{
+     font-family:'Raleway-Regular';
+     color:white;
+     font-size:24pt;
+     text-transform: uppercase;
+}
+.column.pedagang.content-area h1.ui.right.header > span
+{
+    color:#F8DF5F;
+    font-size:14pt;
+}
+
+.column.mini-image
+{
+  padding:0 !important;
+}
+.quote-image
+{   
+    border:none;
+    position:relative;
+    top: -60px;
+    min-height: 64px;
+    background:rgba(73, 98, 204, 0.8) !important;
+    border-radius: 0 !important;
+    font-family: 'Raleway-Regular' !important;
+    font-style: italic;
+    font-size: 10pt !important;
+    color: white !important;
+}
+.quote-image span
+{
+    color:#F8DF5F;
+}
+
+/*
+--------- tab menu -------------*/
+
+.tab-menu
+{
+    margin-top: -5%;
+}
+.ui.tab.active, .ui.tab.open
+{
+    border-radius:0 !important;
+    border:1px solid #3568FF;
+    padding:0 !important;
+}
+
+.ui.secondary.menu .active.item, .ui.secondary.menu .item
+{    
+    font-family:'Raleway-Regular';    
+    font-size:14pt;
+    font-weight:600;
+    border-radius:0 !important;
+}
+.ui.secondary.menu .active.item, .ui.secondary.menu .active.item:hover, .ui.secondary.menu  a.item:hover
+{
+    color:#193FCB;
+    border-radius:0 !important;
+}
+.ui.secondary.menu .item
+{
+    color:#AAAAAA;
+}
+
+/* --------- Pedagang detail -------------- */
+
+
+
+.ui.header.title-sekilas, .ui.segment.description
+{
+    padding:20px !important;
+    border:none !important;
+    color:white;
+    border-radius:0 !important;
+    background-color:#3568FF;
+    box-shadow:none !important;
+    font-family:'Montserrat-Regular';
+}
+.details-content
+{
+    margin:20px;
+}
+.details-content .ui.list>.item .header
+{
+    color:#193FCB;
+    margin-bottom:10px;
+    font-family:'Montserrat-Regular';
+    font-size:16pt;
+}
+
+.details-content .ui.list>.item
+{
+    margin-top:20px;
+    color:#868686;
+    font-family:'Montserrat-Regular';
+    font-size:12pt;
+    line-height:1.5em;
+}
+.details-content .ui.list>.item i
+{
+    color:#526ED8;
+}
+.MurahRating, .KenikmatanRating
+{
+    margin :0;
+}
+.details-content .ui.list>.item span
+{
+    font-size:10px;
+}
+.ui.label
+{    
+    font-family:'Montserrat-Regular';
+    margin-top:20px !important;
+    color:#B9B9C8;
+    background:white;
+
+}
+a.ui.label:hover
+{
+    color:#193FCB;
+    border-radius:0 !important;
+}
+/*-------------------- Pedagang Menu ----------------*/
+.menu-area-grid
+{
+    background-color:#F9F9F9;
+    margin-top:10px !important;
+}
+
+#tab-menu .ui.tab.active, #tab-menu .ui.tab.open
+{   
+    border-left :none !important;
+    border-bottom :none !important;
+    border-right :none !important;
+    border-top: 1px solid #3568FF;
+    box-shadow:none !important;
+}
+ #tab-menu .ui.secondary.menu
+ {
+     margin-left:15px;
+     margin-right:15px;  
+ }
+ #tab-menu .ui.secondary.menu a
+ {
+     font-size:12pt;
+ }
+  #tab-menu .ui.secondary.menu a.item
+  {
+      color:#CCCCCC;
+  }
+   #tab-menu .ui.secondary.menu a.item.active,  #tab-menu .ui.secondary.menu a.item:hover
+  {
+      color:#4C79FF;
+  }
+ #tab-menu .ui.secondary.menu a.item.right.floated
+ {
+    color:#FF7373;
+ }
+
+
+.eleven.wide.column.menu-details h3, .five.wide.column.menu-details h3
+{
+    font-family: 'Raleway-Medium';
+    color:#1A3FCB;
+    margin:25px;
+}
+.five.wide.column.menu-details .ui.section.divider
+{
+    border-top:1px solid #3568FF !important;
+}
+.five.wide.column.menu-details h3.ui.header .sub.header
+{
+    color:#4C79FF;
+    margin-top:35px;
+}
+.ui.tab.menu-area.active, .ui.tab.menu-area.open
+{
+    border: none !important;    
+    box-shadow: none !important;
+}
+.menu-andalan, .menu-telusuri
+{
+    border-radius: 0 !important;    
+    border: 1px solid #3568FF !important;
+    padding:0 !important;    
+}
+#tab-menu .ui.list
+{
+    padding-top:25px;
+}
+#tab-menu .item
+{
+    margin-left:15px;
+    margin-right:15px;
+    color:#868686;
+    font-family: 'Raleway-Medium';
+    font-weight: 600;
+    font-size:12pt;
+}
+#tab-menu .ui.list>.item>.right.floated.content .menu-rating, #tab-menu .ui.list>.item>.right.floated.content .menu-harga 
+{
+    margin-top:10px;
+}
+#tab-menu .ui.list>.item>.content.title-menu
+{
+    padding:10px;
+}
+.five.wide.column.menu-details .ui.list
+{
+    margin-bottom:15px;
+}
+.five.wide.column.menu-details .ui.list>.item
+{
+    padding:10px;
+    color:#868686;
+    font-family: 'Raleway-Medium';
+    font-weight: 600;
+    font-size:12pt;
+}
+.five.wide.column.menu-details .ui.list>.item .description
+{
+    color:#3568FF;
+}
+ 
+
+
+
+

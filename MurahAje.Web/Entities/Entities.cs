@@ -68,6 +68,7 @@ namespace MurahAje.Web.Entities
         public string Title { set; get; }
         public string Desc { set; get; }
         public string ProductCategory { set; get; }
+        public double Price { set; get; }
 
         public List<SocialRating> Ratings { set; get; }
 
@@ -141,7 +142,6 @@ namespace MurahAje.Web.Entities
     
     public class FollowResult
     {
-
         public string LoginName { set; get; }
         public int Hasil { set; get; }
     }

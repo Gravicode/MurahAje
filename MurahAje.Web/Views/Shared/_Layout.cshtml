@@ -7,99 +7,282 @@
     <meta name="google-signin-client_id" content="171107259405-1ck0hvfh19kpqe20i7d1pn8f0a1ejhc0.apps.googleusercontent.com">
 
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/semantic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="~/css/index.css">
+    @*<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>*@
+     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+    <script src="~/semantic.min.js"></script>
+   
+    <script src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+
 </head>
 <body>
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.min.js"></script>
-        <script src="/signalr/hubs"></script>
 
+    <environment names="Development">
     </environment>
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-        <script src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.min.js"></script>
-        <script src="/signalr/hubs"></script>
     </environment>
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">MurahAje.Web</a>
+
+    <div class="ui huge borderless stackable menu">
+        <div class="header container item menu-logo">
+            <div class="brand-logo">
+                <img src="~/img/LogoMurahaje.png" alt="LogoMurahaje">
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
+        </div>
+        <div class="item container menu-search" style="padding-left: 50px;">
+            <div class="ui search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Ane lagi nyari...">
+                </div>
+                <div class="results"></div>
+            </div>
+            <div class="menu-di" style="color:white;font-family:'Roboto-medium';margin:10px;">
+                <p>di</p>
+            </div>
+            <div class="menu-location">
+                <div class="ui category search-lokasi">
+                    <div class="ui icon input">
+                        <input id="pac-input" class="prompt" type="text" placeholder="Tulis lokasi...">
+                        <i class="large marker icon"></i>
+                    </div>
+                    <div class="results"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ui grid" style="width:100%; margin-top:10px;margin-bottom:10px;">
+            <div class="centered row">
+                <div class="eight wide tablet eight wide column">
+                    <div class="item">
+                        <div class="circular ui icon button home" style="margin-left: 20px;">
+                            <a href="#home"><i class="material-icons md-48">home</i></a>
+                        </div>
+                        <div class="circular ui icon button chat" style="margin-left: 20px;">
+                            <i class="material-icons blue md-18">chat</i>
+                            <div class="floating ui red label account-menu">100</div>
+                        </div>
+                        <div class="circular ui icon button notif" style="margin-left: 20px;">
+                            <div class="ui top left pointing dropdown">
+                                <i class="material-icons md-48">more_horiz</i>
+                                <div class="menu dropdown-notif">
+                                    <div class="header">
+                                        <i class="tags icon"></i> Notifications
+                                    </div>
+                                    <div class="ui divided link items notif-items">
+                                        <div class="item">
+                                            <div class="ui mini image">
+                                                <img src="https://placeimg.com/35/35/people">
+                                            </div>
+                                            <div class="content">
+                                                <div class="header">Stevie Feliciano</div>
+                                                <div class="description">
+                                                    <img src="http://semantic-ui.com/images/wireframe/short-paragraph.png" class="ui wireframe image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="ui mini image">
+                                                <img src="https://placeimg.com/35/35/people">
+                                            </div>
+                                            <div class="content">
+                                                <div class="header">Hodor Cumberbatch</div>
+                                                <div class="description">
+                                                    <img src="http://semantic-ui.com/images/wireframe/short-paragraph.png" class="ui wireframe image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="ui mini image">
+                                                <img src="https://placeimg.com/35/35/people">
+                                            </div>
+                                            <div class="content">
+                                                <div class="header">Merseile Benerbaue</div>
+                                                <div class="description">
+                                                    <img src="http://semantic-ui.com/images/wireframe/short-paragraph.png" class="ui wireframe image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="ui mini image">
+                                                <img src="https://placeimg.com/35/35/people">
+                                            </div>
+                                            <div class="content">
+                                                <div class="header">Daenrys Targryan</div>
+                                                <div class="description">
+                                                    <img src="http://semantic-ui.com/images/wireframe/short-paragraph.png" class="ui wireframe image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="ui mini image">
+                                                <img src="https://placeimg.com/35/35/people">
+                                            </div>
+                                            <div class="content">
+                                                <div class="header">Ottoh Man</div>
+                                                <div class="description">
+                                                    <img src="http://semantic-ui.com/images/wireframe/short-paragraph.png" class="ui wireframe image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="floating ui red label account-menu">22</div>
+                        </div>
+                    </div>
+                </div>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <div style="text-align:right;padding-right:10px;">
-            <iframe style="height:350px;" src='https://webchat.botframework.com/embed/MurahAjeBot?s=PdoslQXzVHA.cwA.te4.9ZxKLPuaY7lNCNQpPSGWtJ7ttjgcmCuS9W9i_ufPojk'></iframe>
+
+    <div class="ui content-wrapper">
+        <div class="ui grid content-wrapper">
+            @RenderBody()
         </div>
-        <hr />
-        <footer>
-            <div id="timetxt"></div>
-            <p>&copy; 2017 - MurahAje.Web</p>
-        </footer>
-    </div>
 
-    @RenderSection("scripts", required: false)
-    <script type="text/javascript">
+        <div class="ui inverted vertical footer segment">
+            <div class="ui left aligned container">
+                <div class="ui stackable inverted centered grid">
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">
+                            <a href="#home" class="ui medium image">
+                                <img src="~/img/LogoMurahajeFooter.png">
+                            </a>
+                        </h4>
+                        <div class="ui inverted list">
+                            <div class="item">
+                                <i class="mail icon"></i>
+                                <div class="content">
+                                    <a href="#">Kontak@murahaje.com</a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="call square icon"></i>
+                                <div class="content">
+                                    021-xxx-xxx
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="marker icon"></i>
+                                <div class="content">
+                                    Jl. Kalibata Raya no 1, Jakarta Selatan
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">Tentang</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">Tentang Murahaje!</a>
+                            <a href="#" class="item">Karir</a>
+                            <a href="#" class="item">Berita</a>
+                            <a href="#" class="item">Hubungan Investor</a>
+                            <a href="#" class="item">Persetujuan</a>
+                            <a href="#" class="item">Cookie Policy</a>
+                            <a href="#" class="item">Privacy Policy</a>
+                            <a href="#" class="item">Content Policy</a>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">Bertualang</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">Lihat Peta</a>
+                            <a href="#" class="item">Pesen Makanan</a>
+                            <a href="#" class="item">100 Tempat Terfavorit</a>
+                            <a href="#" class="item">FAQ</a>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">Untuk Pemilik Tempat</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">Klaim Tempat Usaha</a>
+                            <a href="#" class="item">Beriklan</a>
+                            <a href="#" class="item">FAQ</a>
+                            <a href="#" class="item">Kontak</a>
+                            <a href="#" class="item">Tips & Trik</a>
+                        </div>
+                    </div>
+                    <h4 class="ui horizontal inverted divider footer-copyright">
+                        Copyright <i class="copyright icon"></i> 2017 MurahAje.com All Right Reserved
+                    </h4>
+                </div>
+            </div>
+            @RenderSection("scripts", required: false)
+            <script>
+                //  Script Searching find for details on web
+                var
+                    content = [
+                        {
+                            title: 'Pempek',
+                            description: 'Makanan Ringan',
+                        },
+                        {
+                            title: 'Seblak',
+                            description: 'Makanan Ringan',
+                        },
+                        {
+                            title: 'Nasi Goreng',
+                            description: 'Makanan Berat',
+                        }
+                    ]
+                    ;
+                $('.ui.search').search({
+                    source: content,
+                    searchFields: [
+                        'title'
+                    ],
+                    searchFullText: false
+                })
+                    ;
+
+                // Script searching lokasi
 
 
-        $(function () {
+                //script dropdown notifikasi
 
-            var hub = $.connection.SocialHub;
+                $('.dropdown')
+                    .dropdown({
+                        // you can use any ui transition
+                        transition: 'drop'
+                    })
+                    ;
 
-            $.connection.hub.logging = true;
-            $.connection.hub.start().done(function () {
-                console.log('connection ready..');
-                GetTime();
-            });
+                // ------ menu sidebar -------
+                $('.ui.accordion')
+                    .accordion()
+                    ;
 
-            function GetTime() {
-                hub.server.GetServerTime().done(function (time) {
-                    $('#timetxt').html(time);
+                //---------- caraousel with swiper -----------
+                var swiper = new Swiper('.swiper-container', {
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    spaceBetween: 30,
+                    centeredSlides: true,
+                    autoplay: 2500,
+                    autoplayDisableOnInteraction: false,
+                    paginationBulletRender: function (swiper, index, className) {
+                        return '<span class="' + className + '">' + (index + 1) + '</span>';
+                    }
+
                 });
-                setTimeout(
-                    function () {
-                        GetTime();
-                    }, 1000);
-            }
-
-        });
-
-    </script>
+            </script>
+            <style>
+            </style>
+        </div>
+    </div>
 </body>
+
 </html>

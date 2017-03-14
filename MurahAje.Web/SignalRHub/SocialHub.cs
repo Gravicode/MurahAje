@@ -1029,8 +1029,8 @@ namespace MurahAje.Web
             return datas;
         }
 
-        [HubMethodName("SearchStoresByID")]
-        public IEnumerable<Store> SearchStoresById(long sId)
+        [HubMethodName("GetStoresByID")]
+        public IEnumerable<Store> GetStoresById(long sId)
         {
             var datas = db.GetAllData<Store>().Where(x => x.Id == sId);
             return datas;
@@ -1038,9 +1038,9 @@ namespace MurahAje.Web
 
 
         [HubMethodName("SearchStores")]
-        public IEnumerable<Store> SearchStores(string sTitle, string SortBy, string sStoreCategory, int sLowestPrice, int sHighestPrice)
+        public IEnumerable<Store> SearchStores(string SortBy, string sStoreCategory, double sHighestPrice, double sLowestPrice)
         {
-            var datas = db.GetAllData<Store>().Where(x => x.Title.Contains(sTitle) && x.StoreCategory == sStoreCategory );
+            var datas = db.GetAllData<Store>().Where(x => x.StoreCategory.Trim() == sStoreCategory );
             if (!string.IsNullOrEmpty(SortBy))
             {
                 switch (SortBy)
@@ -1077,7 +1077,7 @@ namespace MurahAje.Web
                         break;
                 }
             }
-            if (sHighestPrice > 0)
+            if (sHighestPrice > 0 && sLowestPrice > 0)
             {
                 datas = datas.Where(x => x.LowestPrice >= sLowestPrice && x.HighestPrice <= sHighestPrice);
             }
@@ -1096,16 +1096,34 @@ namespace MurahAje.Web
         }
 
         [HubMethodName("GetProductByIDStore")]
-        public IEnumerable<Product> GetProductByIDStore(long sIDStore)
+        public IEnumerable<Product> GetProductByIDStore(long sIDStore,string sProductCategory)
         {
             var datas = from x in db.GetAllData<Product>()
-                        where x.IDStore == sIDStore
+                        where x.IDStore == sIDStore && x.ProductCategory == sProductCategory
                         orderby x ascending
                         select x;
             return datas;
         }
+        [HubMethodName("AddProduct")]
+        public OutputData AddProduct(long sIdStore, string sTitle, string sDesc, double sPrice)
+        {
+            //insert facilities
+           //end
+            string Username = Context.User.Identity.Name;
+            var node = new Product()
+            {
+                Id = db.GetSequence<Product>(),
+                Title = sTitle,
+                Desc = sDesc,
+                IDStore = sIdStore,
+                Price = sPrice
+            };
+            db.InsertData<Product>(node);
+            return new OutputData() { Data = node, IsSucceed = true };
+        }
+
         [HubMethodName("AddStore")]
-        public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, double sLowestPrice, double sHighestPrice, string sCity, double sMurahMeter, double sRecommendation, double sKenikmatan, string sComments, double sVisitors, string [] sFacilities)
+        public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, double sLowestPrice, double sHighestPrice, string sCity, double sMurahMeter, double sRecommendation, double sKenikmatan, string sComments, double sVisitors, string[] sFacilities)
         {
             //insert facilities
             StoreFacilities value = new StoreFacilities();
@@ -1148,7 +1166,7 @@ namespace MurahAje.Web
                 },
                 //MurahMeter = new List<SocialRating>()
                 //{
-                    
+
                 //},
                 Recommendation = new List<SocialRecommendation>(),
                 Kenikmatan = new List<SocialRating>(),
@@ -1196,6 +1214,7 @@ namespace MurahAje.Web
             };
             SocialRating mm = new SocialRating()
             {
+                Id  = db.GetSequence<SocialRating>(),
                 LoginName = Username,
                 RatingValue = sMurahMeter
             };

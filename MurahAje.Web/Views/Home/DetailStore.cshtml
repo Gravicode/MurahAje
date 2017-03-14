@@ -2,6 +2,25 @@
 <div id="Content">
 
 </div>
+<p>Menu Andalan</p>
+<table>
+    <tr>
+        <td>Nama Makanan :</td>
+        <td><input type="text" id="TxtNamaMakanan" /></td>
+    </tr>
+    <tr>
+        <td>Deskripsi :</td>
+        <td><input type="text" id="TxtDeskripsi" /></td>
+    </tr>
+    <tr>
+        <td>Harga :</td>
+        <td><input type="text" id="TxtHarga" /></td>
+    </tr>
+</table>
+<button id="BtnTambahMenu">Tambah Menu</button>
+<div id="Product">
+
+</div>
 <div id="TambahKomentar">
         <table>
             <tr>
@@ -12,7 +31,7 @@
             </tr>
             <tr>
                 <td>Murahmeter</td>
-                <td><input id="Murahmeter" type="text"/><td>
+                <td><input id="Murahmeter" type="text"/><td> 
             </tr>
             <tr>
                 <td>Kenikmatan</td>
@@ -28,7 +47,6 @@
             </tr>
         </table>
 </div>
-
 <br /><br /><br />
 <p>Komentar Pengunjung :</p>
 <br/>
@@ -53,6 +71,22 @@
             console.log('connection ready..');
             SearchStoresByID();
         });
+        $('#BtnTambahMenu').click(function () {
+            var Title = $('#TxtNamaMakanan').val().trim();
+            var Desc = $('#TxtDeskripsi').val();
+            var Price = $('#TxtHarga').val();
+            var IdStore = getUrlVars()["IdStore"];
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                hub.server.AddProduct(IdStore, Title, Desc, Price).done(function (Data) {
+                    SearchProductByIdStore();
+                });
+            });
+        });
+        $.connection.hub.start().done(function () {
+            console.log('connection ready..');
+            SearchStoresByID();
+        });
         $('#BtnKomentar').click(function () {
             var Komentar = $('#Komentar').val().trim();
             var MurahMeter = $('#Murahmeter').val();
@@ -64,15 +98,38 @@
                     SearchStoresByID();
                 });
             });
-        });
+        }); 
+        function SearchProductByIdStore()
+        {
+            var IdStore = getUrlVars()["IdStore"];
+            hub.server.GetProductByIDStore(IdStore).done(function (datas) {
+                $('#Product').empty();
+                var msg = "";
+                msg += "<table class='table'>"
+                msg += "<tr>";
+                msg += "<th></th>";
+                msg += "<th><th>";
+                msg += "<th></th>";
+                msg += "</tr>";
+                $.each(datas, function (i, obj) {
+                    msg += "<tr>";
+                    msg += "<td>" + obj.title + "</td>";
+                    msg += "<td>" + obj.price + "</td>";
+                    msg += "<td>" + obj.ratingValue + "</td>";
+                    msg += "</tr>";
+                });
+                $('#Product').html(msg);
+
+            });
+        }
         function SearchStoresByID() {
             var IdStore = getUrlVars()["IdStore"];
-            hub.server.SearchStoresByID(IdStore).done(function (datas) {
+            hub.server.GetStoresById(IdStore).done(function (datas) {
                 $('#Content').empty();
                 $('#PanelKomentar').empty();
                 var msg = "";
                 var msg2 = "";
-                msg += "<table class='ui celled table' border=1>"
+                msg += "<table class='table'>"
                 msg += "<tr>";
                 msg += "<th>LoginName</th>";
                 msg += "<th>Id</th>";
@@ -83,9 +140,8 @@
                 msg += "<th>HighestPrice</th>";
                 msg += "<th>City</th>";
                 msg += "<th>MurahMeter</th>";
-                msg += "<th>Recommendation</th>";
                 msg += "<th>Kenikmatan</th>";
-                msg += "<th>Comments</th>";
+                msg += "<th>Recommendation</th>";
                 msg += "<th>Visitors</th>";
                 msg += "<th>Facilities</th>";
                 msg += "<tr>";
@@ -112,6 +168,19 @@
                         msgf += data;
 
                     });
+                    var AvgMurahMeter = 0;
+                    var AvgKenikmatan = 0;
+                    $.each(obj.murahMeter, function (f, objm) {
+                        msg2 += "Murah Meter :" + objm.ratingValue + "</br>";
+                        msg2 += " Kenikmatan :" + obj.kenikmatan[f]['ratingValue'] + "</br>";
+                        msg2 += " Komentar :" + obj.comments[f]['message'] + "</br>";
+                        msg2 += " <b>" + obj.comments[f]['loginName'] + "</b></br>"; 
+                        msg2 += "</br></br></br>";
+                        AvgMurahMeter += objm.ratingValue;
+                        AvgKenikmatan += obj.kenikmatan[f]['ratingValue'];
+                    });
+                    AvgMurahMeter = AvgMurahMeter / obj.murahMeter.length;
+                    AvgKenikmatan = AvgKenikmatan / obj.murahMeter.length;
 
                     msg += "<tr>";
                     msg += "<td>" + obj.loginname + "</td>";
@@ -122,24 +191,16 @@
                     msg += "<td>" + obj.lowestPrice + "</td>";
                     msg += "<td>" + obj.highestPrice + "</td>";
                     msg += "<td>" + obj.address["city"] + "</td>";
-                    msg += "<td>" + obj/*.SocialRating["MurahMeter"]*/ + "</td>";
+                    msg += "<td>" + AvgMurahMeter.toFixed(2) + "</td>";
+                    msg += "<td>" + AvgKenikmatan.toFixed(2) + "</td>";
                     msg += "<td>" + obj/*.SocialRecommendation["Recommendation"]*/ + "</td>";
-                    msg += "<td>" + obj/*.SocialRating["Kenikmatan"] */ + "</td>";
-                    msg += "<td>" + obj/*.SocialComment["Comments"]*/ + "</td>";
                     msg += "<td>" + obj/*.SocialCheckIn["Visitors"]*/ + "</td>";
                     msg += "<td>" + msgf + "</td>";
                     msg += "</tr>";
-
-                    $.each(obj.murahMeter, function (f, objm) {
-                        $('#Content').append();
-                        msg2 += "Murah Meter :" + objm.ratingValue + "</br>";
-                        msg2 += " Kenikmatan :" + obj.kenikmatan[f]['ratingValue'] + "</br>";
-                        msg2 += " Komentar :" + obj.comments[f]['message'] + "</br>";
-                        msg2 += "</br></br></br>";
-                    });
                 });
                 $('#Content').html(msg);
                 $('#PanelKomentar').html(msg2);
+                SearchProductByIdStore();
 
             });
         }
