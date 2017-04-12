@@ -570,13 +570,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Gray.Microsoft.AspNetCore.SignalR.Server" Version="0.2.0-alpha1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Https" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Server" Version="0.2.0-preview2-22683" />
     <PackageReference Include="Microsoft.AspNetCore.WebSockets" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="1.1.0" />
