@@ -9,7 +9,571 @@
     <UserSecretsId>7ad0e294-bcc3-476c-a311-7c96d986b937</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Gray.Microsoft.AspNetCore.SignalR.Server" Version="0.2.0-alpha1" />
+=======
+    <Compile Remove="wwwroot\temp\**" />
+    <Content Remove="wwwroot\temp\**" />
+    <EmbeddedResource Remove="wwwroot\temp\**" />
+    <None Remove="wwwroot\temp\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="wwwroot\css\Services\IEmailSender.cs" />
+    <Compile Include="wwwroot\css\Services\ISmsSender.cs" />
+    <Compile Include="wwwroot\css\Services\MessageServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wwwroot\components\accordion.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\accordion.js" />
+    <Content Include="wwwroot\components\accordion.min.css" />
+    <Content Include="wwwroot\components\accordion.min.js" />
+    <Content Include="wwwroot\components\ad.css" />
+    <Content Include="wwwroot\components\ad.min.css" />
+    <Content Include="wwwroot\components\api.js" />
+    <Content Include="wwwroot\components\api.min.js" />
+    <Content Include="wwwroot\components\breadcrumb.css" />
+    <Content Include="wwwroot\components\breadcrumb.min.css" />
+    <Content Include="wwwroot\components\button.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\button.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\card.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\card.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\checkbox.css" />
+    <Content Include="wwwroot\components\checkbox.js" />
+    <Content Include="wwwroot\components\checkbox.min.css" />
+    <Content Include="wwwroot\components\checkbox.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\comment.css" />
+    <Content Include="wwwroot\components\comment.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\container.css" />
+    <Content Include="wwwroot\components\container.min.css" />
+    <Content Include="wwwroot\components\dimmer.css" />
+    <Content Include="wwwroot\components\dimmer.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\dimmer.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\dimmer.min.js" />
+    <Content Include="wwwroot\components\divider.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\divider.min.css" />
+    <Content Include="wwwroot\components\dropdown.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\dropdown.js" />
+    <Content Include="wwwroot\components\dropdown.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\dropdown.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\embed.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\embed.js" />
+    <Content Include="wwwroot\components\embed.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\embed.min.js" />
+    <Content Include="wwwroot\components\feed.css" />
+    <Content Include="wwwroot\components\feed.min.css" />
+    <Content Include="wwwroot\components\flag.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\flag.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\form.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\form.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\form.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\form.min.js" />
+    <Content Include="wwwroot\components\grid.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\grid.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\header.css" />
+    <Content Include="wwwroot\components\header.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\icon.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\icon.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\image.css" />
+    <Content Include="wwwroot\components\image.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\input.css" />
+    <Content Include="wwwroot\components\input.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\item.css" />
+    <Content Include="wwwroot\components\item.min.css" />
+    <Content Include="wwwroot\components\label.css" />
+    <Content Include="wwwroot\components\label.min.css" />
+    <Content Include="wwwroot\components\list.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\list.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\loader.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\loader.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\menu.css" />
+    <Content Include="wwwroot\components\menu.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\message.css" />
+    <Content Include="wwwroot\components\message.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\modal.css" />
+    <Content Include="wwwroot\components\modal.js" />
+    <Content Include="wwwroot\components\modal.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\modal.min.js" />
+    <Content Include="wwwroot\components\nag.css" />
+    <Content Include="wwwroot\components\nag.js" />
+    <Content Include="wwwroot\components\nag.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\nag.min.js" />
+    <Content Include="wwwroot\components\popup.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\popup.js" />
+    <Content Include="wwwroot\components\popup.min(1).css" />
+    <Content Include="wwwroot\components\popup.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\popup.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\progress.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\progress.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\progress.min.css" />
+    <Content Include="wwwroot\components\progress.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\rail.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\rail.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\rating(1).css" />
+    <Content Include="wwwroot\components\rating.css" />
+    <Content Include="wwwroot\components\rating.js" />
+    <Content Include="wwwroot\components\rating.min(1).css" />
+    <Content Include="wwwroot\components\rating.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\rating.min.js" />
+    <Content Include="wwwroot\components\reset.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\reset.min.css" />
+    <Content Include="wwwroot\components\reveal.css" />
+    <Content Include="wwwroot\components\reveal.min.css" />
+    <Content Include="wwwroot\components\search(1).js" />
+    <Content Include="wwwroot\components\search.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\search.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\search.min(1).css" />
+    <Content Include="wwwroot\components\search.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\search.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\segment.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\segment.min.css" />
+    <Content Include="wwwroot\components\shape(1).js" />
+    <Content Include="wwwroot\components\shape.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\shape.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\shape.min(1).js" />
+    <Content Include="wwwroot\components\shape.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\shape.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\sidebar(1).js" />
+    <Content Include="wwwroot\components\sidebar.css" />
+    <Content Include="wwwroot\components\sidebar.js" />
+    <Content Include="wwwroot\components\sidebar.min(1).js" />
+    <Content Include="wwwroot\components\sidebar.min.css" />
+    <Content Include="wwwroot\components\sidebar.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\site(1).js" />
+    <Content Include="wwwroot\components\site.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\site.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\site.min(1).css" />
+    <Content Include="wwwroot\components\site.min.css" />
+    <Content Include="wwwroot\components\site.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\state.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\state.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\statistic.css" />
+    <Content Include="wwwroot\components\statistic.min.css" />
+    <Content Include="wwwroot\components\step.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\step.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\sticky(1).js" />
+    <Content Include="wwwroot\components\sticky.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\sticky.js" />
+    <Content Include="wwwroot\components\sticky.min(1).css" />
+    <Content Include="wwwroot\components\sticky.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\sticky.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\tab(1).js" />
+    <Content Include="wwwroot\components\tab.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\tab.js" />
+    <Content Include="wwwroot\components\tab.min(1).css" />
+    <Content Include="wwwroot\components\tab.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\tab.min.js" />
+    <Content Include="wwwroot\components\table.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\table.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\transition(1).js" />
+    <Content Include="wwwroot\components\transition.css" />
+    <Content Include="wwwroot\components\transition.js" />
+    <Content Include="wwwroot\components\transition.min(1).js" />
+    <Content Include="wwwroot\components\transition.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\transition.min.js" />
+    <Content Include="wwwroot\components\visibility.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\components\visibility.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\bootstrap-grid.css" />
+    <Content Include="wwwroot\css\index.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\login-form.css" />
+    <Content Include="wwwroot\css\pedagang-detail.css" />
+    <Content Include="wwwroot\fonts\LICENSE.txt" />
+    <Content Include="wwwroot\fonts\Montserrat-Black.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-BlackItalic.ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-Bold.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-BoldItalic.ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-ExtraBold.ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-ExtraBoldItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-ExtraBoldItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-ExtraLight.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-ExtraLightItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-ExtraLightItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-Italic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-Light.ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-LightItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-LightItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-Medium(1).ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-Medium.ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-MediumItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-MediumItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-Regular.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-SemiBold.ttf" />
+    <Content Include="wwwroot\fonts\Montserrat-SemiBoldItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-Thin.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Montserrat-ThinItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\OFL(1).txt" />
+    <Content Include="wwwroot\fonts\OFL.txt" />
+    <Content Include="wwwroot\fonts\Raleway-Black.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-BlackItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-BlackItalic.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-Bold(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-Bold.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-BoldItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-BoldItalic.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-ExtraBold.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Raleway-ExtraBoldItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-ExtraBoldItalic(2).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-ExtraBoldItalic(3).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-ExtraBoldItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Raleway-ExtraLight(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-ExtraLight.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-ExtraLightItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-ExtraLightItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Raleway-Italic(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-Italic.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-Light(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-Light.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-LightItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-LightItalic.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-Medium.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-MediumItalic.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-Regular.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-SemiBold(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-SemiBold.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-SemiBoldItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Raleway-SemiBoldItalic.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-Thin.ttf" />
+    <Content Include="wwwroot\fonts\Raleway-ThinItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Roboto-Black.ttf" />
+    <Content Include="wwwroot\fonts\Roboto-BlackItalic.ttf" />
+    <Content Include="wwwroot\fonts\Roboto-Bold.ttf" />
+    <Content Include="wwwroot\fonts\Roboto-BoldItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Roboto-BoldItalic.ttf" />
+    <Content Include="wwwroot\fonts\Roboto-Italic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Roboto-Light.ttf" />
+    <Content Include="wwwroot\fonts\Roboto-LightItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Roboto-Medium.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Roboto-MediumItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Roboto-MediumItalic.ttf" />
+    <Content Include="wwwroot\fonts\Roboto-Regular(1).ttf" />
+    <Content Include="wwwroot\fonts\Roboto-Regular.ttf" />
+    <Content Include="wwwroot\fonts\Roboto-Thin(1).ttf" />
+    <Content Include="wwwroot\fonts\Roboto-Thin.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\fonts\Roboto-ThinItalic(1).ttf" />
+    <Content Include="wwwroot\fonts\Roboto-ThinItalic.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\1.jpg" />
+    <Content Include="wwwroot\img\10.jpeg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\11.jpeg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\12.jpeg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\13.jpeg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\14.jpeg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\15.jpeg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\16.jpeg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\17.jpeg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\17.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\2.jpg" />
+    <Content Include="wwwroot\img\3.jpg" />
+    <Content Include="wwwroot\img\4.jpg" />
+    <Content Include="wwwroot\img\5.jpg" />
+    <Content Include="wwwroot\img\6(1).jpg" />
+    <Content Include="wwwroot\img\6.jpg" />
+    <Content Include="wwwroot\img\7.jpeg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\8.jpg" />
+    <Content Include="wwwroot\img\9.jpg" />
+    <Content Include="wwwroot\img\google-icon.png" />
+    <Content Include="wwwroot\img\iconcheckyellow.png" />
+    <Content Include="wwwroot\img\ic_chat_black_48dp_1x.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\KenikmatanRating-icon.png" />
+    <Content Include="wwwroot\img\LogoMurahaje.png" />
+    <Content Include="wwwroot\img\LogoMurahajeFooter.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\MurahMeter-icon.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\MurahMeter-off.png" />
+    <Content Include="wwwroot\img\Murahmeter-off30x30.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\MurahMeter-on.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\Murahmeter-on30x30.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\Nav-Telusuri.png" />
+    <Content Include="wwwroot\img\nikmat20x20-off.png" />
+    <Content Include="wwwroot\img\nikmat20x20-on.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\pedagang-menu.png" />
+    <Content Include="wwwroot\img\reviewicon-menu.png" />
+    <Content Include="wwwroot\img\right-imagelogin.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\sample-slider.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\img\user-photo.png" />
+    <Content Include="wwwroot\lib\semantic\semantic.css" />
+    <Content Include="wwwroot\lib\semantic\semantic.js" />
+    <Content Include="wwwroot\lib\semantic\semantic.min.css" />
+    <Content Include="wwwroot\lib\semantic\semantic.min.js" />
+    <Content Include="wwwroot\semantic.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\semantic.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\semantic.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\semantic.min.js" />
+    <Content Include="wwwroot\themes\basic\assets\fonts\icons.eot" />
+    <Content Include="wwwroot\themes\basic\assets\fonts\icons.svg" />
+    <Content Include="wwwroot\themes\basic\assets\fonts\icons.ttf" />
+    <Content Include="wwwroot\themes\basic\assets\fonts\icons.woff" />
+    <Content Include="wwwroot\themes\default\assets\fonts\icons.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\default\assets\fonts\icons.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\default\assets\fonts\icons.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\default\assets\fonts\icons.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\default\assets\fonts\icons.woff2">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\default\assets\images\flags.png" />
+    <Content Include="wwwroot\themes\github\assets\fonts\octicons(1).ttf" />
+    <Content Include="wwwroot\themes\github\assets\fonts\octicons-local.ttf" />
+    <Content Include="wwwroot\themes\github\assets\fonts\octicons.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\github\assets\fonts\octicons.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\github\assets\fonts\octicons.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\material\assets\fonts\icons.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\material\assets\fonts\icons.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\material\assets\fonts\icons.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\themes\material\assets\fonts\icons.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+>>>>>>> origin/master
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="1.1.0" />
@@ -40,6 +604,68 @@
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\scripts\" />
+    <Content Update="wwwroot\components\rating%281%29.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\components\shape%281%29.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\components\shape.min%281%29.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\components\site.min%281%29.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\components\sticky%281%29.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\components\tab%281%29.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\components\tab.min%281%29.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\components\transition%281%29.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Montserrat-ExtraLightItalic%281%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Montserrat-LightItalic%281%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\OFL%281%29.txt">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Raleway-Bold%281%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Raleway-BoldItalic%281%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Raleway-ExtraBoldItalic%281%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Raleway-ExtraBoldItalic%282%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Raleway-ExtraBoldItalic%283%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Raleway-Light%281%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Raleway-SemiBold%281%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\Raleway-SemiBoldItalic%281%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\img\6%281%29.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\themes\github\assets\fonts\octicons%281%29.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 </Project>
