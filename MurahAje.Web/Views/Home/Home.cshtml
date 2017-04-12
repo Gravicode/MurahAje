@@ -189,71 +189,7 @@
             <div class="column contentmenu-title"><h1>Yang gak kalah seru !</h1></div>
             <div class="column contentmenu-area">
                 <div id="DataStores" class="ui left aligned four column doubling stackable grid">
-                    <div class="column">
-                        <div class="ui centered card">
-                            <div class="image">
-                                <div class="ui bottom attached label title-food">Soup Rempah</div>
-                                <img src="assets/img/5.jpg">
-                            </div>
-                            <div class="content">
-                                <div class="ui clearing">
-                                    <div class="ui left floated header jenis-tempat">
-                                        Jenis Tempat
-                                    </div>
-                                    <div class="ui right floated header nama-tempat">
-                                        Warteg
-                                    </div>
-                                    <div class="ui left floated header murah-meter">
-                                        Murah Meter
-                                    </div>
-                                    <div class="ui right floated header murah-rating">
-                                        <div class="MurahRating">
-                                            <span style="width:52%" class="MurahMeter"></span>
-                                        </div>
-                                    </div>
-                                    <div class="ui left floated header kenikmatan-meter">
-                                        Kenikmatan
-                                    </div>
-                                    <div class="ui right floated header kenikmatan-rating">
-                                        <div class="KenikmatanRating">
-                                            <span style="width:70%" class="KenikmatanMeter"></span>
-                                        </div>
-                                    </div>
-                                    <div class="ui left floated header rekomendasi-title">
-                                        Rekomendasi
-                                    </div>
-                                    <div class="ui right floated header rekomendasi-result">
-                                        45 dari 48 orang
-                                    </div>
-                                    <div class="ui left floated header label-option">
-                                        <div class="ui blue label">
-                                            Porsi Besar
-                                        </div>
-                                    </div>
-                                    <div class="ui right floated header label-option">
-                                        <div class="ui blue label">
-                                            Parkir Luas
-                                        </div>
-                                    </div>
-                                    <div class="ui left floated header label-option">
-                                        <div class="ui grey label">
-                                            Prasmanan
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="extra content">
-                                <div class="ui left floated header">
-                                    <a href="#"><i class="bookmark link icon"></i></a>
-                                    <a href="#"><i class="warning sign link icon"></i></a>
-                                </div>
-                                <div class="ui right floated header label-option">
-                                    <a class="ui blue label" href="#">Lihat</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    
             </div>
         </div>
     </div>
@@ -519,7 +455,7 @@
                 msg += '45 dari 48 orang';
                 msg += '</div>';
                 msg += '<div class="ui left floated header label-option">';
-                msg += '<div class="ui ' + pl + ' label">';
+                msg += '<div class="ui ' + pb + ' label">';
                 msg += 'Porsi Besar';
                 msg += '</div>';
                 msg += '</div>';
@@ -529,7 +465,7 @@
                 msg += '</div>';
                 msg += '</div>';
                 msg += '<div class="ui left floated header label-option">';
-                msg += '<div class="ui ' + pl + ' label">';
+                msg += '<div class="ui ' + pm + ' label">';
                 msg += 'Prasmanan';
                 msg += '</div>';
                 msg += '</div>';
@@ -556,18 +492,21 @@
             onChange: function (val) {
                 var storeCategory = $(".CbTempatMakan").dropdown('get value');
                 var sortBy = $(".CbUrutkan").dropdown('get value');
+                var arrFas = [];
+                $("input:checkbox[name=CBFasilitas]:checked").each(function () {
+                    arrFas.push($(this).val());
+                });
+
                 var sHighestPrice = $("#maksimal").val();
                 var sLowestPrice = $("#minimal").val();
-                if (sHighestPrice.trim() == "")
-                {
+                if (sHighestPrice.trim() == "") {
                     sHighestPrice = 0;
                 }
-                if (sLowestPrice.trim() == "")
-                {
+                if (sLowestPrice.trim() == "") {
                     sLowestPrice = 0;
 
                 }
-                hub.server.SearchStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice).done(function (datas) {
+                hub.server.GetStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice, arrFas).done(function (datas) {
                     ListStoreTemplate(datas);
                 });
                 
@@ -578,6 +517,11 @@
             onChange: function (val) {
                 var storeCategory = $(".CbTempatMakan").dropdown('get value');
                 var sortBy = $(".CbUrutkan").dropdown('get value');
+                var arrFas = [];
+                $("input:checkbox[name=CBFasilitas]:checked").each(function () {
+                    arrFas.push($(this).val());
+                });
+
                 var sHighestPrice = $("#maksimal").val();
                 var sLowestPrice = $("#minimal").val();
                 if (sHighestPrice.trim() == "") {
@@ -587,7 +531,7 @@
                     sLowestPrice = 0;
 
                 }
-                hub.server.SearchStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice).done(function (datas) {
+                hub.server.GetStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice, arrFas).done(function (datas) {
                     ListStoreTemplate(datas);
                 });
             }
@@ -600,15 +544,30 @@
             $("input:checkbox[name=CBFasilitas]:checked").each(function () {
                 arrFas.push($(this).val());
             });
-            hub.server.SearchStores(sortBy.trim(), storeCategory.trim()).done(function (datas) {
-                ListStoreTemplate(datas,arrFas);
+
+            var sHighestPrice = $("#maksimal").val();
+            var sLowestPrice = $("#minimal").val();
+            if (sHighestPrice.trim() == "") {
+                sHighestPrice = 0;
+            }
+            if (sLowestPrice.trim() == "") {
+                sLowestPrice = 0;
+
+            }
+            hub.server.GetStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice, arrFas).done(function (datas) {
+                ListStoreTemplate(datas);
             });
+            
 
 
         });
         //event enter 
         $('#maksimal').keyup(function (e) {
             if (e.keyCode == 13) {
+                var arrFas = [];
+                $("input:checkbox[name=CBFasilitas]:checked").each(function () {
+                    arrFas.push($(this).val());
+                });
                 var storeCategory = $(".CbTempatMakan").dropdown('get value');
                 var sortBy = $(".CbUrutkan").dropdown('get value');
                 var sHighestPrice = $("#maksimal").val();
@@ -620,7 +579,7 @@
                     sLowestPrice = 0;
 
                 }
-                hub.server.SearchStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice).done(function (datas) {
+                hub.server.GetStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice, arrFas).done(function (datas) {
                     ListStoreTemplate(datas);
                 });
             }

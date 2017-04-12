@@ -314,7 +314,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="wwwroot\css\bootstrap-grid.css" />
-    <Content Include="wwwroot\css\home.css" />
     <Content Include="wwwroot\css\index.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

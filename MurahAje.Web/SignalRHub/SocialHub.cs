@@ -1037,10 +1037,36 @@ namespace MurahAje.Web
         }
 
 
-        [HubMethodName("SearchStores")]
-        public IEnumerable<Store> SearchStores(string SortBy, string sStoreCategory, double sHighestPrice, double sLowestPrice)
+        [HubMethodName("GetStores")]
+        public IEnumerable<Store> GetStores(string SortBy, string sStoreCategory, double sHighestPrice, double sLowestPrice, int [] iFasility)
         {
-            var datas = db.GetAllData<Store>().Where(x => x.StoreCategory.Trim() == sStoreCategory );
+            var datas = db.GetAllData<Store>().Where(x => x.Id != null);
+
+            if (!string.IsNullOrEmpty(sStoreCategory))
+            {
+                datas = db.GetAllData<Store>().Where(x => x.StoreCategory.Trim() == sStoreCategory);
+            }
+            foreach (int option in iFasility)
+            {
+                switch (option)
+                {
+                    case 0:
+                        {
+                            datas = datas.Where(x => x.Facilities.Contains(StoreFacilities.ParkirLuas));
+                        }
+                        break;
+                    case 1:
+                        {
+                            datas = datas.Where(x => x.Facilities.Contains(StoreFacilities.PorsiBesar));
+                        }
+                        break;
+                    case 2:
+                        {
+                            datas = datas.Where(x => x.Facilities.Contains(StoreFacilities.Prasmanan));
+                        }
+                        break;
+                }
+            }
             if (!string.IsNullOrEmpty(SortBy))
             {
                 switch (SortBy)
