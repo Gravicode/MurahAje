@@ -32,3 +32,9 @@ E:\Experiment\MurahAje\MurahAje.Web\scripts\app.js
 E:\Experiment\MurahAje\MurahAje.Web\scripts\app.js.map
 E:\Experiment\MurahAje\MurahAje.Web\scripts\app.js
 E:\Experiment\MurahAje\MurahAje.Web\scripts\app.js.map
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\scripts\app.js
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\scripts\app.js.map
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\scripts\app.js
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\scripts\app.js.map
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\scripts\app.js
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\scripts\app.js.map

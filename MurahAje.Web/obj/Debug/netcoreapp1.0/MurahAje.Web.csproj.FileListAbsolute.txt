@@ -18,3 +18,13 @@ C:\Repository\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\UserSecretsAssemblyI
 C:\Repository\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.AssemblyInfo.cs
 C:\Repository\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.dll
 C:\Repository\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.pdb
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.deps.json
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.runtimeconfig.json
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.runtimeconfig.dev.json
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.csprojResolveAssemblyReference.cache
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.AssemblyInfo.cs
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.dll
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\MurahAje.Web.pdb
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.dll
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\bin\Debug\netcoreapp1.0\MurahAje.Web.pdb
+C:\Users\mifma\Documents\GitHub\MurahAje\MurahAje.Web\obj\Debug\netcoreapp1.0\UserSecretsAssemblyInfo.cs
