@@ -9,9 +9,6 @@
     <UserSecretsId>7ad0e294-bcc3-476c-a311-7c96d986b937</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <PackageReference Include="Gray.Microsoft.AspNetCore.SignalR.Server" Version="0.2.0-alpha1" />
-=======
     <Compile Remove="wwwroot\temp\**" />
     <Content Remove="wwwroot\temp\**" />
     <EmbeddedResource Remove="wwwroot\temp\**" />
@@ -573,7 +570,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
->>>>>>> origin/master
+    <PackageReference Include="Gray.Microsoft.AspNetCore.SignalR.Server" Version="0.2.0-alpha1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="1.1.0" />

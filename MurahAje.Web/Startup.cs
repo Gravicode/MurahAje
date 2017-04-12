@@ -139,11 +139,11 @@ namespace MurahAje.Web
             {
                 routes.MapRoute(
                         name: "default",
-                        template: "{controller=Home}/{action=Index}/{id?}"
+                        template: "{controller=Home}/{action=Home}/{id?}"
                 );
                 routes.MapRoute(
                        name: "api",
-                       template: "api/{controller=Home}/{action=Index}/{id?}"
+                       template: "api/{controller=Home}/{action=Home}/{id?}"
                );
             });
             if (env.IsDevelopment())
