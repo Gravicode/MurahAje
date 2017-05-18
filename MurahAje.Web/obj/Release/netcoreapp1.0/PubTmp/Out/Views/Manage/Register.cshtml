@@ -1,0 +1,231 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    
+}
+
+<script type="text/javascript">
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        var Uid = profile.getId();
+        var Name = profile.getName();
+        var ImgUrl = profile.getImageUrl();
+        var Mail = profile.getEmail();
+
+        $('#userid').val(Uid); // Do not send to your backend! Use an ID token instead.
+        $('#nama').val(Name);
+        $('#ImgUrl').attr('src', ImgUrl);
+        $('#email').val(Mail);
+        $('#auth').val('google');
+
+        if (hub != null && hub != undefined)
+            CheckUser(Mail);
+    }
+    
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+            $.getJSON("/Auth/LogOut", function (data) {
+                if (data.isSucceed) {
+                    $('#alertdiv').html('user log out');
+                    location.reload();
+                }
+            });
+        });
+    }
+   
+        var hub = $.connection.SocialHub;
+
+        $.connection.hub.logging = true;
+        $.connection.hub.start().done(function () {
+            $('#alertdiv').append('connection ready..');
+            var mail = $('#email').val();
+            if(mail)
+                CheckUser(mail);
+        });
+    
+        $("#btnSave").click(function () {
+            $('#alertdiv').append('registering user..');
+            var uid = $('#userid').val();
+            var nama = $('#nama').val();
+            var mail = $('#email').val();
+            var img = $('#ImgUrl').attr('src');
+            var auth = $('#auth').val();
+            hub.server.VerifyUser(mail, nama, '000', mail, img, auth).done(function (e) {
+                $('#alertdiv').append('data saved..');
+                CheckUser(mail);
+            }).fail(function () { console.log('Could not save!'); });
+
+        });
+
+        function CheckUser(login) {
+
+            hub.server.GetUserByEmail(login).done(function (usr) {
+                if (usr != undefined && usr != null) {
+                    $.getJSON("/Auth/SetAuth/?persists=true&uname=" + usr.loginName, function (data) {
+                        if (data.isSucceed) {
+                            $('#alertdiv').html('user added to cookie');
+                            window.location = '/Home';
+                        }
+                    });
+                } else {
+                    
+                    var uid = $('#userid').val();
+                    var nama = $('#nama').val();
+                    var mail = $('#email').val();
+                    var img = $('#ImgUrl').attr('src');
+                    var auth = $('#auth').val();
+                    hub.server.VerifyUser(mail, nama, '000', mail, img, auth).done(function (e) {
+                        $('#alertdiv').append('data saved..');
+                        CheckUser(mail);
+                    }).fail(function () { console.log('Could not save!'); });
+                    
+                }
+            });
+        }
+        //FB login
+        // This is called with the results from from FB.getLoginStatus().
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                testAPI();
+            } else if (response.status === 'not_authorized') {
+                // The person is logged into Facebook, but not your app.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                    'into this app.';
+            } else {
+                // The person is not logged into Facebook, so we're not sure if
+                // they are logged into this app or not.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                    'into Facebook.';
+            }
+        }
+
+        // This function is called when someone finishes with the Login
+        // Button.  See the onlogin handler attached to it in the sample
+        // code below.
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1774424142771994',
+                cookie: true,  // enable cookies to allow the server to access 
+                // the session
+                xfbml: true,  // parse social plugins on this page
+                version: 'v2.8' // use graph api version 2.8
+            });
+
+            // Now that we've initialized the JavaScript SDK, we call 
+            // FB.getLoginStatus().  This function gets the state of the
+            // person visiting this page and can return one of three states to
+            // the callback you provide.  They can be:
+            //
+            // 1. Logged into your app ('connected')
+            // 2. Logged into Facebook, but not your app ('not_authorized')
+            // 3. Not logged into Facebook and can't tell if they are logged into
+            //    your app or not.
+            //
+            // These three cases are handled in the callback function.
+
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+
+        };
+
+        // Load the SDK asynchronously
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        } (document, 'script', 'facebook-jssdk'));
+
+        // Here we run a very simple test of the Graph API after login is
+        // successful.  See statusChangeCallback() for when this call is made.
+        function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', { fields: 'name, email, picture'}, function (response) {
+                //console.log('Successful login for: ' + response.name);
+                //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+                //console.log('photo:'+response.cover);
+                //console.log('email:'+response.email);
+                $('#userid').val(response.email); // Do not send to your backend! Use an ID token instead.
+                $('#nama').val(response.name);
+                $('#ImgUrl').attr('src', response.picture.data.url);
+                $('#email').val(response.email);
+                $('#auth').val('fb');
+
+                if (hub != null && hub != undefined)
+                    CheckUser(response.email);
+            });
+        }
+        
+    
+</script>
+
+<div class="well alert-danger" id="alertdiv"></div>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="">Login dengan FB:</label>
+        <div class="col-sm-10">
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+            </fb:login-button>
+            <div id="status">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="">Login dengan Google:</label>
+        <div class="col-sm-10">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="userid">ID User:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="userid" placeholder="Enter User ID">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="nama">Nama:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="nama" placeholder="Enter Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email:</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="auth">AuthType:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="auth" placeholder="Enter auth">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <img id="ImgUrl" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" id="btnSave" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>

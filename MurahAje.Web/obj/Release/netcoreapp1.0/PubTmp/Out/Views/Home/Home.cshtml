@@ -1,0 +1,589 @@
+﻿<div class="stretched row content-wrapper">
+    <div class="sixteen wide mobile four wide computer grey column sidebar-area">
+        <div class="ui vertical accordion menu">
+            <div class="item sidebar-menu">
+                <a class="active title header-sidebar">
+                    <i class="inverted big ellipsis horizontal icon sidebar-icon"></i>
+                    <span class="text title sidebar">
+                        Makan Murah
+                    </span>
+                </a>
+                <div class="active content">
+                    <div class="ui form">
+                        <div class="grouped fields side-part Makan-Murah">
+                            <div class="field">
+                                <div class="title-category">Jenis Tempat Makan</div>
+                                <div class="ui selection dropdown tempat-makan CbTempatMakan">
+                                    <input type="hidden" name="tempat-makan">
+                                    <i class="big ellipsis horizontal icon category-icon"></i>
+                                    <div class="default text">Semua</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="Warteg">Warteg</div>
+                                        <div class="item" data-value="Kaki Lima">Kaki Lima</div>
+                                        <div class="item" data-value="Pedagang Keliling">Pedagang Keliling</div>
+                                        <div class="item" data-value="Nasi Padang">Nasi Padang</div>
+                                        <div class="item" data-value="Warung Nasi">Warung Nasi</div>
+                                    </div>
+                                </div>
+                                <div class="caption-category">
+                                    Warteg, Kaki Lima, Pedagang Keliling
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="title-category">Urutkan</div>
+                                <div class="ui selection dropdown tempat-makan CbUrutkan">
+                                    <input type="hidden" name="tempat-makan">
+                                    <i class="big ellipsis horizontal icon category-icon"></i>
+                                    <div class="default text">Terdekat</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="Terjauh">Terjauh</div>
+                                        <div class="item" data-value="Termurah">Termurah</div>
+                                        <div class="item" data-value="Termahal">Termahal</div>
+                                        <div class="item" data-value="Terpopuler">Terpopuler</div>
+                                    </div>
+                                </div>
+                                <div class="caption-category">
+                                    Terdekat, Terjauh, Termurah, Termahal, A-Z, Z-A
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="title-category">Kisaran Harga</div>
+                                <div class="ui icon input harga">
+                                    <input id="minimal" type="text" placeholder="Minimal Rp">
+                                    <i class="big ellipsis horizontal icon category-icon"></i>
+                                </div>
+                                <div class="ui icon input harga">
+                                    <input id="maksimal" type="text" placeholder="Maksimal Rp">
+                                    <i class="big ellipsis horizontal icon category-icon"></i>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="CBFasilitas" value="0">
+                                    <label>Parkir Luas</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="CBFasilitas" value="1" >
+                                    <label>Porsi Besar</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="CBFasilitas" value="2" >
+                                    <label>Prasmanan</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item sidebar-menu">
+                <a class="title header-child-sidebar">
+                    <i class="inverted big ellipsis horizontal icon sidebar-icon"></i>
+                    <span class="text title sidebar">
+                        Nginep Murah
+                    </span>
+                </a>
+                <div class="content">
+                    <div class="ui form">
+                        <div class="grouped fields side-part Nginep Murah">
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="small">
+                                    <label>Red</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="medium">
+                                    <label>Orange</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="large">
+                                    <label>Green</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="x-large">
+                                    <label>Blue</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item sidebar-menu">
+                <a class="title header-child-sidebar">
+                    <i class="inverted big ellipsis horizontal icon sidebar-icon"></i>
+                    <span class="text title sidebar">
+                        Cuci Gudang
+                    </span>
+                </a>
+                <div class="content">
+                    <div class="ui form">
+                        <div class="grouped fields side-part Cuci-Gudang">
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="small">
+                                    <label>Red</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="medium">
+                                    <label>Orange</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="large">
+                                    <label>Green</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="x-large">
+                                    <label>Blue</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sixteen wide mobile twelve wide computer column content-area">
+        <div class="three wide column row">
+            <div class="column breadcrumb-area">
+                <div class="ui breadcrumb">
+                    <div class="active section">Anda Berada di : <a href="#">Beranda</a></div>
+                </div>
+            </div>
+            <div class="column caraousel-area">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="ui image"><img src="~/temp/img/sample-slider.jpg" alt="pict1"></div>
+                            <div class="content-caraousel">
+                                <div class="title-caraousel">Rekomendasi di Sekitarmu !</div>
+                                <div class="header-caraousel">Burger Tetelan</div>
+                                <div class="text-content-carousel">
+                                    Burger yang satu ini emang beda, terbuat dari tetelan aneka hewan yang diragukan legalnya, burger yang satu ini memang sangat enak dinikmati ketika dompet anda masuk angin. Mulai dari harga 5 ribu rupiah, burger tetelan yang mangkal depan kuburan cina ini sudah bisa anda nikmat bersama keluarga tercinta anda.
+                                </div>
+                                <div class="link-caraousel"><a href="#">LIHAT</a></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                </div>
+            </div>
+            <div class="column contentmenu-title"><h1>Yang gak kalah seru !</h1></div>
+            <div class="column contentmenu-area">
+                <div id="DataStores" class="ui left aligned four column doubling stackable grid">
+                    
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    $(function () {
+        var hub = $.connection.SocialHub;
+        $.connection.hub.logging = true;
+        Init();
+        function Init() {
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                Page_Load();
+            });
+        }
+        //page load
+        function Page_Load()
+        {
+            GetAllStores();
+        }
+
+        function GetAllStores()
+        {
+            hub.server.GetAllStores().done(function (datas) {
+                $('#DataStores').empty();
+                ListStoreTemplate(datas);
+            });
+
+        }
+
+        function ListStoreTemplate(datas, arrFas) {
+            
+            $.each(datas, function (i, obj) {
+                var status = false;
+                $.each(arrFas, function (j, arr) {
+                    if ( arr in obj.facilities[i]) {
+                        status = true;
+                        alert(arr);
+                    }
+                });
+                //facility
+                var msgf = "";
+                var pl = "grey", pb = "grey", pm = "grey";
+                $.each(obj.facilities, function (f, objf) {
+                    var data = "";
+                    switch (obj.facilities[f]) {
+                        case 0:
+                            {
+                                pl = "blue";
+                            }
+                            break;
+                        case 1:
+                            {
+                                pb = "blue";
+                            }
+                            break;
+                        case 2:
+                            {
+                                pm = "blue";
+                            }
+                            break;
+                    }
+                    msgf += data;
+
+                });
+                //end facility
+
+                //rating
+                var AvgMurahMeter = 0;
+                var AvgKenikmatan = 0;
+                $.each(obj.murahMeter, function (f, objm) {
+                    AvgMurahMeter += objm.ratingValue;
+                    AvgKenikmatan += obj.kenikmatan[f]['ratingValue'];
+                });
+                //berdasarkan angka rata2
+                try {
+                    AvgMurahMeter = AvgMurahMeter / obj.murahMeter.length;
+                    AvgKenikmatan = AvgKenikmatan / obj.kenikmatan.length;
+
+                    //berdasarkan persen
+                    AvgMurahMeter = AvgMurahMeter * 100 / 5;
+                    AvgKenikmatan = AvgKenikmatan * 100 / 5;
+                }
+                catch (err) {
+                }
+                //end rating
+
+
+
+
+                msg += '<div class="column">';
+                msg += '<div class="ui centered card">';
+
+                msg += '<div class="image">';
+                msg += '<div class="ui bottom attached label title-food">' + obj.title + '</div>';
+                msg += '<img src="/temp/img/5.jpg">';
+                msg += '</div>';
+                msg += '<div class="content">';
+                msg += '   <div class="ui clearing">';
+                msg += '<div class="ui left floated header jenis-tempat">';
+                msg += 'Jenis Tempat';
+                msg += '</div>';
+                msg += '<div align=right style="width:50%" class="ui right floated header nama-tempat">';
+                msg += obj.storeCategory;
+                msg += '</div>';
+                msg += '<div class="ui left floated header murah-meter">';
+                msg += 'Murah Meter';
+                msg += '</div>';
+                msg += '<div class="ui right floated header murah-rating">';
+                msg += '<div class="MurahRating">';
+                msg += '<span style="width:' + AvgMurahMeter + '%" class="MurahMeter"></span>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="ui left floated header kenikmatan-meter">';
+                msg += 'Kenikmatan';
+                msg += '</div>';
+                msg += '<div class="ui right floated header kenikmatan-rating">';
+                msg += '<div class="KenikmatanRating">';
+                msg += '<span style="width:' + AvgKenikmatan + '%" class="KenikmatanMeter"></span>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="ui left floated header rekomendasi-title">';
+                msg += 'Rekomendasi';
+                msg += '</div>';
+                msg += '<div class="ui right floated header rekomendasi-result">';
+                msg += '45 dari 48 orang';
+                msg += '</div>';
+                msg += '<div class="ui left floated header label-option">';
+                msg += '<div class="ui ' + pl + ' label">';
+                msg += 'Porsi Besar';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="ui right floated header label-option">';
+                msg += '<div class="ui ' + pl + ' label">';
+                msg += 'Parkir Luas';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="ui left floated header label-option">';
+                msg += '<div class="ui ' + pl + ' label">';
+                msg += 'Prasmanan';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="extra content">';
+                msg += '<div class="ui left floated header">';
+                msg += '<a href="#"><i class="bookmark link icon"></i></a>';
+                msg += '<a href="#"><i class="warning sign link icon"></i></a>';
+                msg += '</div>';
+                msg += '<div class="ui right floated header label-option">';
+                msg += '<a class="ui blue label" href="/Home/Store?IdStore=' + obj.id + '">Lihat</a>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '</div>';
+            });
+
+            $('#DataStores').html(msg);
+        }
+
+        function ListStoreTemplate(datas) {
+            //var a = [1, 2, 3, 4]
+            //if (6 in a)
+            //{
+            //    alert(true);
+
+            //}
+            var msg = "";
+            $.each(datas, function (i, obj) {
+                //facility
+                var msgf = "";
+                var pl = "grey", pb = "grey", pm = "grey";
+                $.each(obj.facilities, function (f, objf) {
+                    var data = "";
+                    switch (obj.facilities[f]) {
+                        case 0:
+                            {
+                                pl = "blue";
+                            }
+                            break;
+                        case 1:
+                            {
+                                pb = "blue";
+                            }
+                            break;
+                        case 2:
+                            {
+                                pm = "blue";
+                            }
+                            break;
+                    }
+                    msgf += data;
+
+                });
+                //end facility
+
+                //rating
+                var AvgMurahMeter = 0;
+                var AvgKenikmatan = 0;
+                $.each(obj.murahMeter, function (f, objm) {
+                    AvgMurahMeter += objm.ratingValue;
+                    AvgKenikmatan += obj.kenikmatan[f]['ratingValue'];
+                });
+                //berdasarkan angka rata2
+                try {
+                    AvgMurahMeter = AvgMurahMeter / obj.murahMeter.length;
+                    AvgKenikmatan = AvgKenikmatan / obj.kenikmatan.length;
+
+                    //berdasarkan persen
+                    AvgMurahMeter = AvgMurahMeter * 100 / 5;
+                    AvgKenikmatan = AvgKenikmatan * 100 / 5;
+                }
+                catch (err) {
+                }
+                //end rating
+
+
+
+
+                msg += '<div class="column">';
+                msg += '<div class="ui centered card">';
+
+                msg += '<div class="image">';
+                msg += '<div class="ui bottom attached label title-food">' + obj.title + '</div>';
+                msg += '<img src="/temp/img/5.jpg">';
+                msg += '</div>';
+                msg += '<div class="content">';
+                msg += '   <div class="ui clearing">';
+                msg += '<div class="ui left floated header jenis-tempat">';
+                msg += 'Harga';
+                msg += '</div>';
+                msg += '<div align=right style="width:70%" class="ui right floated header nama-tempat">';
+                msg += 'Rp. ' + obj.lowestPrice + ' - ' + 'Rp. ' + obj.highestPrice;
+                msg += '</div>';
+
+                msg += '<div class="ui left floated header jenis-tempat">';
+                msg += 'Jenis Tempat';
+                msg += '</div>';
+                msg += '<div align=right style="width:50%" class="ui right floated header nama-tempat">';
+                msg += obj.storeCategory;
+                msg += '</div>';
+                msg += '<div class="ui left floated header murah-meter">';
+                msg += 'Murah Meter';
+                msg += '</div>';
+                msg += '<div class="ui right floated header murah-rating">';
+                msg += '<div class="MurahRating">';
+                msg += '<span style="width:' + AvgMurahMeter + '%" class="MurahMeter"></span>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="ui left floated header kenikmatan-meter">';
+                msg += 'Kenikmatan';
+                msg += '</div>';
+                msg += '<div class="ui right floated header kenikmatan-rating">';
+                msg += '<div class="KenikmatanRating">';
+                msg += '<span style="width:' + AvgKenikmatan + '%" class="KenikmatanMeter"></span>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="ui left floated header rekomendasi-title">';
+                msg += 'Rekomendasi';
+                msg += '</div>';
+                msg += '<div class="ui right floated header rekomendasi-result">';
+                msg += '45 dari 48 orang';
+                msg += '</div>';
+                msg += '<div class="ui left floated header label-option">';
+                msg += '<div class="ui ' + pb + ' label">';
+                msg += 'Porsi Besar';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="ui right floated header label-option">';
+                msg += '<div class="ui ' + pl + ' label">';
+                msg += 'Parkir Luas';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="ui left floated header label-option">';
+                msg += '<div class="ui ' + pm + ' label">';
+                msg += 'Prasmanan';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '<div class="extra content">';
+                msg += '<div class="ui left floated header">';
+                msg += '<a href="#"><i class="bookmark link icon"></i></a>';
+                msg += '<a href="#"><i class="warning sign link icon"></i></a>';
+                msg += '</div>';
+                msg += '<div class="ui right floated header label-option">';
+                msg += '<a class="ui blue label" href="/Home/Store?IdStore=' + obj.id + '">Lihat</a>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '</div>';
+                msg += '</div>';
+            });
+
+            $('#DataStores').html(msg);
+        }
+
+        //event
+        $(".CbTempatMakan").dropdown({
+            onChange: function (val) {
+                var storeCategory = $(".CbTempatMakan").dropdown('get value');
+                var sortBy = $(".CbUrutkan").dropdown('get value');
+                var arrFas = [];
+                $("input:checkbox[name=CBFasilitas]:checked").each(function () {
+                    arrFas.push($(this).val());
+                });
+
+                var sHighestPrice = $("#maksimal").val();
+                var sLowestPrice = $("#minimal").val();
+                if (sHighestPrice.trim() == "") {
+                    sHighestPrice = 0;
+                }
+                if (sLowestPrice.trim() == "") {
+                    sLowestPrice = 0;
+
+                }
+                hub.server.GetStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice, arrFas).done(function (datas) {
+                    ListStoreTemplate(datas);
+                });
+                
+            }
+        });
+
+        $(".CbUrutkan").dropdown({
+            onChange: function (val) {
+                var storeCategory = $(".CbTempatMakan").dropdown('get value');
+                var sortBy = $(".CbUrutkan").dropdown('get value');
+                var arrFas = [];
+                $("input:checkbox[name=CBFasilitas]:checked").each(function () {
+                    arrFas.push($(this).val());
+                });
+
+                var sHighestPrice = $("#maksimal").val();
+                var sLowestPrice = $("#minimal").val();
+                if (sHighestPrice.trim() == "") {
+                    sHighestPrice = 0;
+                }
+                if (sLowestPrice.trim() == "") {
+                    sLowestPrice = 0;
+
+                }
+                hub.server.GetStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice, arrFas).done(function (datas) {
+                    ListStoreTemplate(datas);
+                });
+            }
+        });
+
+        $("input:checkbox[name=CBFasilitas]").change(function () {
+            var storeCategory = $(".CbTempatMakan").dropdown('get value');
+            var sortBy = $(".CbUrutkan").dropdown('get value');
+            var arrFas = [];
+            $("input:checkbox[name=CBFasilitas]:checked").each(function () {
+                arrFas.push($(this).val());
+            });
+
+            var sHighestPrice = $("#maksimal").val();
+            var sLowestPrice = $("#minimal").val();
+            if (sHighestPrice.trim() == "") {
+                sHighestPrice = 0;
+            }
+            if (sLowestPrice.trim() == "") {
+                sLowestPrice = 0;
+
+            }
+            hub.server.GetStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice, arrFas).done(function (datas) {
+                ListStoreTemplate(datas);
+            });
+            
+
+
+        });
+        //event enter 
+        $('#maksimal').keyup(function (e) {
+            if (e.keyCode == 13) {
+                var arrFas = [];
+                $("input:checkbox[name=CBFasilitas]:checked").each(function () {
+                    arrFas.push($(this).val());
+                });
+                var storeCategory = $(".CbTempatMakan").dropdown('get value');
+                var sortBy = $(".CbUrutkan").dropdown('get value');
+                var sHighestPrice = $("#maksimal").val();
+                var sLowestPrice = $("#minimal").val();
+                if (sHighestPrice.trim() == "") {
+                    sHighestPrice = 0;
+                }
+                if (sLowestPrice.trim() == "") {
+                    sLowestPrice = 0;
+
+                }
+                hub.server.GetStores(sortBy.trim(), storeCategory.trim(), sHighestPrice, sLowestPrice, arrFas).done(function (datas) {
+                    ListStoreTemplate(datas);
+                });
+            }
+        });
+
+    });
+</script>

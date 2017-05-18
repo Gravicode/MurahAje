@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MurahAje.Web;
+@using MurahAje.Web.ManageViewModels;
+@using MurahAje.Web.AccountViewModels;
+
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+                <div class="eight wide tablet eight wide column photo-profile">
+                    <div class="ui huge horizontal list">
+                        <div class="item account-profile">
+                            <a href="#" class="ui image photo-profile">
+                                <img class="ui mini avatar image" src="~/img/user-photo.png">
+                            </a>
+                            <div class="content photo-user">
+                                <div class="header photo-user">Hello @UserManager.GetUserName(User)!</div>
+                                <a href="#" class="ui image photo-profile logout btn btn-link navbar-btn navbar-link">
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+}
+else
+{
+
+            <div class="eight wide tablet eight wide column photo-profile">
+                <div  class="ui huge vertical list" >
+                        <a style="color:white" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                    |
+                        <a style="color:white" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+                </div>
+            </div>
+
+    @*<form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+            </li>
+            <li>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+            </li>
+        </ul>
+    </form>*@
+}

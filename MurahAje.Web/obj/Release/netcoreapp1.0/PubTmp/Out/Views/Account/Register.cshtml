@@ -1,0 +1,291 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+<link rel="stylesheet" href="~/css/login-form.css">
+<h2>@ViewData["Title"].</h2>
+
+<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+    <h4>Create a new account.</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">Register</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+
+<div class="ui huge borderless menu">
+    <div class="ui grid" style="width:100%;margin:0;">
+        <div class="ui two column centered grid">
+            <div class="fourteen wide mobile eight wide computer column centered row">
+                <div class="two column row">
+                    <div class="header  container item menu-logo">
+                        <div class="brand-logo">
+                            <img src="~/img/LogoMurahaje.png" alt="LogoMurahaje">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui grid">
+    <div class="sixteen wide column breadcrumb-area">
+        <div class="column breadcrumb-area">
+            <div class="ui breadcrumb">
+                <div class="section">Anda Berada di : <a href="index.html">Beranda</a> <span class="divider">/</span><div class="active section"><a href="#">Masuk</a></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="two column row" style="margin-bottom:20px;padding-top:50px;">
+        <div class="eight wide column centered">
+            <div class="ui two column centered stackable grid">
+                <div class="row">
+                    <div class="column">
+                        <h1 class="ui center aligned header title-form"> Daftar di MurahAje</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <button class="ui facebook button">
+                            <i class="big facebook icon"></i>
+                            Daftar dengan Facebook
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <button class="ui google plus button">
+                            <img class="ui middle aligned mini image google-icon" src="~/img/google-icon.png">
+                            <span>Daftar dengan Google</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h4 class="ui horizontal divider" style="text-transform:none !important;">
+                            Atau
+                        </h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h3 class="ui center aligned header">Bisa Menggunakan email Bro</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <div class="form-login-register">
+                            <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal ui form">
+                                @*<div class="field">
+                                    <input type="text" name="first-name" placeholder="Nama Lengkap">
+                                </div>*@
+                                <div class="field">
+                                    <input asp-for="Email" class="form-control" name="email" placeholder="Email"/>
+                                </div>
+                                <div class="field">
+                                    <input  asp-for="Password" type="password" name="password-user" placeholder="Password">
+                                </div>
+                                <div class="field">
+                                    <input asp-for="ConfirmPassword" name="confirm-password" type="password" placeholder="Ulangi Password"/>
+                                </div>
+                                @*<div class="field">
+                                    <select name="select-country" class="ui search dropdown-country">
+                                        <option value="">Pilih Kota / Kabupaten </option>
+                                        <option value="AF">Afghanistan</option>
+                                        <option value="AX">Åland Islands</option>
+                                        <option value="AL">Albania</option>
+                                        <option value="ID">Indonesia</option>
+                                        <option value="IR">Iran, Islamic Republic of</option>
+                                        <option value="IQ">Iraq</option>
+                                        <option value="MW">Malawi</option>
+                                        <option value="MY">Malaysia</option>
+                                        <option value="MV">Maldives</option>
+                                    </select>
+                                </div>*@
+                                <script>
+                          $('select.dropdown-country')
+                            .dropdown()
+                          ;
+                                </script>
+                                <div class="field">
+                                    <div class="field-term">
+                                        <div class="ui justified left aligned header">
+                                            <p>
+                                                Dengan login, anda sudah setuju dengan <span>Persetujuan</span>, <span>Cookie Policy</span>, <span>Privacy Policy dan Content Policies</span> MurahAje !
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="ui red button">Daftar</button>
+                                <div class="field">
+                                    <div class="ui justified right aligned header">
+                                        <p>
+                                            Udah terdaftar ? <a href="#login"><span>Log in</span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="ui error message"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide column centered">
+            <img class="ui big centered circular image" src="~/img/right-imagelogin.png">
+        </div>
+    </div>
+
+</div>
+<div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui stackable inverted centered grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header">
+                    <a href="#home" class="ui medium image">
+                        <img src="~/img/LogoMurahajeFooter.png">
+                    </a>
+                </h4>
+                <div class="ui inverted list">
+                    <div class="item">
+                        <i class="mail icon"></i>
+                        <div class="content">
+                            <a href="#">Kontak@murahaje.com</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="call square icon"></i>
+                        <div class="content">
+                            021-xxx-xxx
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="marker icon"></i>
+                        <div class="content">
+                            Jl. Kalibata Raya no 1, Jakarta Selatan
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Tentang</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Tentang Murahaje!</a>
+                    <a href="#" class="item">Karir</a>
+                    <a href="#" class="item">Berita</a>
+                    <a href="#" class="item">Hubungan Investor</a>
+                    <a href="#" class="item">Persetujuan</a>
+                    <a href="#" class="item">Cookie Policy</a>
+                    <a href="#" class="item">Privacy Policy</a>
+                    <a href="#" class="item">Content Policy</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Bertualang</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Lihat Peta</a>
+                    <a href="#" class="item">Pesen Makanan</a>
+                    <a href="#" class="item">100 Tempat Terfavorit</a>
+                    <a href="#" class="item">FAQ</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Untuk Pemilik Tempat</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Klaim Tempat Usaha</a>
+                    <a href="#" class="item">Beriklan</a>
+                    <a href="#" class="item">FAQ</a>
+                    <a href="#" class="item">Kontak</a>
+                    <a href="#" class="item">Tips & Trik</a>
+                </div>
+            </div>
+            <h4 class="ui horizontal inverted divider footer-copyright">
+                Copyright <i class="copyright icon"></i>  2017 MurahAje.com All Right Reserved
+            </h4>
+        </div>
+        <script>
+      // validasi form
+
+      $('.form-login-register form')
+  .form({
+    on: 'blur',
+    fields: {
+      empty: {
+        identifier  : 'first-name',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Nama lengkap anda tidak boleh kosong'
+          }
+        ]
+      },
+      exactLength: {
+        identifier  : 'password-user',
+        rules: [
+          {
+            type   : 'minLength[6]',
+            prompt : 'Masukkan Password Minimal lebih dari 6 karakter'
+          }
+        ]
+      },
+      email: {
+        identifier  : 'email',
+        rules: [
+          {
+            type   : 'email',
+            prompt : 'Masukkan Email dengan penulisan yang benar'
+          }
+        ]
+      },
+      dropdown: {
+        identifier  : 'select-country',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Kota / Kabupaten Harap di isi '
+          }
+        ]
+      },
+      checkbox: {
+        identifier  : 'checkbox-field',
+        rules: [
+          {
+            type   : 'checked',
+            prompt : 'Please check the checkbox'
+          }
+        ]
+      }
+    }
+  })
+;
+
+        </script>

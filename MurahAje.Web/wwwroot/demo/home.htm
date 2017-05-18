@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<title>Home - MurahAje!</title>
+	<link rel="stylesheet" type="text/css" href="assets/semantic/semantic.min.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/semantic/semantic.min.js"></script>
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+</head>
+<body class="pushable">
+	<!-- Sidebar Menu -->
+	<div class="ui vertical inverted sidebar menu ma-sidebar">
+		<div class="ma-sidebar-logo">
+		<span class="ma-logo"><img src="assets/img/murahaje-logo.png" /></span>
+		</div>
+		<span class="ma-search">
+			<div class="ui input borderless">
+				<input placeholder="Ane lagi nyari" type="text">
+			</div>
+			<div class="ui buttons borderless ma-button-location">
+				<div class="ui button ma-location-entry">
+					<div class="ui input transparent left icon ma-button-location-txt">
+						<i class="marker icon"></i>
+						<input placeholder="Tulis lokasi" type="text">
+					</div>
+					<span class="ma-button-location-lbl hidden">
+						<i class="crosshairs icon"></i> di lokasi ane
+					</span>
+				</div>
+				<div class="ui floating dropdown icon button">
+					<i class="dropdown icon"></i>
+					<div class="menu">
+						<div class="item"><i class="crosshairs icon"></i> di lokasi ane</div>
+						<div class="item"><i class="map pin icon"></i> Pilih di peta</div>
+						<div class="item"><i class="marker icon"></i> Tulis lokasi</div>
+					</div>
+				</div>
+			</div>
+		</span>		
+		<div class="ma-content-sidebar">
+		</div>
+	</div>
+	
+	<!-- Main Content -->
+	<div class="pusher">
+		<div class="ui container">
+			<div class="ui small secondary menu ma-menu">
+				<a class="toc item transparent mobile-l"><i class="sidebar icon"></i></a>
+				<span class="ma-logo desktop-l"><img src="assets/img/murahaje-logo.png" /></span>
+				<span class="ma-search desktop-l">
+					<div class="ui input borderless right labeled">
+						<input placeholder="Ane lagi nyari" type="text">
+						<div class="ui buttons ma-button-location">
+							<div class="ui button">
+								<div class="ui input transparent left icon ma-button-location-txt">
+									<i class="marker icon"></i>
+									<input placeholder="Tulis lokasi" type="text">
+								</div>
+								<span class="ma-button-location-lbl hidden">
+									<i class="crosshairs icon"></i> di lokasi ane
+								</span>
+							</div>
+							<div class="ui floating dropdown icon button">
+								<i class="dropdown icon"></i>
+								<div class="menu">
+									<div class="item"><i class="crosshairs icon"></i> di lokasi ane</div>
+									<div class="item"><i class="map pin icon"></i> Pilih di peta</div>
+									<div class="item"><i class="marker icon"></i> Tulis lokasi</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</span>
+				<div class="right item">
+					<span class="ma-buttons">
+					<a class="ui button basic icon inverted ma-button-circle"><i class="home icon"></i></a>
+					<a class="ui button basic icon inverted ma-button-circle"><i class="comment icon"></i><span class="badge">5</span></a>
+					<a class="ui button basic icon inverted ma-button-circle"><i class="ellipsis horizontal icon"></i><span class="badge">10</span></a>
+					</span>
+					<a class="ui inverted button mobile-l ma-button-light center aligned icon" onclick="_ma_showSignRegPopup();return false;"><i class="lock icon large"></i></a>
+					<a class="ui inverted button ma-button-light desktop-l" onclick="_ma_showSignRegPopup();return false;">LOGIN / SIGNUP</a>
+				</div>
+			</div>
+			<div class="ma-content-block">
+				<div class="ma-content-sidebar">
+					<div class="ui fluid accordion">
+						<div class="active title">
+							Makan Murah
+							<i class="ellipsis horizontal icon large"></i>
+						</div>
+						<div class="active content">
+							<div class="ui form">
+								<div class="field ma-multiple-select">
+									<label>JENIS TEMPAT MAKAN</label>
+									<select name="jenis" multiple="" class="ui fluid dropdown">
+										<option value="0">Warteg</option>
+										<option value="1">Kaki Lima</option>
+										<option value="2">Pedagang Keliling</option>
+									</select>
+								</div>
+								<div class="field">
+									<label>URUTKAN</label>
+									<select name="urut" class="ui fluid dropdown">
+										<option value="0">Terdekat</option>
+										<option value="1">Terjauh</option>
+										<option value="2">Termurah</option>
+										<option value="3">Termahal</option>
+										<option value="4">Terpopuler</option>
+										<option value="5">A-Z</option>
+										<option value="6">Z-A</option>
+									</select>
+								</div>
+								<div class="field">
+									<label>KISARAN HARGA</label>
+									<input type="number" name="harga_min" step="500" placeholder="minimal Rp">
+								</div>
+								<div class="field">
+									<input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
+								</div>
+								<div class="field">
+									<div class="ui checkbox right">
+										<label>PORSI BESAR</label>
+										<input type="checkbox">
+									</div>
+									<div class="ui checkbox right">
+										<label>PRASMANAN</label>
+										<input type="checkbox">
+									</div>
+									<div class="ui checkbox right">
+										<label>PARKIR LUAS</label>
+										<input type="checkbox">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="title">
+							Nginep Murah
+							<i class="ellipsis horizontal icon large"></i>
+						</div>
+						<div class="content">
+							<div class="ui form">
+								<div class="field ma-multiple-select">
+									<label>JENIS PENGINAPAN</label>
+									<select name="jenis" multiple="" class="ui fluid dropdown">
+										<option value="0">Rumah</option>
+										<option value="1">Losmen</option>
+										<option value="2">Hotel</option>
+										<option value="3">Villa</option>
+									</select>
+								</div>
+								<div class="field">
+									<label>URUTKAN</label>
+									<select name="urut" class="ui fluid dropdown">
+										<option value="0">Terdekat</option>
+										<option value="1">Terjauh</option>
+										<option value="2">Termurah</option>
+										<option value="3">Termahal</option>
+										<option value="4">Terpopuler</option>
+										<option value="5">A-Z</option>
+										<option value="6">Z-A</option>
+									</select>
+								</div>
+								<div class="field">
+									<label>KISARAN HARGA</label>
+									<input type="number" name="harga_min" step="500" placeholder="minimal Rp">
+								</div>
+								<div class="field">
+									<input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
+								</div>
+							</div>
+						</div>
+						<div class="title">
+							Cuci Gudang
+							<i class="ellipsis horizontal icon large"></i>
+						</div>
+						<div class="content">
+							<div class="ui form">
+								<div class="field">
+									<label>URUTKAN</label>
+									<select name="urut" class="ui fluid dropdown">
+										<option value="0">Terdekat</option>
+										<option value="1">Terjauh</option>
+										<option value="2">Termurah</option>
+										<option value="3">Termahal</option>
+										<option value="4">Terpopuler</option>
+										<option value="5">A-Z</option>
+										<option value="6">Z-A</option>
+									</select>
+								</div>
+								<div class="field">
+									<label>KISARAN HARGA</label>
+									<input type="number" name="harga_min" step="500" placeholder="minimal Rp">
+								</div>
+								<div class="field">
+									<input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ma-content">
+					<div class="ma-content-header">
+						<div class="ma-breadcrumb">
+							Anda berada di : <span class="ma-breadcrumb-nav">BERANDA</span>
+						</div>
+					</div>
+					<div class="ma-carousel owl-carousel">
+						<div class="ma-carousel-item">
+							<div class="ma-carousel-img" style="background-image:url(assets/img/demo/demo1.jpg)"></div>
+							<div class="ma-carousel-text">
+								<div class="ma-carousel-text-header">REKOMENDASI DI SEKITARMU!</div>
+								<h1>Burger Tetelan</h1>
+								<div class="desc">Burger yang satu ini emang beda, terbuat dari tetelan aneka hewan yang diragukan legalnya, burger yang satu ini memang sangat enak dinikmati ketika dompet anda masuk angin. Mulai dari harga 5 ribu rupiah, burger tetelan yang mangkal depan kuburan cina ini sudah bisa anda nikmat bersama keluarga tercinta anda.</div>
+								<a href="detail_home.htm">LIHAT</a>
+							</div>
+						</div>
+						<div class="ma-carousel-item">
+							<div class="ma-carousel-img" style="background-image:url(assets/img/demo/demo2.jpg)"></div>
+							<div class="ma-carousel-text">
+								<div class="ma-carousel-text-header">REKOMENDASI DI SEKITARMU!</div>
+								<h1>Burger Tetelan</h1>
+								<div class="desc">Burger yang satu ini emang beda, terbuat dari tetelan aneka hewan yang diragukan legalnya, burger yang satu ini memang sangat enak dinikmati ketika dompet anda masuk angin. Mulai dari harga 5 ribu rupiah, burger tetelan yang mangkal depan kuburan cina ini sudah bisa anda nikmat bersama keluarga tercinta anda.</div>
+								<a href="detail_home.htm">LIHAT</a>
+							</div>
+						</div>
+						<div class="ma-carousel-item">
+							<div class="ma-carousel-img" style="background-image:url(assets/img/demo/demo3.jpg)"></div>
+							<div class="ma-carousel-text">
+								<div class="ma-carousel-text-header">REKOMENDASI DI SEKITARMU!</div>
+								<h1>Burger Tetelan</h1>
+								<div class="desc">Burger yang satu ini emang beda, terbuat dari tetelan aneka hewan yang diragukan legalnya, burger yang satu ini memang sangat enak dinikmati ketika dompet anda masuk angin. Mulai dari harga 5 ribu rupiah, burger tetelan yang mangkal depan kuburan cina ini sudah bisa anda nikmat bersama keluarga tercinta anda.</div>
+								<a href="detail_home.htm">LIHAT</a>
+							</div>
+						</div>
+						<div class="ma-carousel-item">
+							<div class="ma-carousel-img" style="background-image:url(assets/img/demo/demo4.jpg)"></div>
+							<div class="ma-carousel-text">
+								<div class="ma-carousel-text-header">REKOMENDASI DI SEKITARMU!</div>
+								<h1>Burger Tetelan</h1>
+								<div class="desc">Burger yang satu ini emang beda, terbuat dari tetelan aneka hewan yang diragukan legalnya, burger yang satu ini memang sangat enak dinikmati ketika dompet anda masuk angin. Mulai dari harga 5 ribu rupiah, burger tetelan yang mangkal depan kuburan cina ini sudah bisa anda nikmat bersama keluarga tercinta anda.</div>
+								<a href="detail_home.htm">LIHAT</a>
+							</div>
+						</div>
+					</div>
+					<div class="ma-grids">
+						<div class="ma-grid-title">Yang gak kalah seru !</div>
+						<div class="ui three column doubling stackable grid container">
+							<div class="column">
+								<div class="ma-col-item">
+									<div class="ma-col-img" style="background-image:url(assets/img/demo/demo1.jpg)">
+									</div>
+									<div class="ma-col-title"><span>WARUNG NASI BU NDUT</span></div>
+									<div class="ma-col-detail">
+										<div class="ui two column grid">
+											<div class="column">Jenis Tempat</div>
+											<div class="column"><span class="highlight">Warteg</span></div>
+											<div class="column">Murahmeter</div>
+											<div class="column">
+												<div class="ma-murahmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Kenikmatan</div>
+											<div class="column">
+												<div class="ma-nikmatmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Rekomendasi</div>
+											<div class="column"><span class="highlight">45 dari 48 orang</span></div>
+										</div>
+										<div class="ma-tags">
+											<div class="item active">Porsi Besar</div>
+											<div class="item active">Parkir Luas</div>
+											<div class="item">Prasmanan</div>
+										</div>
+									</div>
+									<div class="ma-col-footer">
+										<a class="ma-button" href="detail_home.htm">LIHAT</a>
+										<i class="ma-icon favorite"></i>
+										<i class="ma-icon alert"></i>
+									</div>
+								</div>
+							</div>
+							<div class="column">
+								<div class="ma-col-item">
+									<div class="ma-col-img" style="background-image:url(assets/img/demo/demo2.jpg)">
+									</div>
+									<div class="ma-col-title"><span>WARUNG NASI BU NDUT</span></div>
+									<div class="ma-col-detail">
+										<div class="ui two column grid">
+											<div class="column">Jenis Tempat</div>
+											<div class="column"><span class="highlight">Warteg</span></div>
+											<div class="column">Murahmeter</div>
+											<div class="column">
+												<div class="ma-murahmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Kenikmatan</div>
+											<div class="column">
+												<div class="ma-nikmatmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Rekomendasi</div>
+											<div class="column"><span class="highlight">45 dari 48 orang</span></div>
+										</div>
+										<div class="ma-tags">
+											<div class="item active">Porsi Besar</div>
+											<div class="item active">Parkir Luas</div>
+											<div class="item">Prasmanan</div>
+										</div>
+									</div>
+									<div class="ma-col-footer">
+										<a class="ma-button" href="detail_home.htm">LIHAT</a>
+										<i class="ma-icon favorite"></i>
+										<i class="ma-icon alert"></i>
+									</div>
+								</div>
+							</div>
+							<div class="column">
+								<div class="ma-col-item">
+									<div class="ma-col-img" style="background-image:url(assets/img/demo/demo3.jpg)">
+									</div>
+									<div class="ma-col-title"><span>WARUNG NASI BU NDUT</span></div>
+									<div class="ma-col-detail">
+										<div class="ui two column grid">
+											<div class="column">Jenis Tempat</div>
+											<div class="column"><span class="highlight">Warteg</span></div>
+											<div class="column">Murahmeter</div>
+											<div class="column">
+												<div class="ma-murahmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Kenikmatan</div>
+											<div class="column">
+												<div class="ma-nikmatmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Rekomendasi</div>
+											<div class="column"><span class="highlight">45 dari 48 orang</span></div>
+										</div>
+										<div class="ma-tags">
+											<div class="item active">Porsi Besar</div>
+											<div class="item active">Parkir Luas</div>
+											<div class="item">Prasmanan</div>
+										</div>
+									</div>
+									<div class="ma-col-footer">
+										<a class="ma-button" href="detail_home.htm">LIHAT</a>
+										<i class="ma-icon favorite"></i>
+										<i class="ma-icon alert"></i>
+									</div>
+								</div>
+							</div>
+							<div class="column">
+								<div class="ma-col-item">
+									<div class="ma-col-img" style="background-image:url(assets/img/demo/demo4.jpg)">
+									</div>
+									<div class="ma-col-title"><span>WARUNG NASI BU NDUT</span></div>
+									<div class="ma-col-detail">
+										<div class="ui two column grid">
+											<div class="column">Jenis Tempat</div>
+											<div class="column"><span class="highlight">Warteg</span></div>
+											<div class="column">Murahmeter</div>
+											<div class="column">
+												<div class="ma-murahmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Kenikmatan</div>
+											<div class="column">
+												<div class="ma-nikmatmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Rekomendasi</div>
+											<div class="column"><span class="highlight">45 dari 48 orang</span></div>
+										</div>
+										<div class="ma-tags">
+											<div class="item active">Porsi Besar</div>
+											<div class="item active">Parkir Luas</div>
+											<div class="item">Prasmanan</div>
+										</div>
+									</div>
+									<div class="ma-col-footer">
+										<a class="ma-button" href="detail_home.htm">LIHAT</a>
+										<i class="ma-icon favorite"></i>
+										<i class="ma-icon alert"></i>
+									</div>
+								</div>
+							</div>
+							<div class="column">
+								<div class="ma-col-item">
+									<div class="ma-col-img" style="background-image:url(assets/img/demo/demo1.jpg)">
+									</div>
+									<div class="ma-col-title"><span>WARUNG NASI BU NDUT</span></div>
+									<div class="ma-col-detail">
+										<div class="ui two column grid">
+											<div class="column">Jenis Tempat</div>
+											<div class="column"><span class="highlight">Warteg</span></div>
+											<div class="column">Murahmeter</div>
+											<div class="column">
+												<div class="ma-murahmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Kenikmatan</div>
+											<div class="column">
+												<div class="ma-nikmatmeter">
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item active"></div>
+													<div class="item"></div>
+													<div class="item"></div>
+												</div>
+											</div>
+											<div class="column">Rekomendasi</div>
+											<div class="column"><span class="highlight">45 dari 48 orang</span></div>
+										</div>
+										<div class="ma-tags">
+											<div class="item active">Porsi Besar</div>
+											<div class="item active">Parkir Luas</div>
+											<div class="item">Prasmanan</div>
+										</div>
+									</div>
+									<div class="ma-col-footer">
+										<a class="ma-button" href="detail_home.htm">LIHAT</a>
+										<i class="ma-icon favorite"></i>
+										<i class="ma-icon alert"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ma-footer">
+				<img src="assets/img/footergrad.png" class="img-grad" />
+				<div class="ui stackable inverted divided equal height stackable grid">
+					<div class="one wide column"></div>
+					<div class="five wide column">
+						<img src="assets/img/murahaje-logo.png" />
+						<div class="ma-footer-links">
+							<div class="item"><i class="icon mail"></i> kontak@murahaje.com</div><br/>
+							<div class="item"><i class="icon phone"></i> 021-xxx-xxx</div><br/>
+							<div class="item"><i class="icon marker"></i> Jl. Kalibata Raya no 1 Jakarta Selatan Indonesia</div><br/>
+						</div>
+					</div>
+					<div class="three wide column">
+						<h3>Tentang</h3>
+						<div class="ma-footer-links">
+							<a href="#">Tentang MurahAje</a>
+							<a href="#">Karir</a>
+							<a href="#">Berita</a>
+							<a href="#">Hubungan Investor</a>
+							<a href="#">Persetujuan</a>
+							<a href="#">Cookie Policy</a>
+							<a href="#">Privacy Policy</a>
+							<a href="#">Content Policy</a>
+						</div>
+					</div>
+					<div class="three wide column">
+						<h3>Bertualang</h3>
+						<div class="ma-footer-links">
+							<a href="#">Lihat Peta</a>
+							<a href="#">Pesen Makanan</a>
+							<a href="#">100 Tempat Terfavorit</a>
+							<a href="#">FAQ</a>
+						</div>
+					</div>
+					<div class="three wide column">
+						<h3>Untuk Pemilik Tempat</h3>
+						<div class="ma-footer-links">
+							<a href="#">Klaim Tempat Usaha</a>
+							<a href="#">Beriklan</a>
+							<a href="#">FAQ</a>
+							<a href="#">Kontak</a>
+							<a href="#">Tips & Trik</a>
+						</div>
+					</div>
+					<div class="one wide column"></div>
+				</div>
+				<div class="ma-copy">Copyright &copy; 2017 MurahAje.com All Right Reserved</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Popup Content -->
+	<div class="ma-popup" >
+		<div class="ma-popup-block" >
+			<div class="ma-popup-header">
+				Signup or login to MurahAje!
+			</div>
+			<div class="ma-popup-content">
+				<a href="#" class="ma-button-fb">
+					<span class="ma-icon"><img src="assets/img/icon-fb-white.png"></span>
+					<span class="text">Lanjutkan dengan Facebook</span>
+				</a>
+				<a href="#" class="ma-button-google">
+					<span class="ma-icon"><img src="assets/img/icon-google.png"></span>
+					<span class="text">Lanjutkan dengan Google</span>
+				</a>
+			</div>
+			<div class="ma-popup-footer">
+				<h4 class="ui center aligned basic segment">atau pake email ente sob</h4>
+				<form class="ui form ma-loginform">
+				  <div class="field">
+					<input type="text" name="mail" placeholder="Email">
+				  </div>
+				  <div class="field">
+					<input type="password" name="password" placeholder="Password">
+				  </div>
+				  <button class="fluid ui negative large button">Login</button>
+				  <div class="ui field basic right aligned">
+					  <div class="ma-note ma-text-right">
+					  Belum punya akun? <a href="daftar.htm">Daftar disini</a>
+					  </div>
+				  </div>
+				</form>  
+				<div class="footnote">
+					Dengan login, ente udah setuju ame <a href="#">Persetujuan</a>, <a href="#">Cookie Policy</a>, <a href="#">Privacy Policy</a> dan <a href="#">Content Policies</a> Murahaje!
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>  

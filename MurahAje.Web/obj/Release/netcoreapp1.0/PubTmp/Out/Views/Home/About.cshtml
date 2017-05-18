@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>Use this area to provide additional information.</p>
+<div id="Content">
+   
+</div>
+<script type="text/javascript">
+
+
+        $(function () {
+
+            var hub = $.connection.SocialHub;
+
+            $.connection.hub.logging = true;
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                GetTest();
+            });
+
+            function GetTest() {
+                hub.server.GetTest().done(function (data) {
+                    $('#Content').html(data);
+                });
+               
+            }
+            function DisplayPost()
+            {
+                $('#Content').html("cobacoy");
+            }
+
+        });
+
+</script>

@@ -1,0 +1,792 @@
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.column.pedagang.content-area {
+    background: url('../img/pedagang-detailheader.png');
+    background-size: cover !important;
+    height: 300px;
+    padding: 40px;
+}
+
+    .column.pedagang.content-area .column.header-content {
+        margin: 60px 40px 0px 40px;
+        padding: 0;
+    }
+
+.thumbnail-image {
+    padding-left: 40px;
+    padding-right: 70px;
+    margin-top: -17%;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 320px) {
+    .ui.secondary.menu.main-menu {
+        margin-left: -1.5em !important;
+    }
+
+    .thumbnail-image {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .tab-menu {
+        margin-top: 0% !important;
+    }
+
+    .column.nilai-rate {
+        margin-left: 80px !important;
+    }
+
+    .ui.grid.ulasan-grid > .row {
+        padding: 15px !important;
+    }
+
+    .ulasan-comment > .ui.items > .item.ulasan-header {
+        padding: 15px !important;
+    }
+}
+
+.big-image, .thumbnailmini-image {
+    padding: 0 !important;
+}
+
+.column.pedagang.content-area h1.ui.header {
+    font-family: 'Raleway-Regular';
+    color: white;
+    font-size: 24pt;
+    text-transform: uppercase;
+}
+
+.column.pedagang.content-area h1.ui.right.header > span {
+    color: #F8DF5F;
+    font-size: 14pt;
+}
+
+.column.mini-image {
+    padding: 0 !important;
+}
+
+.quote-image {
+    border: none;
+    position: relative;
+    top: -60px;
+    min-height: 64px;
+    background: rgba(73, 98, 204, 0.8) !important;
+    border-radius: 0 !important;
+    font-family: 'Raleway-Regular' !important;
+    font-style: italic;
+    font-size: 10pt !important;
+    color: white !important;
+}
+
+    .quote-image span {
+        color: #F8DF5F;
+    }
+
+/*
+--------- tab menu -------------*/
+
+.tab-menu {
+    margin-top: -5%;
+}
+
+.ui.tab.active, .ui.tab.open {
+    border-radius: 0 !important;
+    border: 1px solid #3568FF;
+    padding: 0 !important;
+}
+
+.ui.secondary.menu .active.item, .ui.secondary.menu .item {
+    font-family: 'Raleway-Regular';
+    font-size: 14pt;
+    font-weight: 600;
+    border-radius: 0 !important;
+}
+
+    .ui.secondary.menu .active.item, .ui.secondary.menu .active.item:hover, .ui.secondary.menu a.item:hover {
+        color: #193FCB;
+        border-radius: 0 !important;
+    }
+
+.ui.secondary.menu .item {
+    color: #AAAAAA;
+}
+
+/* --------- Pedagang detail -------------- */
+
+
+
+.ui.header.title-sekilas, .ui.segment.description {
+    padding: 20px !important;
+    border: none !important;
+    color: white;
+    border-radius: 0 !important;
+    background-color: #3568FF;
+    box-shadow: none !important;
+    font-family: 'Montserrat-Regular';
+}
+
+.details-content {
+    margin: 20px;
+}
+
+    .details-content .ui.list > .item .header {
+        color: #193FCB;
+        margin-bottom: 10px;
+        font-family: 'Montserrat-Regular';
+        font-size: 16pt;
+    }
+
+    .details-content .ui.list > .item {
+        margin-top: 20px;
+        color: #868686;
+        font-family: 'Montserrat-Regular';
+        font-size: 12pt;
+        line-height: 1.5em;
+    }
+
+        .details-content .ui.list > .item i {
+            color: #526ED8;
+        }
+
+.MurahRating, .KenikmatanRating {
+    margin: 0;
+}
+
+.details-content .ui.list > .item span {
+    font-size: 10px;
+}
+
+.ui.label {
+    font-family: 'Montserrat-Regular';
+    color: #B9B9C8;
+    background: white;
+}
+
+.ui.blue.corner.label {
+    margin-top: 20px !important;
+}
+
+a.ui.label:hover {
+    color: #193FCB;
+    border-radius: 0 !important;
+}
+/*-------------------- Pedagang Menu ----------------*/
+.menu-area-grid {
+    background-color: #F9F9F9;
+    margin-top: 10px !important;
+}
+
+#tab-menu .ui.tab.active, #tab-menu .ui.tab.open {
+    border-left: none !important;
+    border-bottom: none !important;
+    border-right: none !important;
+    border-top: 1px solid #3568FF;
+    box-shadow: none !important;
+}
+
+#tab-menu .ui.secondary.menu {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+    #tab-menu .ui.secondary.menu a {
+        font-size: 12pt;
+    }
+
+        #tab-menu .ui.secondary.menu a.item {
+            color: #CCCCCC;
+        }
+
+            #tab-menu .ui.secondary.menu a.item.active, #tab-menu .ui.secondary.menu a.item:hover {
+                color: #4C79FF;
+            }
+
+            #tab-menu .ui.secondary.menu a.item.right.floated {
+                color: #FF7373;
+            }
+
+
+.eleven.wide.column.menu-details h3, .five.wide.column.menu-details h3, .menu-details h3 {
+    font-family: 'Raleway-Medium' !important;
+    color: #1A3FCB !important;
+    margin: 25px !important;
+}
+
+.five.wide.column.menu-details .ui.section.divider {
+    border-top: 1px solid #3568FF !important;
+}
+
+.five.wide.column.menu-details h3.ui.header .sub.header {
+    color: #4C79FF;
+    margin-top: 35px;
+}
+
+.ui.tab.menu-area.active, .ui.tab.menu-area.open {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.menu-andalan, .menu-telusuri {
+    border-radius: 0 !important;
+    border: 1px solid #3568FF !important;
+    padding: 0 !important;
+}
+
+#tab-menu .ui.list {
+    padding-top: 25px;
+}
+
+#tab-menu .item {
+    margin-left: 15px;
+    margin-right: 15px;
+    color: #868686;
+    font-family: 'Raleway-Medium';
+    font-weight: 600;
+    font-size: 12pt;
+}
+
+#tab-menu .ui.list > .item > .right.floated.content .menu-rating, #tab-menu .ui.list > .item > .right.floated.content .menu-harga {
+    margin-top: 10px;
+}
+
+#tab-menu .ui.list > .item > .content.title-menu {
+    padding: 10px;
+}
+
+.five.wide.column.menu-details .ui.list {
+    margin-bottom: 15px;
+}
+
+    .five.wide.column.menu-details .ui.list > .item {
+        padding: 10px;
+        color: #868686;
+        font-family: 'Raleway-Medium';
+        font-weight: 600;
+        font-size: 12pt;
+    }
+
+        .five.wide.column.menu-details .ui.list > .item:hover {
+            color: #4E4E4E;
+        }
+
+        .five.wide.column.menu-details .ui.list > .item .description {
+            color: #3568FF;
+        }
+/* ------------ Ulasan ----------*/
+h3.ui.header.ulasan-header {
+    font-family: 'Raleway-Medium' !important;
+    color: #1A3FCB;
+    margin: 25px;
+}
+
+.item.ulasan-header.terbaik a.header, .item.ulasan-header.terbanyak a.header {
+    font-family: 'Raleway-Medium' !important;
+    color: #5A84FF !important;
+}
+
+    .item.ulasan-header.terbaik a.header:hover, .item.ulasan-header.terbanyak a.header:hover {
+        color: #1A3FCB !important;
+    }
+
+.header-divider {
+    border-top: 1px solid #3568FF !important;
+}
+
+.ui.tab.ulasan-area.active, .ui.tab.ulasan-area.open {
+    border: none !important;
+}
+
+.ulasan-one {
+    border-radius: 0 !important;
+    border: 1px solid #3568FF !important;
+    padding: 0px !important;
+}
+
+.ulasan-comment, .ulasan-terbaik, .ulasan-terbanyak {
+    border-radius: 0 !important;
+    border: 1px solid #3568FF !important;
+}
+
+.ulasan-two, .ulasan-three {
+    padding: 0px !important;
+}
+
+.ulasan-grid {
+    margin: 1px !important;
+}
+
+.ulasan-two {
+    margin-right: 15px;
+}
+
+.ulasan-post {
+    padding: 25px !important;
+}
+
+.ulasan-foto img {
+    border: 1px solid #3568FF;
+}
+
+.ui.segment.ulasan-rating {
+    border-radius: 0 !important;
+    padding: 25px !important;
+    background-color: #F9F9F9;
+    color: #444444;
+    font-family: 'Raleway-Medium';
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.column.rating {
+    padding-left: 0 !important;
+}
+
+.rating.Murahmeter, .rating.Nikmatmeter {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+    width: 120px;
+}
+
+.rating-input {
+    float: right;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0 0 0 -20px;
+    opacity: 0;
+}
+
+    .rating:hover .rating-Murahmeter:hover, .rating-Murahmeter:hover,
+    .rating:hover .rating-Murahmeter:hover ~ .rating-Murahmeter,
+    .rating-input:checked ~ .rating-Murahmeter {
+        background-position: 0 0;
+    }
+
+    .rating:hover .rating-Nikmatmeter:hover, .rating-Nikmatmeter:hover,
+    .rating:hover .rating-Nikmatmeter:hover ~ .rating-Nikmatmeter,
+    .rating-input:checked ~ .rating-Nikmatmeter {
+        background-position: 0 0;
+    }
+
+.rating-Murahmeter,
+.rating:hover .rating-Murahmeter {
+    cursor: pointer;
+    position: relative;
+    float: right;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url('../img/MurahMeter-rating.png') 0 -20px;
+}
+
+.rating-Nikmatmeter,
+.rating:hover .rating-Nikmatmeter {
+    cursor: pointer;
+    position: relative;
+    float: right;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url('../img/Nikmatmeter-rating.png') 0 -20px;
+}
+
+.starRating {
+    position: relative;
+    left: -45px;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 320px) {
+    .starRating {
+        left: 5px;
+    }
+}
+
+.starRating:not(old) {
+    display: inline-block;
+    width: 9.75em;
+    height: 1em;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+
+    .starRating:not(old) > input {
+        margin-right: -100%;
+        opacity: 0;
+    }
+
+    .starRating:not(old) > label {
+        width: 15px;
+        height: 15px;
+        display: block;
+        float: right;
+        position: relative;
+        background: url('../img/ratingmeter-none.png');
+    }
+
+        .starRating:not(old) > label[for="rating1"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-1.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label[for="rating2"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-2.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label[for="rating3"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-3.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label[for="rating4"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-4.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label[for="rating5"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-5.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label[for="rating6"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-6.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label[for="rating7"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-7.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label[for="rating8"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-8.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label[for="rating9"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-9.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label[for="rating10"]:before {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('../img/ratingmeter-10.png');
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+
+        .starRating:not(old) > label:hover:before,
+        .starRating:not(old) > label:hover ~ label:before,
+        .starRating:not(:hover) > :checked ~ label:before {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+.column.nilai-rate span {
+    color: #BBBBBB;
+}
+
+.ulasan-textarea .ui.form textarea {
+    resize: none;
+    border-radius: 0 !important;
+}
+
+    .ulasan-textarea .ui.form textarea[placeholder], .ulasan-textarea .ui.form button, .uploadmenu-foto button.uploadmenu-button {
+        font-family: 'Raleway-Regular';
+    }
+
+.ulasan-textarea .ui.form i {
+    background-color: inherit !important;
+    color: white !important;
+}
+
+.ulasan-textarea .ui.form button {
+    color: white !important;
+    background-color: #D34B38 !important;
+    border-radius: 0 !important;
+    min-height: 60px;
+}
+
+.uploadmenu-foto button.uploadmenu-button {
+    border-radius: 0 !important;
+    min-height: 60px;
+}
+
+.ui.segment.result-upload {
+    border-radius: 0 !important;
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+
+    .ui.segment.result-upload a {
+        top: -20px !important;
+        right: -5px;
+    }
+
+.ulasan-comment {
+    padding: 0 !important;
+}
+
+    .ulasan-comment > .ui.items > .item.ulasan-header {
+        background: #3568FF;
+    }
+
+    .ulasan-comment > .ui.items > .item > .image > img, .ulasan-comment > .ui.items > .item > .image + .content, .ulasan-subitem {
+        margin: 15px;
+    }
+
+    .ulasan-comment * {
+        font-size: 10pt;
+        color: #BFCFFF;
+        font-family: 'Raleway-Regular';
+    }
+
+    .ulasan-comment > .ui.items > .item > .content > .header {
+        color: white;
+    }
+
+        .ulasan-comment > .ui.items > .item > .content > .header:hover {
+            color: #DFDFD0;
+        }
+
+.btn-follow {
+    border-radius: 0 !important;
+    font-family: 'Raleway-Regular' !important;
+    color: white !important;
+}
+
+.item.ulasan-subitem > .content {
+    margin: 15px !important;
+}
+
+.murah-rating, .nikmat-rating, .bullet-rating, .nilairate-readonly, .description-post p, .like-label, .ui.comments .comment .text.txt-comment {
+    color: #444444 !important;
+    font-family: 'Raleway-Medium';
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.nikmat-rating, .bullet-rating {
+    margin-left: 30px !important;
+}
+
+.nilairate-readonly {
+    padding-right: 0 !important;
+    margin-left: 50px !important;
+}
+
+.two.column.rating.rating-readonly {
+    margin-left: 10px;
+}
+
+.comment-area {
+    padding: 0 !important;
+}
+
+.comment-bg {
+    background: #F9F9F9;
+}
+
+.ui.label.like-label, .ui.label.number-likes, .ui.label.comment-label, .ui.label.number-comments, .ui.label.comments {
+    margin-top: 0 !important;
+}
+
+.ui.label.number-comments {
+    border-radius: 0;
+}
+
+.ui.label.comment-label i, .ui.label.comments {
+    color: #526ED8;
+    opacity: inherit;
+}
+
+.ui.label > .number-likes {
+    background: #D75B4B;
+    border: 1px solid red;
+    border-radius: 0;
+    color: white;
+}
+
+    .ui.label > .number-likes:hover {
+        background: #D75B4B !important;
+        border: 1px solid red;
+        border-radius: 0;
+        color: white !important;
+    }
+
+.comment-bg .ui.comments {
+    padding: 2em !important;
+}
+
+.ui.items > .item .avatar.profile-comment img {
+    border-radius: 0 !important;
+}
+
+.ui.comments .comment .author.from-comment {
+    color: #193FCB !important;
+}
+
+.ui.comments .comment .metadata.date-comment span.date {
+    color: #999999;
+}
+
+.ui.comments .reply.form textarea {
+    resize: none;
+    border-radius: 0 !important;
+    border-right: none !important;
+    height: 7em;
+}
+
+    .ui.comments .reply.form textarea:focus {
+        border: 1px solid rgba(34,36,38,.15);
+    }
+
+.ui.comments .reply.form button {
+    background: white;
+    border: 1px solid rgba(34,36,38,.15);
+    border-left: none;
+    border-radius: 0 !important;
+}
+
+    .ui.comments .reply.form button:hover {
+        background: #F9F9F9;
+    }
+
+.ui.comments .reply.form i {
+    color: #D34C39;
+}
+
+.Commentlike-label, .report-label, .Commentlike-label span {
+    background: #F9F9F9 !important;
+    color: #999999 !important;
+}
+
+.ui.label.Commentlike-label {
+    margin-top: 0px !important;
+}
+
+.ulasan-terbaik h3, .ulasan-terbanyak h3 {
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid #3568FF !important;
+    color: #526ED8 !important;
+    font-family: 'Raleway-Medium' !important;
+}
+
+.btn-follow.ulasan {
+    background: #3568FF !important;
+}
+
+    .btn-follow.ulasan:hover {
+        background: #0443FF !important;
+    }
+
+.item.ulasan-header.terbaik .meta, .item.ulasan-header.terbanyak .meta {
+    color: #444444 !important;
+    font-weight: 600;
+    font-family: 'Raleway-Medium' !important;
+}
+
+    .item.ulasan-header.terbaik .meta > span, .item.ulasan-header.terbanyak .meta span {
+        color: #5A84FF !important;
+    }
+
+.menu-andalan.foto {
+    border: none !important;
+}
+
+.fotomenu-area {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    padding-left: 30px !important;
+    padding-right: 38px !important;
+}
+
+.foto-menu .ui.small.image, .foto-menu img {
+    min-height: 160px;
+    min-width: 180px;
+}
+
+.likecomment-foto > .row {
+    padding: 0 !important;
+}
+
+    .likecomment-foto > .row > .left.aligned.column {
+        padding: 0 !important;
+        padding-left: 20px !important;
+    }
+
+        .likecomment-foto > .row > .left.aligned.column > .ui.label, .likecomment-foto > .row > .left.aligned.column > .ui.label > .ui.label.comments {
+            background: none;
+        }
+
+            .likecomment-foto > .row > .left.aligned.column > .ui.label.like-label {
+                color: white !important;
+            }
+
+            .likecomment-foto > .row > .left.aligned.column > .ui.label > .ui.label.comments:hover {
+                background: #B9B9C8 !important;
+            }
