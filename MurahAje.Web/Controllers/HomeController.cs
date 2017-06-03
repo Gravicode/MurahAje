@@ -8,42 +8,29 @@ namespace MurahAje.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult DetailFoto()
+        {
+            return View();
+        }
+        public IActionResult DetailHome()
         {
             return View();
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.:";
 
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult AddStore()
-        {
-            ViewData["Message"] = "Add Store.";
-
-            return View();
-        }
-        public IActionResult DetailStore()
-        {
-            ViewData["Message"] = "Detail Store.";
-
-            return View();
-        }
-        public IActionResult Store()
+        public IActionResult DetailMenu()
         {
             return View();
         }
-
+        public IActionResult DetailUlasan()
+        {
+            return View();
+        }
+        [ViewLayout("_LayoutMainNoSidebar")]
+        public IActionResult Daftar()
+        {
+            return View();
+        }
         public IActionResult Error()
         {
             return View();

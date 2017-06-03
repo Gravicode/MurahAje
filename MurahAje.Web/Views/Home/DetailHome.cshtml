@@ -1,0 +1,390 @@
+﻿@{
+    ViewData["Title"] = "/Home/Detail Home";
+}
+	
+<!-- Main Content -->
+<div class="pusher">
+    <div class="ui container">
+        <!-- Main Menu -->
+        <div class="ui small secondary menu ma-menu">
+            <a class="toc item transparent mobile-l"><i class="sidebar icon"></i></a>
+            <a href="home" class="ma-logo desktop-l"><img src="/assets/img/murahaje-logo.png" /></a>
+            <span class="ma-search desktop-l">
+                <div class="ui input borderless right labeled">
+                    <input placeholder="Ane lagi nyari" type="text">
+                    <div class="ui buttons ma-button-location">
+                        <div class="ui button">
+                            <div class="ui input transparent left icon ma-button-location-txt">
+                                <i class="marker icon"></i>
+                                <input placeholder="Tulis lokasi" type="text">
+                            </div>
+                            <span class="ma-button-location-lbl hidden">
+                                <i class="crosshairs icon"></i> di lokasi ane
+                            </span>
+                        </div>
+                        <div class="ui floating dropdown icon button">
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="item"><i class="crosshairs icon"></i> di lokasi ane</div>
+                                <div class="item"><i class="map pin icon"></i> Pilih di peta</div>
+                                <div class="item"><i class="marker icon"></i> Tulis lokasi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </span>
+            <div class="right item">
+                <span class="ma-buttons">
+                    <a class="ui button basic icon inverted ma-button-circle"><i class="home icon"></i></a>
+                    <a class="ui button basic icon inverted ma-button-circle"><i class="comment icon"></i><span class="badge">5</span></a>
+                    <a class="ui button basic icon inverted ma-button-circle"><i class="ellipsis horizontal icon"></i><span class="badge">10</span></a>
+                </span>
+                <a class="ui inverted button mobile-l ma-button-light center aligned icon" onclick="_ma_showSignRegPopup();return false;"><i class="lock icon large"></i></a>
+                <a class="ui inverted button ma-button-light desktop-l" onclick="_ma_showSignRegPopup();return false;">LOGIN / SIGNUP</a>
+            </div>
+        </div>
+        <div class="ma-content-block">
+            <!-- Sidebar -->
+            <div class="ma-content-sidebar">
+                <div class="ui fluid accordion">
+                    <div class="active title">
+                        Makan Murah
+                        <i class="ellipsis horizontal icon large"></i>
+                    </div>
+                    <div class="active content">
+                        <div class="ui form">
+                            <div class="field ma-multiple-select">
+                                <label>JENIS TEMPAT MAKAN</label>
+                                <select name="jenis" multiple="" class="ui fluid dropdown">
+                                    <option value="0">Warteg</option>
+                                    <option value="1">Kaki Lima</option>
+                                    <option value="2">Pedagang Keliling</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>URUTKAN</label>
+                                <select name="urut" class="ui fluid dropdown">
+                                    <option value="0">Terdekat</option>
+                                    <option value="1">Terjauh</option>
+                                    <option value="2">Termurah</option>
+                                    <option value="3">Termahal</option>
+                                    <option value="4">Terpopuler</option>
+                                    <option value="5">A-Z</option>
+                                    <option value="6">Z-A</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>KISARAN HARGA</label>
+                                <input type="number" name="harga_min" step="500" placeholder="minimal Rp">
+                            </div>
+                            <div class="field">
+                                <input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
+                            </div>
+                            <div class="field">
+                                <div class="ui checkbox right">
+                                    <label>PORSI BESAR</label>
+                                    <input type="checkbox">
+                                </div>
+                                <div class="ui checkbox right">
+                                    <label>PRASMANAN</label>
+                                    <input type="checkbox">
+                                </div>
+                                <div class="ui checkbox right">
+                                    <label>PARKIR LUAS</label>
+                                    <input type="checkbox">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        Nginep Murah
+                        <i class="ellipsis horizontal icon large"></i>
+                    </div>
+                    <div class="content">
+                        <div class="ui form">
+                            <div class="field ma-multiple-select">
+                                <label>JENIS PENGINAPAN</label>
+                                <select name="jenis" multiple="" class="ui fluid dropdown">
+                                    <option value="0">Rumah</option>
+                                    <option value="1">Losmen</option>
+                                    <option value="2">Hotel</option>
+                                    <option value="3">Villa</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>URUTKAN</label>
+                                <select name="urut" class="ui fluid dropdown">
+                                    <option value="0">Terdekat</option>
+                                    <option value="1">Terjauh</option>
+                                    <option value="2">Termurah</option>
+                                    <option value="3">Termahal</option>
+                                    <option value="4">Terpopuler</option>
+                                    <option value="5">A-Z</option>
+                                    <option value="6">Z-A</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>KISARAN HARGA</label>
+                                <input type="number" name="harga_min" step="500" placeholder="minimal Rp">
+                            </div>
+                            <div class="field">
+                                <input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        Cuci Gudang
+                        <i class="ellipsis horizontal icon large"></i>
+                    </div>
+                    <div class="content">
+                        <div class="ui form">
+                            <div class="field">
+                                <label>URUTKAN</label>
+                                <select name="urut" class="ui fluid dropdown">
+                                    <option value="0">Terdekat</option>
+                                    <option value="1">Terjauh</option>
+                                    <option value="2">Termurah</option>
+                                    <option value="3">Termahal</option>
+                                    <option value="4">Terpopuler</option>
+                                    <option value="5">A-Z</option>
+                                    <option value="6">Z-A</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>KISARAN HARGA</label>
+                                <input type="number" name="harga_min" step="500" placeholder="minimal Rp">
+                            </div>
+                            <div class="field">
+                                <input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content -->
+            <div class="ma-content">
+                <div class="ma-content-header">
+                    <div class="ma-breadcrumb">
+                        Anda berada di : <span class="ma-breadcrumb-nav">BERANDA / Warung Nasi Ibu Ndut</span>
+                    </div>
+                </div>
+                <div class="ma-content-/Home/Detail-bg"></div>
+                <div class="ma-content-/Home/Detail">
+                    <div class="ma-content-/Home/Detail-title">
+                        <div class="right floated ma-score"><h1>4.0</h1><span>/5.0</span></div>
+                        <h1 class="ui inverted"><span>WARUNG NASI IBU NDUT</span> <div class="ui label circular"><i class="icon checkmark"></i></div></h1>
+                    </div>
+                    <div class="ma-content-images">
+                        <div class="item main" style="background-image:url(/assets/img/demo/demo1.jpg)">
+                            <div class="quote">
+                                Nasi Rames favorit saya, tongkol baladonya nendang, Porsi nasinya guede, sambelnya pedes, harganya sangat bersahabat <span class="author">Uvuvwevwevwe Onyetenyevwe Ugwemubwen Ossas - Jasinga</span>
+                            </div>
+                        </div>
+                        <div class="item others">
+                            <div class="box" style="background-image:url(/assets/img/demo/demo1.jpg)"></div>
+                            <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
+                            <div class="box" style="background-image:url(/assets/img/demo/demo3.jpg)"></div>
+                            <div class="box" style="background-image:url(/assets/img/demo/demo4.jpg)"></div>
+                            <div class="box" style="background-image:url(/assets/img/demo/demo5.jpg)"></div>
+                            <div class="box" style="background-image:url(/assets/img/demo/demo3.jpg)"></div>
+                            <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
+                            <div class="box" style="background-image:url(/assets/img/demo/demo4.jpg)"></div>
+                            <div class="box" style="background-image:url(/assets/img/demo/demo1.jpg)">
+                                <div class="layer">+27</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ma-tabs">
+                        <a class="item active" href="/Home/Detailhome">/Home/Detail<br /><i class="icon ellipsis horizontal"></i></a>
+                        <a class="item" href="/Home/Detailmenu">Menu</a>
+                        <a class="item" href="/Home/Detailulasan">Ulasan</a>
+                        <a class="item" href="/Home/Detailfoto">Foto</a>
+                    </div>
+                    <div class="ma-box-container">
+                        <div class="header">
+                            <h4>Sekilas</h4>
+                            <div>
+                                Warung Nasi Ibu Ndut sudah sangat terkenal dikalangan mahasiswa sekitar. Rasa masakan ibu ndut memang sudah tidak perlu diragukan lagi, berbagai macam aneka masakan rumah tersedia disini, tempat bersih dan luas menjadikan warung nasi ibu ndut menjadi pilihan utama para mahasiswa disini.
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="ui stackable divided equal height stackable grid novborder">
+                                <div class="four wide column">
+                                    <h5>Jenis Tempat</h5>
+                                    <div class="ma-value">
+                                        Warung Tetap
+                                    </div>
+                                    <h5>Jenis Hidangan</h5>
+                                    <div class="ma-value">
+                                        Masakan Indonesia, Masakan Sunda, Masakan Jawa
+                                    </div>
+                                    <h5>Hidangan Terfavorit</h5>
+                                    <div class="ma-value">
+                                        Nasi Rames<br>
+                                        Soto Ayam<br>
+                                        Gorengan
+                                    </div>
+                                </div>
+                                <div class="four wide column">
+                                    <h5>Jam Buka/Tutup</h5>
+                                    <div class="ma-value">
+                                        <table>
+                                            <tr><td style="width:50px;">Senin</td><td>09:00 - 21:00</td></tr>
+                                            <tr><td>Selasa</td><td>09:00 - 21:00</td></tr>
+                                            <tr><td>Rabu</td><td>09:00 - 21:00</td></tr>
+                                            <tr><td>Kamis</td><td>09:00 - 21:00</td></tr>
+                                            <tr><td>Jumat</td><td>13:00 - 21:00</td></tr>
+                                            <tr><td>Sabtu</td><td>09:00 - 21:00</td></tr>
+                                            <tr><td>Minggu</td><td>09:00 - 21:00</td></tr>
+                                        </table>
+                                    </div>
+                                    <h5>Keterangan</h5>
+                                    <div class="ma-value">
+                                        <ul>
+                                            <li>Parkir Luas</li>
+                                            <li>Prasmanan</li>
+                                            <li>Sambal Pedas</li>
+                                            <li>Terima Pesanan</li>
+                                            <li>Katering Harian</li>
+                                            <li>Katering Bulanan</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="four wide column">
+                                    <h5>Lokasi</h5>
+                                    <div class="ma-value">
+                                        Jalan Yasmin 3 No 45 Bogor, Jawa Barat
+                                        <img src="/assets/img/demo/map.jpg" />
+                                    </div>
+                                    <h5>Telp</h5>
+                                    <div class="ma-value">
+                                        087771982345
+                                    </div>
+                                </div>
+                                <div class="four wide column">
+                                    <h5>Murahmeter</h5>
+                                    <div class="ma-value">
+                                        <div class="ma-murahmeter">
+                                            <div class="item active"></div>
+                                            <div class="item active"></div>
+                                            <div class="item active"></div>
+                                            <div class="item"></div>
+                                            <div class="item"></div>
+                                        </div>
+                                        <div>Rata-rata 5rb - 10rb perporsi</div>
+                                    </div>
+                                    <h5>Nikmatmeter</h5>
+                                    <div class="ma-value">
+                                        <div class="ma-nikmatmeter">
+                                            <div class="item active"></div>
+                                            <div class="item active"></div>
+                                            <div class="item active"></div>
+                                            <div class="item"></div>
+                                            <div class="item"></div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <div class="ma-value">
+                                        <a href="#"><i class="ma-icon favorite"></i> Tambahkan ke favorit</a><br />
+                                        <a href="#"><i class="ma-icon alert"></i> Laporkan Tempat</a><br />
+                                        <a href="#"><i class="ma-icon pin"></i> Klaim tempat ini</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Content -->
+        <div class="ma-footer">
+            <img src="/assets/img/footergrad.png" class="img-grad" />
+            <div class="ui stackable inverted divided equal height stackable grid">
+                <div class="one wide column"></div>
+                <div class="five wide column">
+                    <img src="/assets/img/murahaje-logo.png" />
+                    <div class="ma-footer-links">
+                        <div class="item"><i class="icon mail"></i> kontak@murahaje.com</div><br />
+                        <div class="item"><i class="icon phone"></i> 021-xxx-xxx</div><br />
+                        <div class="item"><i class="icon marker"></i> Jl. Kalibata Raya no 1 Jakarta Selatan Indonesia</div><br />
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h3>Tentang</h3>
+                    <div class="ma-footer-links">
+                        <a href="#">Tentang MurahAje</a>
+                        <a href="#">Karir</a>
+                        <a href="#">Berita</a>
+                        <a href="#">Hubungan Investor</a>
+                        <a href="#">Persetujuan</a>
+                        <a href="#">Cookie Policy</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Content Policy</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h3>Bertualang</h3>
+                    <div class="ma-footer-links">
+                        <a href="#">Lihat Peta</a>
+                        <a href="#">Pesen Makanan</a>
+                        <a href="#">100 Tempat Terfavorit</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h3>Untuk Pemilik Tempat</h3>
+                    <div class="ma-footer-links">
+                        <a href="#">Klaim Tempat Usaha</a>
+                        <a href="#">Beriklan</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Kontak</a>
+                        <a href="#">Tips & Trik</a>
+                    </div>
+                </div>
+                <div class="one wide column"></div>
+            </div>
+            <div class="ma-copy">Copyright &copy; 2017 MurahAje.com All Right Reserved</div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Content -->
+<div class="ma-popup">
+    <div class="ma-popup-block">
+        <div class="ma-popup-header">
+            Signup or login to MurahAje!
+        </div>
+        <div class="ma-popup-content">
+            <a href="#" class="ma-button-fb">
+                <span class="ma-icon"><img src="/assets/img/icon-fb-white.png"></span>
+                <span class="text">Lanjutkan dengan Facebook</span>
+            </a>
+            <a href="#" class="ma-button-google">
+                <span class="ma-icon"><img src="/assets/img/icon-google.png"></span>
+                <span class="text">Lanjutkan dengan Google</span>
+            </a>
+        </div>
+        <div class="ma-popup-footer">
+            <h4 class="ui center aligned basic segment">atau pake email ente sob</h4>
+            <form class="ui form ma-loginform">
+                <div class="field">
+                    <input type="text" name="mail" placeholder="Email">
+                </div>
+                <div class="field">
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <button class="fluid ui negative large button">Login</button>
+                <div class="ui field basic right aligned">
+                    <div class="ma-note ma-text-right">
+                        Belum punya akun? <a href="daftar">Daftar disini</a>
+                    </div>
+                </div>
+            </form>
+            <div class="footnote">
+                Dengan login, ente udah setuju ame <a href="#">Persetujuan</a>, <a href="#">Cookie Policy</a>, <a href="#">Privacy Policy</a> dan <a href="#">Content Policies</a> Murahaje!
+            </div>
+        </div>
+    </div>
+</div>

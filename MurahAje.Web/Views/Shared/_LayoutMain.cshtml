@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>@ViewData["Title"] - MurahAje.Web</title>
+    <link rel="stylesheet" type="text/css" href="/assets/semantic/semantic.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/semantic/semantic.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/scripts.js"></script>
+
+
+    <script src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+</head>
+<body class="pushable">
+    <!-- Sidebar Menu -->
+    <div class="ui vertical inverted sidebar menu ma-sidebar">
+        <div class="ma-sidebar-logo">
+            <span class="ma-logo"><img src="assets/img/murahaje-logo.png" /></span>
+        </div>
+        <span class="ma-search">
+            <div class="ui input borderless">
+                <input placeholder="Ane lagi nyari" type="text">
+            </div>
+            <div class="ui buttons borderless ma-button-location">
+                <div class="ui button ma-location-entry">
+                    <div class="ui input transparent left icon ma-button-location-txt">
+                        <i class="marker icon"></i>
+                        <input placeholder="Tulis lokasi" type="text">
+                    </div>
+                    <span class="ma-button-location-lbl hidden">
+                        <i class="crosshairs icon"></i> di lokasi ane
+                    </span>
+                </div>
+                <div class="ui floating dropdown icon button">
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item"><i class="crosshairs icon"></i> di lokasi ane</div>
+                        <div class="item"><i class="map pin icon"></i> Pilih di peta</div>
+                        <div class="item"><i class="marker icon"></i> Tulis lokasi</div>
+                    </div>
+                </div>
+            </div>
+        </span>
+        <div class="ma-content-sidebar">
+        </div>
+    </div>
+
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+    
+</body>
+</html>  
