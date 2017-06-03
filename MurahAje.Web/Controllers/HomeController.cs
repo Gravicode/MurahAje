@@ -31,6 +31,12 @@ namespace MurahAje.Web.Controllers
         {
             return View();
         }
+        [ViewLayout("_LayoutLogin")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();
