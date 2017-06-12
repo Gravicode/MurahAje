@@ -45,5 +45,13 @@ namespace MurahAje.Web.Controllers
         {
             return View();
         }
+        public IActionResult AddStore()
+        {
+            return View();
+        }
+        public IActionResult DetailStore()
+        {
+            return View();
+        }
     }
 }

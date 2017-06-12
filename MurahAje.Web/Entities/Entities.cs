@@ -7,30 +7,31 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MurahAje.Web.Entities
 {
-    public class Store
+    public class Business
     {
         public string LoginName { set; get; }
         public long Id { set; get; }
         public string Title { set; get; }
         public string Desc { set; get; }
-        public string StoreCategory { set; get; }
+        public string ImageUrl { set; get; }
+        public string Category { set; get; }
         public double LowestPrice { set; get; }
         public double HighestPrice { set; get; }
         public SocialAddress Address { set; get; }
-        public List<SocialRating> MurahMeter { set; get; }
+        public List<SocialRating> PriceMeter { set; get; }
         public List<SocialRecommendation> Recommendation { set; get; }
-        public List<SocialRating> Kenikmatan { set; get; }
+        public List<SocialRating> Experience { set; get; }
         public List<SocialComment> Comments { set; get; }
         public List<SocialCheckIn> Visitors { set; get; }
-        public HashSet<StoreFacilities> Facilities { set; get; }
+        public HashSet<string> Facilities { set; get; }
     }
-    public enum StoreFacilities
+    public enum BusinessFacilities
     {
         ParkirLuas, PorsiBesar, Prasmanan
     }
     public enum RatingType
     {
-        MurahMeter,Kenikmatan
+        PriceMeter,Experience
     }
     public class SocialBookmark
     {
@@ -64,7 +65,8 @@ namespace MurahAje.Web.Entities
     public class Product
     {
         public long Id { set; get; }
-        public long IDStore { set; get; }
+        public long IDBusiness { set; get; }
+        public string BusinessTitle { set; get; }
         public string Title { set; get; }
         public string Desc { set; get; }
         public string ProductCategory { set; get; }

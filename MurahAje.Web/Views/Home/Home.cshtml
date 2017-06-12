@@ -1,7 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home";
-}
-	<!-- Main Content -->
+﻿
 <div class="pusher">
     <div class="ui container">
         <div class="ui small secondary menu ma-menu">
@@ -53,9 +50,11 @@
                             <div class="field ma-multiple-select">
                                 <label>JENIS TEMPAT MAKAN</label>
                                 <select name="jenis" multiple="" class="ui fluid dropdown">
-                                    <option value="0">Warteg</option>
-                                    <option value="1">Kaki Lima</option>
-                                    <option value="2">Pedagang Keliling</option>
+                                    <option value="Warteg">Warteg</option>
+                                    <option value="Kaki Lima">Kaki Lima</option>
+                                    <option value="Warung Nasi">Pedagang Keliling</option>
+                                    <option value="Restoran">Pedagang Keliling</option>
+                                    <option value="Pedagang Keliling">Pedagang Keliling</option>
                                 </select>
                             </div>
                             <div class="field">
@@ -204,53 +203,9 @@
                 </div>
                 <div class="ma-grids">
                     <div class="ma-grid-title">Yang gak kalah seru !</div>
-                    <div class="ui three column doubling stackable grid container">
-                        <div class="column">
-                            <div class="ma-col-item">
-                                <div class="ma-col-img" style="background-image:url(/assets/img/demo/demo1.jpg)">
-                                </div>
-                                <div class="ma-col-title"><span>WARUNG NASI BU NDUT</span></div>
-                                <div class="ma-col-/Home/Detail">
-                                    <div class="ui two column grid">
-                                        <div class="column">Jenis Tempat</div>
-                                        <div class="column"><span class="highlight">Warteg</span></div>
-                                        <div class="column">Murahmeter</div>
-                                        <div class="column">
-                                            <div class="ma-murahmeter">
-                                                <div class="item active"></div>
-                                                <div class="item active"></div>
-                                                <div class="item active"></div>
-                                                <div class="item"></div>
-                                                <div class="item"></div>
-                                            </div>
-                                        </div>
-                                        <div class="column">Kenikmatan</div>
-                                        <div class="column">
-                                            <div class="ma-nikmatmeter">
-                                                <div class="item active"></div>
-                                                <div class="item active"></div>
-                                                <div class="item active"></div>
-                                                <div class="item"></div>
-                                                <div class="item"></div>
-                                            </div>
-                                        </div>
-                                        <div class="column">Rekomendasi</div>
-                                        <div class="column"><span class="highlight">45 dari 48 orang</span></div>
-                                    </div>
-                                    <div class="ma-tags">
-                                        <div class="item active">Porsi Besar</div>
-                                        <div class="item active">Parkir Luas</div>
-                                        <div class="item">Prasmanan</div>
-                                    </div>
-                                </div>
-                                <div class="ma-col-footer">
-                                    <a class="ma-button" href="/Home/Detailhome">LIHAT</a>
-                                    <i class="ma-icon favorite"></i>
-                                    <i class="ma-icon alert"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
+                    <div id="DataSource" class="ui three column doubling stackable grid container">
+                        loading..
+                        @*<div class="column">
                             <div class="ma-col-item">
                                 <div class="ma-col-img" style="background-image:url(/assets/img/demo/demo2.jpg)">
                                 </div>
@@ -429,7 +384,7 @@
                                     <i class="ma-icon alert"></i>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>
@@ -523,3 +478,138 @@
         </div>
     </div>
 </div>
+<script>
+    $(function () {
+        var hub = $.connection.SocialHub;
+        $.connection.hub.logging = true;
+        Init();
+        function Init() {
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                Page_Load();
+            });
+        }
+        //page load
+        function Page_Load() {
+            GetAllStores();
+        }
+
+        function GetAllStores() {
+            hub.server.GetAllStores().done(function (datas) {
+                $('#DataSource').empty();
+                ListStoreTemplate(datas);
+            });
+
+        }
+
+        function ListStoreTemplate(datas) {
+            
+            var msg = "";
+            $.each(datas, function (i, obj) {
+                //facility
+                var msgf = "";
+                var pl = " ", pb = " ", pm = " ";
+                $.each(obj.facilities, function (f, objf) {
+                    var data = "";
+                    switch (obj.facilities[f]) {
+                        case "Parkir Luas":
+                            {
+                                pl = "active";
+                            }
+                            break;
+                        case "Porsi Besar":
+                            {
+                                pb = "active";
+                            }
+                            break;
+                        case "Prasmanan":
+                            {
+                                pm = "active";
+                            }
+                            break;
+                    }
+
+                });
+                //end facility
+
+                //rating
+                var AvgMurahMeter = 0;
+                var AvgKenikmatan = 0;
+                $.each(obj.priceMeter, function (f, objm) {
+                    AvgMurahMeter += objm.ratingValue;
+                    AvgKenikmatan += obj.experience[f]['ratingValue'];
+                });
+                //berdasarkan angka rata2
+                try {
+                    AvgMurahMeter = AvgMurahMeter / obj.priceMeter.length;
+                    AvgKenikmatan = AvgKenikmatan / obj.experience.length;
+
+                    //berdasarkan persen
+                    AvgMurahMeter = AvgMurahMeter * 100 / 5;
+                    AvgKenikmatan = AvgKenikmatan * 100 / 5;
+                    
+                }
+                catch (err) {
+                }
+                //end rating
+
+
+
+
+
+                msg += '<div id="column" class="column">' +
+                    '<div class="ma-col-item">' +
+                    '<div class="ma-col-img" style="background-image:url('+obj.imageUrl+')">' +
+                    '</div>' +
+                    '<div class="ma-col-title"><span>' + obj.title + '</span></div>' +
+                    '<div class="ma-col-/Home/Detail">' +
+                    '<div class="ui two column grid">' +
+                    '<div class="column">Jenis Tempat</div>' +
+                    '<div class="column"><span class="highlight">' + obj.category + '</span></div>' +
+                    '<div class="column">Murahmeter</div>' +
+                    '<div class="column">' +
+                    '<div class="ma-murahmeter">' +
+                    '<div class="item active"></div>' +
+                    '<div class="item active"></div>' +
+                    '<div class="item active"></div>' +
+                    '<div class="item"></div>' +
+                    '<div class="item"></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="column">Kenikmatan</div>' +
+                    '<div class="column">' +
+                    '<div class="ma-nikmatmeter">' +
+                    '<div class="item active"></div>' +
+                    '<div class="item active"></div>' +
+                    '<div class="item active"></div>' +
+                    '<div class="item"></div>' +
+                    '<div class="item"></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="column">Rekomendasi</div>' +
+                    '<div class="column"><span class="highlight">45 dari 48 orang</span></div>' +
+                    '</div>' +
+                    '<div class="ma-tags">' +
+                    '<div class="item ' + pb + '">Porsi Besar</div>' +
+                    '<div class="item ' + pl + '">Parkir Luas</div>' +
+                    '<div class="item ' + pm + '">Prasmanan</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="ma-col-footer">' +
+                    '<a class="ma-button" href="/Home/Detailhome?IdStore='+obj.id+'">LIHAT</a>' +
+                    '<i class="ma-icon favorite"></i>' +
+                    '<i class="ma-icon alert"></i>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+
+            });
+
+            $('#DataSource').html(msg);
+        }
+
+
+
+    });
+</script>
+

@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MurahAje.Web\\Entities"
+    "\\MurahAje.Web\\Entities",
+    "\\MurahAje.Web\\Views",
+    "\\MurahAje.Web\\Views\\Home"
   ],
   "SelectedNode": "\\MurahAje.sln",
   "PreviewInSolutionExplorer": false

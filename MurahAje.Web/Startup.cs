@@ -150,7 +150,7 @@ namespace MurahAje.Web
             {
               
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
             }
             else
             {

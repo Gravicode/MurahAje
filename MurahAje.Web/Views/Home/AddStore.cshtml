@@ -1,0 +1,395 @@
+﻿<div>
+    <div>
+        @{
+            ViewData["Title"] = "Tambah Toko";
+        }
+       
+        <h2>@ViewData["Title"].</h2>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+        <table>
+            <tr>
+                <td>
+                    Title
+                </td>
+                <td>
+                    <input id="title" type="text"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Desc
+                </td>
+                <td>
+                    <input id="desc" type="text"/>
+                </td>
+            </tr>
+
+                <tr>
+                    <td>
+                        Gambar
+                    </td>
+                    <td>
+                        <input type="file" id="imageUploadForm" name="image" multiple="multiple" />
+                    </td>
+                </tr>
+            <tr>
+                <td>
+                    StoreCategory
+                </td>
+
+                <td>
+                    <select id="StoreCategory">
+                        <option disabled selected>
+                            Pilih satu:
+                        </option>
+                        <option>
+                            Warteg
+                        </option>
+                        <option>
+                            Warung Nasi
+                        </option>
+                        <option>
+                            Kaki Lima
+                        </option>
+                        <option>
+                            Pedagang Keliling
+                        </option>
+                        <option>
+                            Restoran
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Facilities
+                </td>
+
+                <td>
+                    <input type="checkbox" class="Facilities" name="Facilities" value="Parkir Luas"> Parkir Luas<br>
+                    <input type="checkbox" class="Facilities" name="Facilities" value="Porsi Besar"> Porsi Besar<br>
+                    <input type="checkbox" class="Facilities" name="Facilities" value="Prasmanan"> Prasmanan<br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <button type="button" id="BtnTambahToko" onclick="upload()" >Button</button>
+                    <button type="button" id="BtnDeleteAll">DeleteAll</button>
+
+                </td>
+            </tr>
+        </table>
+        }
+    </div>
+    
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    @*<script type="text/javascript">
+        window.onload = function () {
+            var mapOptions = {
+                center: new google.maps.LatLng(-6.256, 106.851),
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var latlngbounds = new google.maps.LatLngBounds();
+            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            google.maps.event.addListener(map, 'click', function (e) {
+                alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+            });
+        }
+    </script>
+    <div id="dvMap" style="width: 500px; height: 500px">*@
+
+        <div id="PanelFilter">
+            <h2>Filter Berdasrkan</h2>
+            <table>
+                <tr>
+                    <td>Cari    </td>
+                    <td>
+                        <input id="txtTitle" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jenis Tempat Makanan </td>
+                    <td>
+                        <select id="StoreCategory2">
+                            <option disabled selected>
+                                Pilih satu:
+                            </option>
+                            <option>
+                                Warteg
+                            </option>
+                            <option>
+                                Warung Nasi
+                            </option>
+                            <option>
+                                Kaki Lima
+                            </option>
+                            <option>
+                                Pedagang Keliling
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Urutkan </td>
+                    <td>
+                        <select id="sortby">
+                            <option disabled selected>Pilih Satu</option>
+                            <option>Terdekat</option>
+                            <option>Terjauh</option>
+                            <option>Termurah</option>
+                            <option>Termahal</option>
+                            <option>Terpopuler</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kisaran Harga </td>
+                </tr>
+                <tr>
+                    <td>
+                        Minimal : <br />
+                        <input id="Minimal" type="text" />
+                    </td>
+                    <td>
+                        Maksimal : <br />
+                        <input id="Maksimal" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="vehicle" value="Bike"> Porsi Besar<br>
+                        <input type="checkbox" name="vehicle" value="Car"> Prasmanan<br>
+                        <input type="checkbox" name="vehicle" value="Car"> Parkir Luas<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="BtnSearch" type="button">Button</button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div>
+            <h3>Search Result</h3>
+
+            <div id="SearchResult">
+
+            </div>
+
+            <h3>All Store</h3>
+
+            <div id="DataStore">
+
+            </div>
+
+
+        </div>
+    </div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<script type="text/javascript">
+    function upload() {
+    }
+
+    $(function () {
+        
+
+        var hub = $.connection.SocialHub;
+        $.connection.hub.logging = true;
+        //initial
+        Init();
+
+        function Init() {
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                Page_Load();
+            });
+        }
+
+        function Page_Load() {
+            GetAllStores();
+        }
+        function AddBusiness(url) {
+            var Fas = $('input:checkbox:checked.Facilities').map(function () {
+                return this.value;
+            }).get();
+
+            var title = $('#title').val().trim();
+            var desc = $('#desc').val().trim();
+            var StoreCategory = $('#StoreCategory option:selected').text().trim();
+            var City = $('#City').val();
+            var Facilities = Fas;
+
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                hub.server.AddStore(title, desc, StoreCategory, City, Facilities, url).done(function (Data) {
+
+                });
+            });
+        }
+
+        function SearchStores() {
+            var StoreCategory = $('#StoreCategory2 option:selected').text().trim();
+            var Title = $('#txtTitle').val();
+            var SortBy = $('#sortby option:selected').text();
+            var LowestPrice = $('#Minimal').val();
+            var HighestPrice = $('#Maksimal').val();
+            msg = "";
+            hub.server.SearchStores(Title, SortBy, StoreCategory, parseInt(LowestPrice), parseInt(HighestPrice)).done(function (datas) {
+                $('#DataStore').empty();
+                msg += "<table class='table'>"
+                msg += "<tr>";
+                msg += "<th>LoginName</th>";
+                msg += "<th>Id</th>";
+                msg += "<th>Title</th>";
+                msg += "<th>Desc</th>";
+               
+                msg += "<th>City</th>";
+                msg += "<th>Facilities</th>";
+                msg += "<th></th>";
+                msg += "<tr>";
+
+                $.each(datas, function (i, obj) {
+                    var msgf = "";
+                    $.each(obj.facilities, function (f, objf) {
+                        var data = "";
+                        switch (obj.facilities[f]) {
+                            case 0:
+                                {
+                                    data = "Parkir Luas <br/>";
+                                }
+                                break;
+                            case 1:
+                                {
+                                    data = "Porsi Besar <br/>";
+                                }
+                                break;
+                            case 2:
+                                {
+                                    data = "Prasmanan <br/>";
+                                }
+                        }
+                        msgf += data;
+
+                    });
+
+                    msg += "<tr>";
+                    msg += "<td>" + obj.loginname + "</td>";
+                    msg += "<td>" + obj.id + "</td>";
+                    msg += "<td>" + obj.title + "</td>";
+                    msg += "<td>" + obj.desc + "</td>";
+                    msg += "<td>" + obj.storeCategory + "</td>";
+                    msg += "<td>" + msgf + "</td>";
+                    msg += "<td><a href=/Home/DetailStore?IdStore=" + obj.id + ">Detail Toko</a></td>";
+                    msg += "</tr>";
+                });
+                msg += "</table>";
+                $('#DataStore').html(msg);
+
+            });
+        }
+        function GetAllStores() {
+            msg = "";
+            hub.server.GetAllStores().done(function (datas) {
+                $('#DataStore').empty();
+                msg += "<table class='table' border=1>"
+                msg += "<tr>";
+                msg += "<th>LoginName</th>";
+                msg += "<th>Id</th>";
+                msg += "<th>Title</th>";
+                msg += "<th>Desc</th>";
+                msg += "<th>StoreCategory</th>";
+                
+                msg += "<th>City</th>";
+                msg += "<th>Facilities</th>";
+                msg += "<th>image</th>";
+                msg += "<th></th>";
+                msg += "<tr>";
+                $.each(datas, function (i, obj) {
+                    var msgf = "";
+                    $.each(obj.facilities, function (f, objf) {
+                        var data = "";
+                        data = obj.facilities[f];
+                        msgf += data;
+
+                    });
+
+                    msg += "<tr>";
+                    msg += "<td>" + obj.loginname + "</td>";
+                    msg += "<td>" + obj.id + "</td>";
+                    msg += "<td>" + obj.title + "</td>";
+                    msg += "<td>" + obj.desc + "</td>";
+                    msg += "<td>" + obj.category + "</td>";
+                    msg += "<td>" + obj.address["city"] + "</td>";
+                    msg += "<td>" + msgf + "</td>";
+                    msg += "<td><img height=100 width=100 src='"+obj.imageUrl+"'/></td>";
+                    msg += "<td><a href=/home/DetailStore?IdStore=" + obj.id + ">Detail Toko</a></td>";
+                    msg += "</tr>";
+                });
+                msg += "</table>";
+                $('#DataStore').html(msg);
+
+            });
+        }
+        //event
+        $('#BtnSearch').click(function () {
+            
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                SearchStores();
+            });
+        });
+
+        $('#BtnTambahToko').click(function () {
+            var IDFileUpload = 'imageUploadForm';
+            var formData = new FormData();
+            var totalFiles = document.getElementById(IDFileUpload).files.length;
+
+            for (var i = 0; i < totalFiles; i++) {
+                var file = document.getElementById(IDFileUpload).files[i];
+                formData.append(IDFileUpload, file);
+            }
+            //var xhr = new XMLHttpRequest;
+            //xhr.open('POST', '/api/Media', true);
+            //xhr.send(formData);
+            $.ajax({
+                type: 'POST',
+                url: '/api/Media',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    AddBusiness(response['url']);
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            });
+
+        });
+        $('#BtnDeleteAll').click(function () {
+            
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                hub.server.DeleteStore(10).done(function(data){
+                    
+                });
+            });
+        });
+    });
+
+</script>

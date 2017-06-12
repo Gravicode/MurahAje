@@ -1023,28 +1023,28 @@ namespace MurahAje.Web
 
         #region Store
         [HubMethodName("GetAllStores")]
-        public IEnumerable<Store> GetAllStores()
+        public IEnumerable<Business> GetAllStores()
         {
-            var datas = db.GetAllData<Store>().OrderBy(x => x.Title);
+            var datas = db.GetAllData<Business>().OrderBy(x => x.Title);
             return datas;
         }
 
         [HubMethodName("GetStoresByID")]
-        public IEnumerable<Store> GetStoresById(long sId)
+        public IEnumerable<Business> GetStoresById(long sId)
         {
-            var datas = db.GetAllData<Store>().Where(x => x.Id == sId);
+            var datas = db.GetAllData<Business>().Where(x => x.Id == sId);
             return datas;
         }
 
 
         [HubMethodName("GetStores")]
-        public IEnumerable<Store> GetStores(string SortBy, string sStoreCategory, double sHighestPrice, double sLowestPrice, int [] iFasility)
+        public IEnumerable<Business> GetStores(string SortBy, string sStoreCategory, double sHighestPrice, double sLowestPrice, int [] iFasility)
         {
-            var datas = db.GetAllData<Store>().Where(x => x.Id != null);
+            var datas = db.GetAllData<Business>().Where(x => x.Id != null);
 
             if (!string.IsNullOrEmpty(sStoreCategory))
             {
-                datas = db.GetAllData<Store>().Where(x => x.StoreCategory.Trim() == sStoreCategory);
+                datas = db.GetAllData<Business>().Where(x => x.Category.Trim() == sStoreCategory);
             }
             foreach (int option in iFasility)
             {
@@ -1052,17 +1052,17 @@ namespace MurahAje.Web
                 {
                     case 0:
                         {
-                            datas = datas.Where(x => x.Facilities.Contains(StoreFacilities.ParkirLuas));
+                            datas = datas.Where(x => x.Facilities.Contains("Parkir Luas"));
                         }
                         break;
                     case 1:
                         {
-                            datas = datas.Where(x => x.Facilities.Contains(StoreFacilities.PorsiBesar));
+                            datas = datas.Where(x => x.Facilities.Contains("Porsi Besar"));
                         }
                         break;
                     case 2:
                         {
-                            datas = datas.Where(x => x.Facilities.Contains(StoreFacilities.Prasmanan));
+                            datas = datas.Where(x => x.Facilities.Contains("Prasmanan"));
                         }
                         break;
                 }
@@ -1112,9 +1112,9 @@ namespace MurahAje.Web
         }
 
         [HubMethodName("GetStoreByKeyword")]
-        public IEnumerable<Store> GetStoreByKeyword(string Keyword)
+        public IEnumerable<Business> GetStoreByKeyword(string Keyword)
         {
-            var datas = from x in db.GetAllData<Store>()
+            var datas = from x in db.GetAllData<Business>()
                         where x.Title.Contains(Keyword, StringComparison.CurrentCultureIgnoreCase)
                         orderby x ascending
                         select x;
@@ -1125,7 +1125,7 @@ namespace MurahAje.Web
         public IEnumerable<Product> GetProductByIDStore(long sIDStore,string sProductCategory)
         {
             var datas = from x in db.GetAllData<Product>()
-                        where x.IDStore == sIDStore && x.ProductCategory == sProductCategory
+                        where x.IDBusiness == sIDStore && x.ProductCategory == sProductCategory
                         orderby x ascending
                         select x;
             return datas;
@@ -1134,14 +1134,14 @@ namespace MurahAje.Web
         public OutputData AddProduct(long sIdStore, string sTitle, string sDesc, double sPrice)
         {
             //insert facilities
-           //end
+           //endf
             string Username = Context.User.Identity.Name;
             var node = new Product()
             {
                 Id = db.GetSequence<Product>(),
                 Title = sTitle,
                 Desc = sDesc,
-                IDStore = sIdStore,
+                IDBusiness = sIdStore,
                 Price = sPrice
             };
             db.InsertData<Product>(node);
@@ -1149,67 +1149,47 @@ namespace MurahAje.Web
         }
 
         [HubMethodName("AddStore")]
-        public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, double sLowestPrice, double sHighestPrice, string sCity, double sMurahMeter, double sRecommendation, double sKenikmatan, string sComments, double sVisitors, string[] sFacilities)
+        public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, string sCity, string[] sFacilities, string sImageUrl)
         {
             //insert facilities
-            StoreFacilities value = new StoreFacilities();
-            var sf = new HashSet<StoreFacilities>();
+            string value = "";
+            var sf = new HashSet<string>();
             foreach (string option in sFacilities)
             {
-                switch (option)
-                {
-                    case "PL":
-                        {
-                            value = StoreFacilities.ParkirLuas;
-                        }
-                        break;
-                    case "PB":
-                        {
-                            value = StoreFacilities.PorsiBesar;
-                        }
-                        break;
-                    case "PM":
-                        {
-                            value = StoreFacilities.Prasmanan;
-                        }
-                        break;
-                }
+                value = option;
                 sf.Add(value);
             }
             //end
+
             string Username = Context.User.Identity.Name;
-            var node = new Store()
+            var node = new Business()
             {
                 LoginName = Username,
-                Id = db.GetSequence<Store>(),
+                Id = db.GetSequence<Business>(),
                 Title = sTitle,
                 Desc = sDesc,
-                HighestPrice = sHighestPrice,
-                LowestPrice = sLowestPrice,
                 Address = new SocialAddress()
                 {
                     City = sCity
                 },
-                //MurahMeter = new List<SocialRating>()
-                //{
-
-                //},
+                PriceMeter = new List<SocialRating>(),
                 Recommendation = new List<SocialRecommendation>(),
-                Kenikmatan = new List<SocialRating>(),
+                Experience = new List<SocialRating>(),
                 Comments = new List<SocialComment>(),
                 Visitors = new List<SocialCheckIn>(),
                 Facilities = sf,
-                StoreCategory = sStoreCategory
+                ImageUrl = sImageUrl,
+                Category = sStoreCategory
             };
-            db.InsertData<Store>(node);
+            db.InsertData<Business>(node);
             return new OutputData() { Data = node, IsSucceed = true };
         }
 
         [HubMethodName("UpdateStore")]
         public OutputData UpdateStore(int IdStore, string Title, string Category, string Desc, string Address, string City, double HighP, double LowP)
         {
-            Store temp = null;
-            var datas = from x in db.GetAllData<Store>()
+            Business temp = null;
+            var datas = from x in db.GetAllData<Business>()
                         where x.Id == IdStore
                         select x;
             foreach (var node in datas)
@@ -1220,8 +1200,8 @@ namespace MurahAje.Web
                 node.Address.City = City;
                 node.HighestPrice = HighP;
                 node.LowestPrice = LowP;
-                node.StoreCategory = Category;
-                db.InsertData<Store>(node);
+                node.Category = Category;
+                db.InsertData<Business>(node);
                 temp = node;
                 return new OutputData() { Data = temp, IsSucceed = true };
             }
@@ -1231,8 +1211,10 @@ namespace MurahAje.Web
         public OutputData UpdateStoreComment(int IdStore, string sMessage, int sMurahMeter, int sKenikmatan)
         {
             string Username = Context.User.Identity.Name;
+            long ids = db.GetSequence<SocialRating>();
             SocialComment sc = new SocialComment()
             {
+                Id = ids,
                 Message = sMessage,
                 CreatedDate = DateTime.Now,
                 LoginName = Username,
@@ -1240,26 +1222,27 @@ namespace MurahAje.Web
             };
             SocialRating mm = new SocialRating()
             {
-                Id  = db.GetSequence<SocialRating>(),
+                Id  = ids,
                 LoginName = Username,
                 RatingValue = sMurahMeter
             };
             SocialRating km = new SocialRating()
             {
+                Id = ids,
                 LoginName = Username,
                 RatingValue = sKenikmatan
             };
 
-            Store temp = null;
-            var datas = from x in db.GetAllData<Store>()
+            Business temp = null;
+            var datas = from x in db.GetAllData<Business>()
                         where x.Id == IdStore
                         select x;
             foreach (var node in datas)
             {
-                node.MurahMeter.Add(mm);
-                node.Kenikmatan.Add(km);
+                node.PriceMeter.Add(mm);
+                node.Experience.Add(km);
                 node.Comments.Add(sc);
-                db.InsertData<Store>(node);
+                db.InsertData<Business>(node);
                 temp = node;
                 return new OutputData() { Data = temp, IsSucceed = true };
             }
@@ -1268,14 +1251,14 @@ namespace MurahAje.Web
         [HubMethodName("DeleteStore")]
         public OutputData DeleteStore(int IdStore)
         {
-            var hasil = db.DeleteData<Store>(IdStore);
+            var hasil = db.DeleteData<Business>(IdStore);
             return new OutputData() { Data = IdStore, IsSucceed = hasil };
         }
 
         [HubMethodName("DeleteAllStore")]
         public OutputData DeleteAllStore()
         {
-            var hasil = db.DeleteAllData<Store>();
+            var hasil = db.DeleteAllData<Business>();
             return new OutputData() { IsSucceed = hasil };
         }
         #endregion
