@@ -172,16 +172,16 @@
                 <div class="ma-content-/Home/Detail">
                     <div class="ma-content-/Home/Detail-title">
                         <div class="right floated ma-score"><h1>4.0</h1><span>/5.0</span></div>
-                        <h1 class="ui inverted"><span>WARUNG NASI IBU NDUT</span> <div class="ui label circular"><i class="icon checkmark"></i></div></h1>
+                        <h1 class="ui inverted"><span id="title"></span> <div class="ui label circular"><i class="icon checkmark"></i></div></h1>
                     </div>
                     <div class="ma-content-images">
-                        <div class="item main" style="background-image:url(/assets/img/demo/demo1.jpg)">
+                        <div class="item main" id="StoreImage" style="background-image:url(/assets/img/demo/demo1.jpg)">
                             <div class="quote">
                                 Nasi Rames favorit saya, tongkol baladonya nendang, Porsi nasinya guede, sambelnya pedes, harganya sangat bersahabat <span class="author">Uvuvwevwevwe Onyetenyevwe Ugwemubwen Ossas - Jasinga</span>
                             </div>
                         </div>
                         <div class="item others">
-                            <div class="box" style="background-image:url(/assets/img/demo/demo1.jpg)"></div>
+                            <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
                             <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
                             <div class="box" style="background-image:url(/assets/img/demo/demo3.jpg)"></div>
                             <div class="box" style="background-image:url(/assets/img/demo/demo4.jpg)"></div>
@@ -210,7 +210,7 @@
                                 <div class="ma-form-content">
                                     <div class="ma-meter-inputs">
                                         <label>Murahmeter</label>
-                                        <div class="ma-murahmeter">
+                                        <div id="Murahmeter" class="ma-murahmeter">
                                             <a class="item" href="#"></a>
                                             <a class="item" href="#"></a>
                                             <a class="item" href="#"></a>
@@ -218,29 +218,29 @@
                                             <a class="item" href="#"></a>
                                         </div>
                                         <label>Nikmatmeter</label>
-                                        <div class="ma-nikmatmeter">
+                                        <div id="Nikmatmeter" class="ma-nikmatmeter">
                                             <a class="item" href="#"></a>
                                             <a class="item" href="#"></a>
                                             <a class="item" href="#"></a>
                                             <a class="item" href="#"></a>
                                             <a class="item" href="#"></a>
                                         </div>
-                                        <label>Rating</label>
-                                        <div class="ma-ratingmeter">
-                                            <a class="item item-1" href="#"></a>
-                                            <a class="item item-2" href="#"></a>
-                                            <a class="item item-3" href="#"></a>
-                                            <a class="item item-4" href="#"></a>
-                                            <a class="item item-5" href="#"></a>
-                                            <a class="item item-6" href="#"></a>
-                                            <a class="item item-7" href="#"></a>
-                                            <a class="item item-8" href="#"></a>
-                                            <a class="item item-9" href="#"></a>
-                                            <a class="item item-10" href="#"></a>
-                                        </div>
-                                        <div class="ma-ratingscore">
-                                            <span class="value">0</span>/5.0
-                                        </div>
+                                        @*<label>Rating</label>
+    <div class="ma-ratingmeter">
+        <a class="item item-1" href="#"></a>
+        <a class="item item-2" href="#"></a>
+        <a class="item item-3" href="#"></a>
+        <a class="item item-4" href="#"></a>
+        <a class="item item-5" href="#"></a>
+        <a class="item item-6" href="#"></a>
+        <a class="item item-7" href="#"></a>
+        <a class="item item-8" href="#"></a>
+        <a class="item item-9" href="#"></a>
+        <a class="item item-10" href="#"></a>
+    </div>
+    <div class="ma-ratingscore">
+        <span class="value">0</span>/5.0
+    </div>*@
                                     </div>
                                     <div class="ui stackable divided stackable equal height grid noborder lessspace">
                                         <div class="eight wide column">
@@ -249,13 +249,13 @@
                                         <div class="eight wide column">
                                             <div class="ui form ma-full-height">
                                                 <div class="field">
-                                                    <textarea name="txtcomment" rows="7" placeholder="Tip: A great review covers food, service, and ambiance. Got recommendations for your favorite dishes and drinks, or something everyone should try here? Include that too! And remember, your review needs to be at least 140 characters long :)"></textarea>
+                                                    <textarea id="TxtCommentParent" name="txtcomment" rows="7" placeholder="Tip: A great review covers food, service, and ambiance. Got recommendations for your favorite dishes and drinks, or something everyone should try here? Include that too! And remember, your review needs to be at least 140 characters long :)"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ui form" style="padding-top:10px">
-                                        <button type="button" class="ui button negative right floated"><i class="icon send"></i> Kirim Ulasan</button>
+                                        <button id="BtnCommentParent" type="button" class="ui button negative right floated"><i class="icon send"></i> Kirim Ulasan</button>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
@@ -263,8 +263,8 @@
                         </div>
                     </div>
                     <div class="ui stackable divided stackable equal height grid noborder lessspace topspace">
-                        <div class="ten wide column">
-                            <div class="ma-box-container spacedbottom noshadow">
+                        <div id="CommentList" class="ten wide column">
+                            @*<div class="ma-box-container spacedbottom noshadow">
                                 <div class="header">
                                     <div class="ma-user-pic" style="background-image:url(/assets/img/demo/user2.jpg)"></div>
                                     <div class="ma-user-content">
@@ -350,68 +350,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="ma-box-container spacedbottom noshadow">
-                                <div class="header">
-                                    <div class="ma-user-pic" style="background-image:url(/assets/img/demo/user2.jpg)"></div>
-                                    <div class="ma-user-content">
-                                        <h3>Jamie Oliver</h3><span class="time">5 days ago</span>
-                                        <div class="ma-user-meta"><span class="value">150</span> ulasan <i class="icon ellipsis horizontal"></i> <span class="value">300</span> pengikut</div>
-                                        <input type="button" class="ui button mini" value="Ikuti" />
-                                    </div>
-                                </div>
-                                <div class="content nopadbottom">
-                                    <div class="ma-meter-display">
-                                        <label>Murahmeter</label>
-                                        <div class="ma-murahmeter">
-                                            <a class="item active" href="#"></a>
-                                            <a class="item active" href="#"></a>
-                                            <a class="item" href="#"></a>
-                                            <a class="item" href="#"></a>
-                                            <a class="item" href="#"></a>
-                                        </div>
-                                        <label>Nikmatmeter</label>
-                                        <div class="ma-nikmatmeter">
-                                            <a class="item active" href="#"></a>
-                                            <a class="item active" href="#"></a>
-                                            <a class="item active" href="#"></a>
-                                            <a class="item" href="#"></a>
-                                            <a class="item" href="#"></a>
-                                        </div>
-                                        <label>Rating</label>
-                                        <div class="ma-ratingmeter">
-                                            <a class="item item-1 active" href="#"></a>
-                                            <a class="item item-2 active" href="#"></a>
-                                            <a class="item item-3 active" href="#"></a>
-                                            <a class="item item-4 active" href="#"></a>
-                                            <a class="item item-5 active" href="#"></a>
-                                            <a class="item item-6 active" href="#"></a>
-                                            <a class="item item-7 active" href="#"></a>
-                                            <a class="item item-8" href="#"></a>
-                                            <a class="item item-9" href="#"></a>
-                                            <a class="item item-10" href="#"></a>
-                                        </div>
-                                        <div class="ma-ratingscore">
-                                            <span class="value rating-7">3.5</span>/5.0
-                                        </div>
-                                    </div>
-                                    <div class="ma-desc">
-                                        Warung Nasi Ibu Ndut sudah sangat terkenal dikalangan mahasiswa sekitar. Rasa masakan ibu ndut memang sudah tidak perlu diragukan lagi, berbagai macam aneka masakan rumah tersedia disini, tempat bersih dan luas menjadikan warung nasi ibu ndut menjadi pilihan utama para mahasiswa disini.
-                                    </div>
-                                    <div class="ma-comment-actions nopadbottom">
-                                        <a class="item right floated"><i class="ma-icon alert"></i></a>
-                                        <a class="item"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                        <a class="item"><span class="total blue">0</span> <i class="icon comment blue"></i> Komentar</a>
-                                    </div>
-                                    <div class="ma-comment-reply clearbottom">
-                                        <div class="ma-user-pic medium" style="background-image:url(/assets/img/demo/user2.jpg)"></div>
-                                        <div class="field">
-                                            <textarea name="txtreply" placeholder="Tulis komentar..."></textarea>
-                                            <button type="button"><i class="icon send"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>*@
                             <button class="ui button large fluid blue ">
                                 <i class="icon comment"></i> Lihat lebih banyak
                             </button>
@@ -602,3 +541,174 @@
         </div>
     </div>
 </div>
+<script>
+    //$(this).attr('data-value');
+    $(function () {
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        var hub = $.connection.SocialHub;
+
+        $.connection.hub.logging = true;
+        $.connection.hub.start().done(function () {
+            console.log('connection ready..');
+            SearchStoresByID();
+        });
+
+        $('#BtnCommentParent').click(function () {
+            var Komentar = $('#TxtCommentParent').val().trim();
+            var MurahMeter = $('#Murahmeter').attr('data-value') == null ? 0 : $('#Murahmeter').attr('data-value');
+            var Kenikmatan = $('#Nikmatmeter').attr('data-value') == null ? 0 : $('#Nikmatmeter').attr('data-value');
+            var IdStore = getUrlVars()["IdStore"];
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                hub.server.UpdateStoreComment(IdStore, Komentar, MurahMeter, Kenikmatan).done(function (Data) {
+                    SearchStoresByID();
+                });
+            });
+        });
+        function SearchStoresByID() {
+            var IdStore = getUrlVars()["IdStore"];
+            hub.server.GetStoresByID(IdStore).done(function (datas) {
+                $('#Content').empty();
+                $('#PanelKomentar').empty();
+                var msg = "";
+                var msg2 = "";
+                $.each(datas, function (i, obj) {
+                    $('#title').html(obj.title);
+                    $('#StoreImage').css("background-image", "url(" + obj.imageUrl + ")");
+                    var msgf = "";
+                    $.each(obj.facilities, function (f, objf) {
+                        var data = "";
+                        switch (obj.facilities[f]) {
+                            case 0:
+                                {
+                                    data = "Parkir Luas <br/>";
+                                }
+                                break;
+                            case 1:
+                                {
+                                    data = "Porsi Besar <br/>";
+                                }
+                                break;
+                            case 2:
+                                {
+                                    data = "Prasmanan <br/>";
+                                }
+                        }
+                        msgf += data;
+
+                    });
+                    var AvgMurahMeter = 0;
+                    var AvgKenikmatan = 0;
+                    var msgc = '';
+                    $.each(obj.priceMeter, function (f, objm) {
+
+                        var nmeter = "";
+                        var pmeter = "";
+                        var tpmeter = obj.priceMeter[f]['ratingValue'];
+                        var tnmeter = obj.experience[f]['ratingValue'];
+                        for (i = 0; i < tpmeter; i++) {
+                            pmeter += '<a class="item active" href="#"></a>';
+                        }
+                        var pdislike = 5 - tpmeter;
+                        for (i = 0; i < pdislike; i++) {
+                            pmeter += '<a class="item" href="#"></a>';
+                        }
+
+
+                        for (i = 0; i < tnmeter; i++) {
+                            nmeter += '<a class="item active" href="#"></a>';
+                        }
+                        var ndislike = 5 - tnmeter;
+                        for (i = 0; i < ndislike; i++) {
+                            nmeter += '<a class="item" href="#"></a>';
+                        }
+
+                        var comment= '<div class="ma-box-container spacedbottom noshadow">' +
+                            '<div class="header">' +
+                            '<div class="ma-user-pic" style="background-image:url(/assets/img/demo/user2.jpg)"></div>' +
+                            '<div class="ma-user-content">' +
+                            '<h3>' + obj.comments[f]['loginName']+'</h3><span class="time">5 days ago</span>' +
+                            '<div class="ma-user-meta"><span class="value">150</span> ulasan <i class="icon ellipsis horizontal"></i> <span class="value">300</span> pengikut</div>' +
+                            '<input type="button" class="ui button mini" value="Ikuti" />' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="content nopadbottom">' +
+                            '<div class="ma-meter-display">' +
+                            '<label>Murahmeter</label>' +
+                            '<div class="ma-murahmeter">' +
+                            pmeter +
+                            '</div>' +
+                            '<label>Nikmatmeter</label>' +
+                            '<div class="ma-nikmatmeter">' +
+                            nmeter+
+                            '</div>' +
+                            //'<label>Rating</label>' +
+                            //'<div class="ma-ratingmeter">' +
+                            //'<a class="item item-1 active" href="#"></a>' +
+                            //'<a class="item item-2 active" href="#"></a>' +
+                            //'<a class="item item-3 active" href="#"></a>' +
+                            //'<a class="item item-4 active" href="#"></a>' +
+                            //'<a class="item item-5 active" href="#"></a>' +
+                            //'<a class="item item-6 active" href="#"></a>' +
+                            //'<a class="item item-7 active" href="#"></a>' +
+                            //'<a class="item item-8" href="#"></a>' +
+                            //'<a class="item item-9" href="#"></a>' +
+                            //'<a class="item item-10" href="#"></a>' +
+                            //'</div>' +
+                            //'<div class="ma-ratingscore">' +
+                            //'<span class="value rating-7">3.5</span>/5.0' +
+                            //'</div>' +
+                            '</div>' +
+                            '<div class="ma-desc">' +
+                            obj.comments[f]['message'] +
+                            '</div>' +
+                            '<div class="ma-comment-actions nopadbottom">' +
+                            '<a class="item right floated"><i class="ma-icon alert"></i></a>' +
+                            '<a class="item"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>' +
+                            '<a class="item"><span class="total blue">0</span> <i class="icon comment blue"></i> Komentar</a>' +
+                            '</div>' +
+                            '<div class="ma-comment-reply clearbottom">' +
+                            '<div class="ma-user-pic medium" style="background-image:url(/assets/img/demo/user2.jpg)"></div>' +
+                            '<div class="field">' +
+                            '<textarea name="txtreply" placeholder="Tulis komentar..."></textarea>' +
+                            '<button type="button"><i class="icon send"></i></button>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                        msgc += comment;
+                        //msg2 += "Murah Meter :" + objm.ratingValue + "</br>";
+                        //msg2 += " Kenikmatan :" + obj.experience[f]['ratingValue'] + "</br>";
+                        //msg2 += " Komentar :" + obj.comments[f]['message'] + "</br>";
+                        //msg2 += " <b>" + obj.comments[f]['loginName'] + "</b></br>";
+                        //msg2 += "</br></br></br>";
+                        //AvgMurahMeter += objm.ratingValue;
+                        //AvgKenikmatan += obj.experience[f]['ratingValue'];
+                    });
+                    $('#CommentList').html(msgc);
+                    //AvgMurahMeter = AvgMurahMeter / obj.priceMeter.length;
+                    //AvgKenikmatan = AvgKenikmatan / obj.experience.length;
+                });
+                //$('#PanelKomentar').html(msg2);
+                //SearchProductByIdStore();
+
+            });
+        }
+        function SendChildUlasan(data)
+        { 
+
+        }
+
+    });
+
+
+</script>

@@ -71,11 +71,9 @@ namespace MurahAje.Web.Entities
         public string Desc { set; get; }
         public string ProductCategory { set; get; }
         public double Price { set; get; }
-
+        public HashSet<string> ImageUrl { set; get; }
         public List<SocialRating> Ratings { set; get; }
-
         public List<SocialComment> Comments { set; get; }
-
     }
 
     public class SocialRating

@@ -1248,6 +1248,10 @@ namespace MurahAje.Web
             }
             return new OutputData() { Data = temp, IsSucceed = false };
         }
+        //public OutputData UpdateChildStoreComment()
+        //{
+
+        //}
         [HubMethodName("DeleteStore")]
         public OutputData DeleteStore(int IdStore)
         {
