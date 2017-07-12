@@ -49,12 +49,12 @@
                         <div class="ui form">
                             <div class="field ma-multiple-select">
                                 <label>JENIS TEMPAT MAKAN</label>
-                                <select name="jenis" multiple="" class="ui fluid dropdown">
+                                <select id="CbTempatMakan" name="jenis" multiple="" class="ui fluid dropdown CbTempatMakan">
                                     <option value="Warteg">Warteg</option>
+                                    <option value="Warung Nasi">Warung Nasi</option>
                                     <option value="Kaki Lima">Kaki Lima</option>
-                                    <option value="Warung Nasi">Pedagang Keliling</option>
-                                    <option value="Restoran">Pedagang Keliling</option>
-                                    <option value="Pedagang Keliling">Pedagang Keliling</option>
+                                    <option value="Restoran Kecil">Restoran Kecil</option>
+                                    <option value="Restoran">Restoran </option>
                                 </select>
                             </div>
                             <div class="field">
@@ -78,16 +78,20 @@
                             </div>
                             <div class="field">
                                 <div class="ui checkbox right">
-                                    <label>PORSI BESAR</label>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="CBFasilitas" value="0">
+                                    <label>Parkir Luas</label>
                                 </div>
+                            </div>
+                            <div class="field">
                                 <div class="ui checkbox right">
-                                    <label>PRASMANAN</label>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="CBFasilitas" value="1">
+                                    <label>Porsi Besar</label>
                                 </div>
+                            </div>
+                            <div class="field">
                                 <div class="ui checkbox right">
-                                    <label>PARKIR LUAS</label>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="CBFasilitas" value="2">
+                                    <label>Prasmanan</label>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +167,7 @@
                         Anda berada di : <span class="ma-breadcrumb-nav">BERANDA</span>
                     </div>
                 </div>
-                <div class="ma-carousel owl-carousel">
+                <div id="HomeSlider" class="ma-carousel owl-carousel">
                     <div class="ma-carousel-item">
                         <div class="ma-carousel-img" style="background-image:url(/assets/img/demo/demo1.jpg)"></div>
                         <div class="ma-carousel-text">
@@ -201,6 +205,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="ma-grids">
                     <div class="ma-grid-title">Yang gak kalah seru !</div>
                     <div id="DataSource" class="ui three column doubling stackable grid container">
@@ -478,6 +483,7 @@
         </div>
     </div>
 </div>
+<div id="temp">0</div>
 <script>
     $(function () {
         var hub = $.connection.SocialHub;
@@ -491,19 +497,53 @@
         }
         //page load
         function Page_Load() {
+            //if($('#temp').html().trim()=='0')
             GetAllStores();
         }
 
         function GetAllStores() {
+
             hub.server.GetAllStores().done(function (datas) {
-                $('#DataSource').empty();
-                ListStoreTemplate(datas);
+
+            $('#DataSource').empty();
+                    ListStoreTemplate(datas);
+                
             });
+            hub.server.GetProductByIDStore(4, 'Food').done(function (datas) {
+                //HomeSlider(datas);
+
+            });
+
+
+        }
+        function HomeSlider(datas)
+        {
+            //$('#HomeSlider').empty();
+            var msg = '';
+            $.each(datas, function (i, obj) {
+                msg +=
+                '<div class="ma-carousel-item">' +
+                    '<div class="ma-carousel-img" style="background-image:url(' + obj.imageUrl + ')"></div>' +
+                    '<div class="ma-carousel-text">' +
+                    '<div class="ma-carousel-text-header">REKOMENDASI DI SEKITARMU!</div>' +
+                    '<h1>' + obj.title + '</h1>' +
+                    '<div class="desc">'+obj.desc+'</div>' +
+                    '<a href="/Home/Detailhome">LIHAT</a>' +
+                    '</div>' +
+                    '</div>';
+
+
+
+            });
+            $('#HomeSlider').append(msg);
+        //$('#PanelKomentar').html(msg2);
+        //SearchProductByIdStore();-
+
 
         }
 
         function ListStoreTemplate(datas) {
-            
+
             var msg = "";
             $.each(datas, function (i, obj) {
                 //facility
@@ -545,12 +585,41 @@
                     AvgKenikmatan = AvgKenikmatan / obj.experience.length;
 
                     //berdasarkan persen
-                    AvgMurahMeter = AvgMurahMeter * 100 / 5;
-                    AvgKenikmatan = AvgKenikmatan * 100 / 5;
+                    //AvgMurahMeter = AvgMurahMeter * 100 / 5;
+                    //AvgKenikmatan = AvgKenikmatan * 100 / 5;
                     
                 }
                 catch (err) {
                 }
+
+                var nmeter = "";
+                var pmeter = "";
+                var tpmeter = Math.round(AvgMurahMeter);
+                var tnmeter = Math.round(AvgKenikmatan);
+                if (isNaN(tpmeter)) {
+                    tpmeter = 0;
+                }
+                if (isNaN(tnmeter)) {
+                    tnmeter = 0;
+                }
+
+                for (i = 0; i < tpmeter; i++) {
+                    pmeter += '<a class="item active" href="#"></a>';
+                }
+                var pdislike = 5 - tpmeter;
+                for (i = 0; i < pdislike; i++) {
+                    pmeter += '<a class="item" href="#"></a>';
+                }
+
+
+                for (i = 0; i < tnmeter; i++) {
+                    nmeter += '<a class="item active" href="#"></a>';
+                }
+                var ndislike = 5 - tnmeter;
+                for (i = 0; i < ndislike; i++) {
+                    nmeter += '<a class="item" href="#"></a>';
+                }
+
                 //end rating
 
 
@@ -569,25 +638,17 @@
                     '<div class="column">Murahmeter</div>' +
                     '<div class="column">' +
                     '<div class="ma-murahmeter">' +
-                    '<div class="item active"></div>' +
-                    '<div class="item active"></div>' +
-                    '<div class="item active"></div>' +
-                    '<div class="item"></div>' +
-                    '<div class="item"></div>' +
+                    pmeter +
                     '</div>' +
                     '</div>' +
-                    '<div class="column">Kenikmatan</div>' +
+                    '<div class="column">Nikmat Meter</div>' +
                     '<div class="column">' +
                     '<div class="ma-nikmatmeter">' +
-                    '<div class="item active"></div>' +
-                    '<div class="item active"></div>' +
-                    '<div class="item active"></div>' +
-                    '<div class="item"></div>' +
-                    '<div class="item"></div>' +
+                    nmeter +
                     '</div>' +
                     '</div>' +
-                    '<div class="column">Rekomendasi</div>' +
-                    '<div class="column"><span class="highlight">45 dari 48 orang</span></div>' +
+                    '<div class="column"></div>' +
+                    '<div class="column"></div>' +
                     '</div>' +
                     '<div class="ma-tags">' +
                     '<div class="item ' + pb + '">Porsi Besar</div>' +
@@ -605,10 +666,60 @@
 
             });
 
-            $('#DataSource').html(msg);
+            $('#DataSource').append(msg);
         }
 
+        //event
+        //$(".CbTempatMakan").append('<option value = "Kaki Lima" > Kaki Lima</option >');
+        //$(".CbTempatMakan").multiselect('refresh');
+        //$(".CbTempatMakan").multiselect({
+        //    header: false,
+        //    noneSelectedText: "Select"
+        //});
+        //var count = 2;
+            //$(".CbTempatMakan").append('<option value="option5">Option ' + ++count + '</option>');
+            //$(".CbTempatMakan").multiselect('refresh');
+        
+        $(".CbTempatMakan").dropdown({
 
+            onChange: function (val) {
+
+                $('#DataSource').empty();  
+                var str = "";
+                $(".CbTempatMakan option:selected").each(function () {
+                    str += $(this).val() + "||";
+                });
+                var allval = "";
+                $(".CbTempatMakan option").each(function () {
+                    allval += $(this).val() + "||";
+                });
+                allarr = allval.split('||');
+                arr = str.split('||');
+                //var sortBy = $(".CbUrutkan").dropdown('get value');
+                var arrFas = [];
+                $("input:checkbox[name=CBFasilitas]:checked").each(function () {
+                    arrFas.push($(this).val());
+                });
+
+                //var sHighestPrice = $("#maksimal").val();
+                //var sLowestPrice = $("#minimal").val();
+                //if (sHighestPrice.trim() == "") {
+                //    sHighestPrice = 0;
+                //}
+                //if (sLowestPrice.trim() == "") {
+                //    sLowestPrice = 0;
+
+                //}
+
+                $('#temp').empty();
+                $.each(arr, function (i, obj) {
+                    hub.server.GetStores("", obj, 0, 0, arrFas).done(function (datas) {
+                        if(i != arr.length-1) 
+                        ListStoreTemplate(datas);
+                    });
+                });
+            }
+        });
 
     });
 </script>

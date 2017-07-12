@@ -195,11 +195,11 @@
                         </div>
                     </div>
                     <div class="ma-tabs">
-                        <a class="item" href="/Home/Detailhome">/Home/Detail</a>
-                        <a class="item" href="/Home/Detailmenu">Menu</a>
-                        <a class="item" href="/Home/Detailulasan">Ulasan</a>
-                        <a class="item active" href="/Home/Detailfoto">Foto<br /><i class="icon ellipsis horizontal"></i></a>
-                    </div>
+                    <a class="item" id="detail">Detail<br /></a>
+                    <a id="menu" class="item">Menu</a>
+                    <a id="ulasan" class="item">Ulasan</a>
+                    <a id="foto" class="item active">Foto<br /><i class="icon ellipsis horizontal"></i></a>
+                </div>
                     <div class="ma-box-container spacedbottom">
                         <div class="ma-box-header">
                             <h4>Galeri Foto</h4>
@@ -211,15 +211,8 @@
                             </div>
                         </div>
                         <div class="ma-box-body ma-grad " style="max-height:initial;">
-                            <div class="ma-gallery">
-                                <div class="item" style="background-image:url(/assets/img/demo/demo1.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div id="ListAllPhoto" class="ma-gallery">
+                                
                                 <div class="item" style="background-image:url(/assets/img/demo/demo2.jpg)">
                                     <div class="layer">
                                         <div>
@@ -392,3 +385,34 @@
         </div>
     </div>
 </div>
+<script>
+    function getUrlVars() {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+
+    var hub = $.connection.SocialHub;
+    $.connection.hub.logging = true;
+    Init()
+    function Init() {
+        $.connection.hub.start().done(function () {
+            console.log('connection ready..');
+            Page_Load();
+        });
+    }
+    $('#detail').attr('href', '/Home/Detailhome?IdStore=' + getUrlVars()["IdStore"]);
+    $('#ulasan').attr('href', '/Home/Detailulasan?IdStore=' + getUrlVars()["IdStore"]);
+    $('#menu').attr('href', '/Home/Detailmenu?IdStore=' + getUrlVars()["IdStore"]);
+    $('#foto').attr('href', '/Home/Detailfoto?IdStore=' + getUrlVars()["IdStore"]);
+
+
+    function Page_Load() {
+        GetAllStores();
+    }
+</script>

@@ -16,8 +16,14 @@
         <td>Harga :</td>
         <td><input type="text" id="TxtHarga" /></td>
     </tr>
+    <tr>
+        <td>Gambar :</td>
+        <td><input type="file" id="TxtGambar" /></td>
+    </tr>
 </table>
 <button id="BtnTambahMenu">Tambah Menu</button>
+
+<br /><br /><br />
 <div id="Product">
 
 </div>
@@ -72,17 +78,47 @@
             SearchStoresByID();
         });
         $('#BtnTambahMenu').click(function () {
+
+            var IDFileUpload = 'TxtGambar';
+            var formData = new FormData();
+            var totalFiles = document.getElementById(IDFileUpload).files.length;
+
+            for (var i = 0; i < totalFiles; i++) {
+                var file = document.getElementById(IDFileUpload).files[i];
+                formData.append(IDFileUpload, file);
+            }
+            //var xhr = new XMLHttpRequest;
+            //xhr.open('POST', '/api/Media', true);
+            //xhr.send(formData);
+            $.ajax({
+                type: 'POST',
+                url: '/api/Media',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    AddMenu(response['url']);
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            });
+            
+        });
+        function AddMenu(url)
+        {
             var Title = $('#TxtNamaMakanan').val().trim();
             var Desc = $('#TxtDeskripsi').val();
             var Price = $('#TxtHarga').val();
             var IdStore = getUrlVars()["IdStore"];
             $.connection.hub.start().done(function () {
                 console.log('connection ready..');
-                hub.server.AddProduct(IdStore, Title, Desc, Price).done(function (Data) {
-                    SearchProductByIdStore();
+                hub.server.AddProduct(IdStore, Title, Desc, Price, "Food", "Food", url).done(function (Data) {
+
                 });
             });
-        });
+        }
         $('#BtnKomentar').click(function () {
             var Komentar = $('#Komentar').val().trim();
             var MurahMeter = $('#Murahmeter').val();

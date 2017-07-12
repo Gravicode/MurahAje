@@ -23,7 +23,15 @@
                     Desc
                 </td>
                 <td>
-                    <input id="desc" type="text"/>
+                    <input id="desc" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City
+                </td>
+                <td>
+                    <input id="city" type="text" />
                 </td>
             </tr>
 
@@ -230,7 +238,7 @@
             var title = $('#title').val().trim();
             var desc = $('#desc').val().trim();
             var StoreCategory = $('#StoreCategory option:selected').text().trim();
-            var City = $('#City').val();
+            var City = $('#city').val();
             var Facilities = Fas;
 
             $.connection.hub.start().done(function () {

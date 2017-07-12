@@ -35,8 +35,10 @@ namespace MurahAje.Web.Controllers
                 var ms = new MemoryStream();
                 var files = collection.Files;
                 string url ="";
+                string ext = "";
                 foreach (var formFile in files)
                 {
+                    ext = System.IO.Path.GetExtension(formFile.FileName);
                     if (formFile.Length > 0)
                     {
                         
@@ -56,7 +58,7 @@ namespace MurahAje.Web.Controllers
                         CloudBlobContainer container = blobClient.GetContainerReference("products");
 
                         // Retrieve reference to a blob named "myblob".
-                        CloudBlockBlob blockBlob = container.GetBlockBlobReference(uniq + ".PNG");
+                        CloudBlockBlob blockBlob = container.GetBlockBlobReference(uniq + ext);
 
                         // Create or overwrite the "myblob" blob with contents from a local file.
 

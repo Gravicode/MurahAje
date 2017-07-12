@@ -181,8 +181,6 @@
                             </div>
                         </div>
                         <div class="item others">
-                            <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
-                            <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
                             <div class="box" style="background-image:url(/assets/img/demo/demo3.jpg)"></div>
                             <div class="box" style="background-image:url(/assets/img/demo/demo4.jpg)"></div>
                             <div class="box" style="background-image:url(/assets/img/demo/demo5.jpg)"></div>
@@ -195,10 +193,10 @@
                         </div>
                     </div>
                     <div class="ma-tabs">
-                        <a class="item active" href="/Home/Detailhome">/Home/Detail<br /><i class="icon ellipsis horizontal"></i></a>
-                        <a class="item" href="/Home/Detailmenu">Menu</a>
+                        <a class="item active" id="detail">Detail<br /><i class="icon ellipsis horizontal"></i></a>
+                        <a id="menu" class="item">Menu</a>
                         <a id="ulasan" class="item" >Ulasan</a>
-                        <a class="item" href="/Home/Detailfoto">Foto</a>
+                        <a id="foto" class="item">Foto</a>
                     </div>
                     <div class="ma-box-container">
                         <div class="header">
@@ -390,8 +388,10 @@
 </div>
 <script>
     $(function () {
-        href="/Home/Detailulasan?IdStore="
-        var a_href = $('#ulasan').attr('href', '/Home/Detailulasan?IdStore=' + getUrlVars()["IdStore"]);
+        $('#detail').attr('href', '/Home/Detailhome?IdStore=' + getUrlVars()["IdStore"]);
+        $('#ulasan').attr('href', '/Home/Detailulasan?IdStore=' + getUrlVars()["IdStore"]);
+        $('#menu').attr('href', '/Home/Detailmenu?IdStore=' + getUrlVars()["IdStore"]);
+        $('#foto').attr('href', '/Home/Detailfoto?IdStore=' + getUrlVars()["IdStore"]);
 
 
         function getUrlVars() {

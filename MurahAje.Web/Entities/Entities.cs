@@ -138,7 +138,6 @@ namespace MurahAje.Web.Entities
         public int TotalPost { set; get; }
         public bool IsFollowing { set; get; }
     }
-
     
     public class FollowResult
     {

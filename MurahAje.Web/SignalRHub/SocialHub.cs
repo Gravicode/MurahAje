@@ -1126,27 +1126,40 @@ namespace MurahAje.Web
         {
             var datas = from x in db.GetAllData<Product>()
                         where x.IDBusiness == sIDStore && x.ProductCategory == sProductCategory
-                        orderby x ascending
+                        //orderby x ascending
                         select x;
             return datas;
         }
         [HubMethodName("AddProduct")]
-        public OutputData AddProduct(long sIdStore, string sTitle, string sDesc, double sPrice)
+        public OutputData AddProduct(long sIdStore, string sTitle, string sDesc, double sPrice, string sBusinessTitle, string sProductCategory, string sImageUrl)
         {
             //insert facilities
            //endf
             string Username = Context.User.Identity.Name;
+            var iu = new HashSet<string>();
+            iu.Add(sImageUrl);
             var node = new Product()
             {
                 Id = db.GetSequence<Product>(),
+                IDBusiness = sIdStore,
+                BusinessTitle = sBusinessTitle,
                 Title = sTitle,
                 Desc = sDesc,
-                IDBusiness = sIdStore,
-                Price = sPrice
+                ProductCategory = sProductCategory,
+                Price = sPrice,
+                ImageUrl = iu,
+                Ratings = new List<SocialRating>(),
+                Comments = new List<SocialComment>()
             };
             db.InsertData<Product>(node);
             return new OutputData() { Data = node, IsSucceed = true };
         }
+        //[HubMethodName("GetProduct")]
+        //public OutputData GetProduct(long sIdBusiness, string sBusinessTitle)
+        //{
+        //    var datas = db.GetAllData<Product>().Where(x => x.Id == sIdBusiness && x.BusinessTitle == sBusinessTitle);
+        //    return datas;
+        //}
 
         [HubMethodName("AddStore")]
         public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, string sCity, string[] sFacilities, string sImageUrl)
