@@ -1038,7 +1038,7 @@ namespace MurahAje.Web
 
 
         [HubMethodName("GetStores")]
-        public IEnumerable<Business> GetStores(string SortBy, string sStoreCategory, double sHighestPrice, double sLowestPrice, int [] iFasility)
+        public IEnumerable<Business> GetStores(string SortBy, string sStoreCategory, double sHighestPrice, double sLowestPrice, string [] iFasility)
         {
             var datas = db.GetAllData<Business>().Where(x => x.Id != null);
 
@@ -1046,26 +1046,27 @@ namespace MurahAje.Web
             {
                 datas = db.GetAllData<Business>().Where(x => x.Category.Trim() == sStoreCategory);
             }
-            foreach (int option in iFasility)
+            foreach (string option in iFasility)
             {
-                switch (option)
-                {
-                    case 0:
-                        {
-                            datas = datas.Where(x => x.Facilities.Contains("Parkir Luas"));
-                        }
-                        break;
-                    case 1:
-                        {
-                            datas = datas.Where(x => x.Facilities.Contains("Porsi Besar"));
-                        }
-                        break;
-                    case 2:
-                        {
-                            datas = datas.Where(x => x.Facilities.Contains("Prasmanan"));
-                        }
-                        break;
-                }
+                //switch (option)
+                //{
+                //    case 0:
+                //        {
+                //            datas = datas.Where(x => x.Facilities.Contains("Parkir Luas"));
+                //        }
+                //        break;
+                //    case 1:
+                //        {
+                //            datas = datas.Where(x => x.Facilities.Contains("Porsi Besar"));
+                //        }
+                //        break;
+                //    case 2:
+                //        {
+                //            datas = datas.Where(x => x.Facilities.Contains("Prasmanan"));
+                //        }
+                //        break;
+                //}
+                datas = datas.Where(x => x.Facilities.Contains(option.Trim()));
             }
             if (!string.IsNullOrEmpty(SortBy))
             {
@@ -1122,12 +1123,17 @@ namespace MurahAje.Web
         }
 
         [HubMethodName("GetProductByIDStore")]
-        public IEnumerable<Product> GetProductByIDStore(long sIDStore,string sProductCategory)
+        public IEnumerable<Product> GetProductByIDStore(long sIDStore, string sProductCategory)
         {
             var datas = from x in db.GetAllData<Product>()
-                        where x.IDBusiness == sIDStore && x.ProductCategory == sProductCategory
-                        //orderby x ascending
+                        where x.IDBusiness == sIDStore
                         select x;
+
+            if (sProductCategory.Trim() != "All")
+            {
+                datas = datas.Where(x => x.ProductCategory == sProductCategory);
+            }
+
             return datas;
         }
         [HubMethodName("AddProduct")]
@@ -1162,7 +1168,7 @@ namespace MurahAje.Web
         //}
 
         [HubMethodName("AddStore")]
-        public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, string sCity, string[] sFacilities, string sImageUrl)
+        public OutputData AddStore(string sTitle, string sDesc, string sStoreCategory, string sCity, string[] sFacilities, string sImageUrl, double slongitude, double slatitude)
         {
             //insert facilities
             string value = "";
@@ -1183,7 +1189,9 @@ namespace MurahAje.Web
                 Desc = sDesc,
                 Address = new SocialAddress()
                 {
-                    City = sCity
+                    City = sCity,
+                    Latitude = slatitude,
+                    Longitude = slongitude
                 },
                 PriceMeter = new List<SocialRating>(),
                 Recommendation = new List<SocialRecommendation>(),

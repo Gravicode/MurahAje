@@ -1,39 +1,61 @@
 ﻿<div>
+
+    <p style="display:none" id='latitudeAndLongitude'></p>
+    <p style="display:none" id='address'></p>
+    <div style="width:200px;height:200px" id="map">
+
+    </div>
     <div>
         @{
             ViewData["Title"] = "Tambah Toko";
         }
-       
+
         <h2>@ViewData["Title"].</h2>
         @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
 
 
-        <table>
-            <tr>
-                <td>
-                    Title
-                </td>
-                <td>
-                    <input id="title" type="text"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Desc
-                </td>
-                <td>
-                    <input id="desc" type="text" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    City
-                </td>
-                <td>
-                    <input id="city" type="text" />
-                </td>
-            </tr>
+            <table>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        <input id="title" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Desc
+                    </td>
+                    <td>
+                        <input id="desc" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Alamat
+                    </td>
+                    <td>
+                        <textarea id="location" type="text"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Kota
+                    </td>
+                    <td>
+                        <input id="city" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Negara
+                    </td>
+                    <td>
+                        <input id="country" type="text" />
+                    </td>
+                </tr>
 
                 <tr>
                     <td>
@@ -43,90 +65,13 @@
                         <input type="file" id="imageUploadForm" name="image" multiple="multiple" />
                     </td>
                 </tr>
-            <tr>
-                <td>
-                    StoreCategory
-                </td>
-
-                <td>
-                    <select id="StoreCategory">
-                        <option disabled selected>
-                            Pilih satu:
-                        </option>
-                        <option>
-                            Warteg
-                        </option>
-                        <option>
-                            Warung Nasi
-                        </option>
-                        <option>
-                            Kaki Lima
-                        </option>
-                        <option>
-                            Pedagang Keliling
-                        </option>
-                        <option>
-                            Restoran
-                        </option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Facilities
-                </td>
-
-                <td>
-                    <input type="checkbox" class="Facilities" name="Facilities" value="Parkir Luas"> Parkir Luas<br>
-                    <input type="checkbox" class="Facilities" name="Facilities" value="Porsi Besar"> Porsi Besar<br>
-                    <input type="checkbox" class="Facilities" name="Facilities" value="Prasmanan"> Prasmanan<br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-
-                </td>
-                <td>
-                    <button type="button" id="BtnTambahToko" onclick="upload()" >Button</button>
-                    <button type="button" id="BtnDeleteAll">DeleteAll</button>
-
-                </td>
-            </tr>
-        </table>
-        }
-    </div>
-    
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    @*<script type="text/javascript">
-        window.onload = function () {
-            var mapOptions = {
-                center: new google.maps.LatLng(-6.256, 106.851),
-                zoom: 14,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var infoWindow = new google.maps.InfoWindow();
-            var latlngbounds = new google.maps.LatLngBounds();
-            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
-            google.maps.event.addListener(map, 'click', function (e) {
-                alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
-            });
-        }
-    </script>
-    <div id="dvMap" style="width: 500px; height: 500px">*@
-
-        <div id="PanelFilter">
-            <h2>Filter Berdasrkan</h2>
-            <table>
                 <tr>
-                    <td>Cari    </td>
                     <td>
-                        <input id="txtTitle" type="text" />
+                        StoreCategory
                     </td>
-                </tr>
-                <tr>
-                    <td>Jenis Tempat Makanan </td>
+
                     <td>
-                        <select id="StoreCategory2">
+                        <select id="StoreCategory">
                             <option disabled selected>
                                 Pilih satu:
                             </option>
@@ -142,78 +87,221 @@
                             <option>
                                 Pedagang Keliling
                             </option>
+                            <option>
+                                Restoran
+                            </option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td>Urutkan </td>
                     <td>
-                        <select id="sortby">
-                            <option disabled selected>Pilih Satu</option>
-                            <option>Terdekat</option>
-                            <option>Terjauh</option>
-                            <option>Termurah</option>
-                            <option>Termahal</option>
-                            <option>Terpopuler</option>
-                        </select>
+                        Facilities
+                    </td>
+
+                    <td>
+                        <input type="checkbox" class="Facilities" name="Facilities" value="Parkir Luas"> Parkir Luas<br>
+                        <input type="checkbox" class="Facilities" name="Facilities" value="Porsi Besar"> Porsi Besar<br>
+                        <input type="checkbox" class="Facilities" name="Facilities" value="Prasmanan"> Prasmanan<br>
                     </td>
                 </tr>
                 <tr>
-                    <td>Kisaran Harga </td>
-                </tr>
-                <tr>
+                    <td></td>
                     <td>
-                        Minimal : <br />
-                        <input id="Minimal" type="text" />
-                    </td>
-                    <td>
-                        Maksimal : <br />
-                        <input id="Maksimal" type="text" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="vehicle" value="Bike"> Porsi Besar<br>
-                        <input type="checkbox" name="vehicle" value="Car"> Prasmanan<br>
-                        <input type="checkbox" name="vehicle" value="Car"> Parkir Luas<br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button id="BtnSearch" type="button">Button</button>
+                        <button type="button" id="BtnTambahToko" onclick="upload()">Button</button>
+                        <button type="button" id="BtnDeleteAll">DeleteAll</button>
+
                     </td>
                 </tr>
             </table>
-
-        </div>
-        <div>
-            <h3>Search Result</h3>
-
-            <div id="SearchResult">
-
-            </div>
-
-            <h3>All Store</h3>
-
-            <div id="DataStore">
-
-            </div>
-
-
-        </div>
+        }
     </div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<script type="text/javascript">
-    function upload() {
-    }
 
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    @*<script type="text/javascript">
+            window.onload = function () {
+                var mapOptions = {
+                    center: new google.maps.LatLng(-6.256, 106.851),
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var infoWindow = new google.maps.InfoWindow();
+                var latlngbounds = new google.maps.LatLngBounds();
+                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                google.maps.event.addListener(map, 'click', function (e) {
+                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                });
+            }
+        </script>
+        <div id="dvMap" style="width: 500px; height: 500px">*@
+
+    <div id="PanelFilter">
+        <h2>Filter Berdasrkan</h2>
+        <table>
+            <tr>
+                <td>Cari    </td>
+                <td>
+                    <input id="txtTitle" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Jenis Tempat Makanan </td>
+                <td>
+                    <select id="StoreCategory2">
+                        <option disabled selected>
+                            Pilih satu:
+                        </option>
+                        <option>
+                            Warteg
+                        </option>
+                        <option>
+                            Warung Nasi
+                        </option>
+                        <option>
+                            Kaki Lima
+                        </option>
+                        <option>
+                            Pedagang Keliling
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Urutkan </td>
+                <td>
+                    <select id="sortby">
+                        <option disabled selected>Pilih Satu</option>
+                        <option>Terdekat</option>
+                        <option>Terjauh</option>
+                        <option>Termurah</option>
+                        <option>Termahal</option>
+                        <option>Terpopuler</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Kisaran Harga </td>
+            </tr>
+            <tr>
+                <td>
+                    Minimal : <br />
+                    <input id="Minimal" type="text" />
+                </td>
+                <td>
+                    Maksimal : <br />
+                    <input id="Maksimal" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="vehicle" value="Bike"> Porsi Besar<br>
+                    <input type="checkbox" name="vehicle" value="Car"> Prasmanan<br>
+                    <input type="checkbox" name="vehicle" value="Car"> Parkir Luas<br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="BtnSearch" type="button">Button</button>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div>
+        <h3>Search Result</h3>
+
+        <div id="SearchResult">
+
+        </div>
+
+        <h3>All Store</h3>
+
+        <div id="DataStore">
+
+        </div>
+
+
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div id="longitude"></div>
+<div id="latitude"></div>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOB3hwNufN6l_XAObeNSlXaxMX3GZMljs&callback=initMap"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    getloc();
+    function initMap(long, latt) {
+        var geocoder = new google.maps.Geocoder();
+        var uluru = { lat: latt, lng: long };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+        google.maps.event.addListener(map, 'click', function (event) {
+            geocoder.geocode({
+                'latLng': event.latLng
+            }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+
+                        $('#location').val(results[0].formatted_address);
+                        $('#longitude').html(event.latLng.lng());
+                        $('#latitude').html(event.latLng.lat());
+                    }
+                }
+            });
+        });
+    }
+    function getloc() {
+        var latitudeAndLongitude = document.getElementById("latitudeAndLongitude"),
+            location = {
+                latitude: '',
+                longitude: ''
+            };
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        else {
+            latitudeAndLongitude.innerHTML = "Geolocation is not supported by this browser.";
+        }
+
+    }
+    function showPosition(position) {
+        location.latitude = position.coords.latitude;
+        location.longitude = position.coords.longitude;
+        latitudeAndLongitude.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        var geocoder = new google.maps.Geocoder();
+        var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+
+        initMap(position.coords.longitude, position.coords.latitude);
+        //if (geocoder) {
+        //    geocoder.geocode({ 'latLng': latLng }, function (results, status) {
+        //        if (status == google.maps.GeocoderStatus.OK) {
+        //            console.log(results[0].formatted_address);
+        //            $('#address').html('Address:' + results[0].formatted_address);
+        //        }
+        //        else {
+        //            $('#address').html('Geocoding failed: ' + status);
+        //            console.log("Geocoding failed: " + status);
+        //        }
+        //    }); //geocoder.geocode()
+        //}
+    } //showPosition
+    function upload()
+    { }
     $(function () {
-        
+
 
         var hub = $.connection.SocialHub;
         $.connection.hub.logging = true;
@@ -238,12 +326,12 @@
             var title = $('#title').val().trim();
             var desc = $('#desc').val().trim();
             var StoreCategory = $('#StoreCategory option:selected').text().trim();
-            var City = $('#city').val();
+            var location = $('#location').val();
             var Facilities = Fas;
 
             $.connection.hub.start().done(function () {
                 console.log('connection ready..');
-                hub.server.AddStore(title, desc, StoreCategory, City, Facilities, url).done(function (Data) {
+                hub.server.AddStore(title, desc, StoreCategory, location, Facilities, url, $('#longitude').html(), $('#latitude').html()).done(function (Data) {
 
                 });
             });
@@ -264,7 +352,7 @@
                 msg += "<th>Id</th>";
                 msg += "<th>Title</th>";
                 msg += "<th>Desc</th>";
-               
+
                 msg += "<th>City</th>";
                 msg += "<th>Facilities</th>";
                 msg += "<th></th>";
@@ -320,7 +408,7 @@
                 msg += "<th>Title</th>";
                 msg += "<th>Desc</th>";
                 msg += "<th>StoreCategory</th>";
-                
+
                 msg += "<th>City</th>";
                 msg += "<th>Facilities</th>";
                 msg += "<th>image</th>";
@@ -343,7 +431,7 @@
                     msg += "<td>" + obj.category + "</td>";
                     msg += "<td>" + obj.address["city"] + "</td>";
                     msg += "<td>" + msgf + "</td>";
-                    msg += "<td><img height=100 width=100 src='"+obj.imageUrl+"'/></td>";
+                    msg += "<td><img height=100 width=100 src='" + obj.imageUrl + "'/></td>";
                     msg += "<td><a href=/home/DetailStore?IdStore=" + obj.id + ">Detail Toko</a></td>";
                     msg += "</tr>";
                 });
@@ -354,7 +442,7 @@
         }
         //event
         $('#BtnSearch').click(function () {
-            
+
             $.connection.hub.start().done(function () {
                 console.log('connection ready..');
                 SearchStores();
@@ -390,11 +478,11 @@
 
         });
         $('#BtnDeleteAll').click(function () {
-            
+
             $.connection.hub.start().done(function () {
                 console.log('connection ready..');
-                hub.server.DeleteStore(10).done(function(data){
-                    
+                hub.server.DeleteStore(10).done(function (data) {
+
                 });
             });
         });

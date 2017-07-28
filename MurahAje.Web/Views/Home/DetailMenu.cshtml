@@ -3,564 +3,838 @@
 }
 	
 <!-- Main Content -->
-<div class="pusher">
-    <div class="ui container">
-        <!-- Main Menu -->
-        <div class="ui small secondary menu ma-menu">
-            <a class="toc item transparent mobile-l"><i class="sidebar icon"></i></a>
-            <a href="home" class="ma-logo desktop-l"><img src="/assets/img/murahaje-logo.png" /></a>
-            <span class="ma-search desktop-l">
-                <div class="ui input borderless right labeled">
-                    <input placeholder="Ane lagi nyari" type="text">
-                    <div class="ui buttons ma-button-location">
-                        <div class="ui button">
-                            <div class="ui input transparent left icon ma-button-location-txt">
-                                <i class="marker icon"></i>
-                                <input placeholder="Tulis lokasi" type="text">
+<div id="test"></div>
+<div id="info"></div>
+<p style="display:none" id='latitudeAndLongitude'></p>
+<p style="display:none" id='address'></p>
+<div style="width:200px;height:200px" id="map">
+
+    </div>
+<div id="side_bar"></div>
+
+
+    <div class="pusher">
+        <div class="ui container">
+            <!-- Main Menu -->
+            <div class="ui small secondary menu ma-menu">
+                <a class="toc item transparent mobile-l"><i class="sidebar icon"></i></a>
+                <a href="home" class="ma-logo desktop-l"><img src="/assets/img/murahaje-logo.png" /></a>
+                <span class="ma-search desktop-l">
+                    <div class="ui input borderless right labeled">
+                        <input placeholder="Ane lagi nyari" type="text">
+                        <div class="ui buttons ma-button-location">
+                            <div class="ui button">
+                                <div class="ui input transparent left icon ma-button-location-txt">
+                                    <i class="marker icon"></i>
+                                    <input placeholder="Tulis lokasi" type="text">
+                                </div>
+                                <span class="ma-button-location-lbl hidden">
+                                    <i class="crosshairs icon"></i> di lokasi ane
+                                </span>
                             </div>
-                            <span class="ma-button-location-lbl hidden">
-                                <i class="crosshairs icon"></i> di lokasi ane
-                            </span>
-                        </div>
-                        <div class="ui floating dropdown icon button">
-                            <i class="dropdown icon"></i>
-                            <div class="menu">
-                                <div class="item"><i class="crosshairs icon"></i> di lokasi ane</div>
-                                <div class="item"><i class="map pin icon"></i> Pilih di peta</div>
-                                <div class="item"><i class="marker icon"></i> Tulis lokasi</div>
+                            <div class="ui floating dropdown icon button">
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <div class="item"><i class="crosshairs icon"></i> di lokasi ane</div>
+                                    <div class="item"><i class="map pin icon"></i> Pilih di peta</div>
+                                    <div class="item"><i class="marker icon"></i> Tulis lokasi</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </span>
-            <div class="right item">
-                <span class="ma-buttons">
-                    <a class="ui button basic icon inverted ma-button-circle"><i class="home icon"></i></a>
-                    <a class="ui button basic icon inverted ma-button-circle"><i class="comment icon"></i><span class="badge">5</span></a>
-                    <a class="ui button basic icon inverted ma-button-circle"><i class="ellipsis horizontal icon"></i><span class="badge">10</span></a>
                 </span>
-                <a class="ui inverted button mobile-l ma-button-light center aligned icon" onclick="_ma_showSignRegPopup();return false;"><i class="lock icon large"></i></a>
-                <a class="ui inverted button ma-button-light desktop-l" onclick="_ma_showSignRegPopup();return false;">LOGIN / SIGNUP</a>
-            </div>
-        </div>
-        <div class="ma-content-block">
-            <!-- Sidebar -->
-            <div class="ma-content-sidebar">
-                <div class="ui fluid accordion">
-                    <div class="active title">
-                        Makan Murah
-                        <i class="ellipsis horizontal icon large"></i>
-                    </div>
-                    <div class="active content">
-                        <div class="ui form">
-                            <div class="field ma-multiple-select">
-                                <label>JENIS TEMPAT MAKAN</label>
-                                <select name="jenis" multiple="" class="ui fluid dropdown">
-                                    <option value="0">Warteg</option>
-                                    <option value="1">Kaki Lima</option>
-                                    <option value="2">Pedagang Keliling</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label>URUTKAN</label>
-                                <select name="urut" class="ui fluid dropdown">
-                                    <option value="0">Terdekat</option>
-                                    <option value="1">Terjauh</option>
-                                    <option value="2">Termurah</option>
-                                    <option value="3">Termahal</option>
-                                    <option value="4">Terpopuler</option>
-                                    <option value="5">A-Z</option>
-                                    <option value="6">Z-A</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label>KISARAN HARGA</label>
-                                <input type="number" name="harga_min" step="500" placeholder="minimal Rp">
-                            </div>
-                            <div class="field">
-                                <input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
-                            </div>
-                            <div class="field">
-                                <div class="ui checkbox right">
-                                    <label>PORSI BESAR</label>
-                                    <input type="checkbox">
-                                </div>
-                                <div class="ui checkbox right">
-                                    <label>PRASMANAN</label>
-                                    <input type="checkbox">
-                                </div>
-                                <div class="ui checkbox right">
-                                    <label>PARKIR LUAS</label>
-                                    <input type="checkbox">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="title">
-                        Nginep Murah
-                        <i class="ellipsis horizontal icon large"></i>
-                    </div>
-                    <div class="content">
-                        <div class="ui form">
-                            <div class="field ma-multiple-select">
-                                <label>JENIS PENGINAPAN</label>
-                                <select name="jenis" multiple="" class="ui fluid dropdown">
-                                    <option value="0">Rumah</option>
-                                    <option value="1">Losmen</option>
-                                    <option value="2">Hotel</option>
-                                    <option value="3">Villa</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label>URUTKAN</label>
-                                <select name="urut" class="ui fluid dropdown">
-                                    <option value="0">Terdekat</option>
-                                    <option value="1">Terjauh</option>
-                                    <option value="2">Termurah</option>
-                                    <option value="3">Termahal</option>
-                                    <option value="4">Terpopuler</option>
-                                    <option value="5">A-Z</option>
-                                    <option value="6">Z-A</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label>KISARAN HARGA</label>
-                                <input type="number" name="harga_min" step="500" placeholder="minimal Rp">
-                            </div>
-                            <div class="field">
-                                <input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="title">
-                        Cuci Gudang
-                        <i class="ellipsis horizontal icon large"></i>
-                    </div>
-                    <div class="content">
-                        <div class="ui form">
-                            <div class="field">
-                                <label>URUTKAN</label>
-                                <select name="urut" class="ui fluid dropdown">
-                                    <option value="0">Terdekat</option>
-                                    <option value="1">Terjauh</option>
-                                    <option value="2">Termurah</option>
-                                    <option value="3">Termahal</option>
-                                    <option value="4">Terpopuler</option>
-                                    <option value="5">A-Z</option>
-                                    <option value="6">Z-A</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label>KISARAN HARGA</label>
-                                <input type="number" name="harga_min" step="500" placeholder="minimal Rp">
-                            </div>
-                            <div class="field">
-                                <input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
-                            </div>
-                        </div>
-                    </div>
+                <div class="right item">
+                    <span class="ma-buttons">
+                        <a class="ui button basic icon inverted ma-button-circle"><i class="home icon"></i></a>
+                        <a class="ui button basic icon inverted ma-button-circle"><i class="comment icon"></i><span class="badge">5</span></a>
+                        <a class="ui button basic icon inverted ma-button-circle"><i class="ellipsis horizontal icon"></i><span class="badge">10</span></a>
+                    </span>
+                    <a class="ui inverted button mobile-l ma-button-light center aligned icon" onclick="_ma_showSignRegPopup();return false;"><i class="lock icon large"></i></a>
+                    <a class="ui inverted button ma-button-light desktop-l" onclick="_ma_showSignRegPopup();return false;">LOGIN / SIGNUP</a>
                 </div>
             </div>
-            <!-- Content -->
-            <div class="ma-content">
-                <div class="ma-content-header">
-                    <div class="ma-breadcrumb">
-                        Anda berada di : <span class="ma-breadcrumb-nav">BERANDA / Warung Nasi Ibu Ndut</span>
-                    </div>
-                </div>
-                <div class="ma-content-/Home/Detail-bg"></div>
-                <div class="ma-content-/Home/Detail">
-                    <div class="ma-content-/Home/Detail-title">
-                        <div class="right floated ma-score"><h1>4.0</h1><span>/5.0</span></div>
-                        <h1 class="ui inverted"><span>WARUNG NASI IBU NDUT</span> <div class="ui label circular"><i class="icon checkmark"></i></div></h1>
-                    </div>
-                    <div class="ma-content-images">
-                        <div class="item main" style="background-image:url(/assets/img/demo/demo1.jpg)">
-                            <div class="quote">
-                                Nasi Rames favorit saya, tongkol baladonya nendang, Porsi nasinya guede, sambelnya pedes, harganya sangat bersahabat <span class="author">Uvuvwevwevwe Onyetenyevwe Ugwemubwen Ossas - Jasinga</span>
-                            </div>
+            <div class="ma-content-block">
+                <!-- Sidebar -->
+                <div class="ma-content-sidebar">
+                    <div class="ui fluid accordion">
+                        <div class="active title">
+                            Makan Murah
+                            <i class="ellipsis horizontal icon large"></i>
                         </div>
-                        <div class="item others">
-                            <div class="box" style="background-image:url(/assets/img/demo/demo1.jpg)"></div>
-                            <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
-                            <div class="box" style="background-image:url(/assets/img/demo/demo3.jpg)"></div>
-                            <div class="box" style="background-image:url(/assets/img/demo/demo4.jpg)"></div>
-                            <div class="box" style="background-image:url(/assets/img/demo/demo5.jpg)"></div>
-                            <div class="box" style="background-image:url(/assets/img/demo/demo3.jpg)"></div>
-                            <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
-                            <div class="box" style="background-image:url(/assets/img/demo/demo4.jpg)"></div>
-                            <div class="box" style="background-image:url(/assets/img/demo/demo1.jpg)">
-                                <div class="layer">+27</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ma-tabs">
-                        <a class="item" id="detail">Detail<br /></a>
-                        <a id="menu" class="item active">Menu<br /><i class="icon ellipsis horizontal"></i></a>
-                        <a id="ulasan" class="item">Ulasan</a>
-                        <a id="foto" class="item">Foto</a>
-                    </div>
-                    <div class="ui stackable divided stackable grid noborder">
-                        <div class="eleven wide column ">
-                            <div class="ma-box-container">
-                                <div class="ma-box-header">
-                                    <h4>Menu Andalan</h4>
-                                    <div class="ma-tabs">
-                                        <a class="ma-link-right" style="cursor: pointer;" onclick="DispPopUpAddMenu()"><i class="icon plus"></i> Tambah menu</a>
-                                        <a class="item" href="#">Semua</a>
-                                        <a class="item active" href="#">Paket</a>
-                                        <a class="item" href="#">Lauk</a>
-                                        <a class="item" href="#">Minuman</a>
+                        <div class="active content">
+                            <div class="ui form">
+                                <div class="field ma-multiple-select">
+                                    <label>JENIS TEMPAT MAKAN</label>
+                                    <select name="jenis" multiple="" class="ui fluid dropdown">
+                                        <option value="0">Warteg</option>
+                                        <option value="1">Kaki Lima</option>
+                                        <option value="2">Pedagang Keliling</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label>URUTKAN</label>
+                                    <select name="urut" class="ui fluid dropdown">
+                                        <option value="0">Terdekat</option>
+                                        <option value="1">Terjauh</option>
+                                        <option value="2">Termurah</option>
+                                        <option value="3">Termahal</option>
+                                        <option value="4">Terpopuler</option>
+                                        <option value="5">A-Z</option>
+                                        <option value="6">Z-A</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label>KISARAN HARGA</label>
+                                    <input type="number" name="harga_min" step="500" placeholder="minimal Rp">
+                                </div>
+                                <div class="field">
+                                    <input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox right">
+                                        <label>PORSI BESAR</label>
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="ui checkbox right">
+                                        <label>PRASMANAN</label>
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="ui checkbox right">
+                                        <label>PARKIR LUAS</label>
+                                        <input type="checkbox">
                                     </div>
                                 </div>
-                                <div class="ma-box-body ma-grad">
-                                    <ul id="paket" class="ma-list">
-
-                                    </ul>
+                            </div>
+                        </div>
+                        <div class="title">
+                            Nginep Murah
+                            <i class="ellipsis horizontal icon large"></i>
+                        </div>
+                        <div class="content">
+                            <div class="ui form">
+                                <div class="field ma-multiple-select">
+                                    <label>JENIS PENGINAPAN</label>
+                                    <select name="jenis" multiple="" class="ui fluid dropdown">
+                                        <option value="0">Rumah</option>
+                                        <option value="1">Losmen</option>
+                                        <option value="2">Hotel</option>
+                                        <option value="3">Villa</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label>URUTKAN</label>
+                                    <select name="urut" class="ui fluid dropdown">
+                                        <option value="0">Terdekat</option>
+                                        <option value="1">Terjauh</option>
+                                        <option value="2">Termurah</option>
+                                        <option value="3">Termahal</option>
+                                        <option value="4">Terpopuler</option>
+                                        <option value="5">A-Z</option>
+                                        <option value="6">Z-A</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label>KISARAN HARGA</label>
+                                    <input type="number" name="harga_min" step="500" placeholder="minimal Rp">
+                                </div>
+                                <div class="field">
+                                    <input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
                                 </div>
                             </div>
                         </div>
-                        <div class="five wide column">
-                            <div class="ma-box-container">
-                                <div class="ma-box-header">
-                                    <h4>Telusuri</h4>
-                                    <div class="ma-tabs">
-                                        <a class="item active">Menu favorit di sekitar anda</a>
+                        <div class="title">
+                            Cuci Gudang
+                            <i class="ellipsis horizontal icon large"></i>
+                        </div>
+                        <div class="content">
+                            <div class="ui form">
+                                <div class="field">
+                                    <label>URUTKAN</label>
+                                    <select name="urut" class="ui fluid dropdown">
+                                        <option value="0">Terdekat</option>
+                                        <option value="1">Terjauh</option>
+                                        <option value="2">Termurah</option>
+                                        <option value="3">Termahal</option>
+                                        <option value="4">Terpopuler</option>
+                                        <option value="5">A-Z</option>
+                                        <option value="6">Z-A</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label>KISARAN HARGA</label>
+                                    <input type="number" name="harga_min" step="500" placeholder="minimal Rp">
+                                </div>
+                                <div class="field">
+                                    <input type="number" name="harga_max" step="500" placeholder="maksimal Rp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+                <div class="ma-content">
+                    <div class="ma-content-header">
+                        <div class="ma-breadcrumb">
+                            Anda berada di : <span class="ma-breadcrumb-nav">BERANDA / Warung Nasi Ibu Ndut</span>
+                        </div>
+                    </div>
+                    <div class="ma-content-/Home/Detail-bg"></div>
+                    <div class="ma-content-/Home/Detail">
+                        <div class="ma-content-/Home/Detail-title">
+                            <div class="right floated ma-score"><h1>4.0</h1><span>/5.0</span></div>
+                            <h1 class="ui inverted"><span>WARUNG NASI IBU NDUT</span> <div class="ui label circular"><i class="icon checkmark"></i></div></h1>
+                        </div>
+                        <div class="ma-content-images">
+                            <div class="item main" style="background-image:url(/assets/img/demo/demo1.jpg)">
+                                <div class="quote">
+                                    Nasi Rames favorit saya, tongkol baladonya nendang, Porsi nasinya guede, sambelnya pedes, harganya sangat bersahabat <span class="author">Uvuvwevwevwe Onyetenyevwe Ugwemubwen Ossas - Jasinga</span>
+                                </div>
+                            </div>
+                            <div id="PhotoCollection" class="item others">
+                            </div>
+                        </div>
+                        <div class="ma-tabs">
+                            <a class="item" id="detail">Detail<br /></a>
+                            <a id="menu" class="item active">Menu<br /><i class="icon ellipsis horizontal"></i></a>
+                            <a id="ulasan" class="item">Ulasan</a>
+                            <a id="foto" class="item">Foto</a>
+                        </div>
+                        <div class="ui stackable divided stackable grid noborder">
+                            <div class="eleven wide column ">
+                                <div class="ma-box-container">
+                                    <div class="ma-box-header">
+                                        <h4>Menu Andalan</h4>
+                                        <div id="LoadingPanel" style="display:none; margin-left:14px; width:100%" class="ui active inverted dimmer">
+                                            <div class="ui large text loader">Loading</div>
+                                        </div>
+                                        <div class="ma-tabs">
+                                            <a class="ma-link-right" style="cursor: pointer;" onclick="DispPopUpAddMenu()"><i class="icon plus"></i> Tambah menu</a>
+                                            <a id="SubMenuAll" class="item" href="/Home/Detailmenu?IdStore=3">Semua</a>
+                                            <a id="SubMenuPaket" class="item" href="#">Paket</a>
+                                            <a id="SubMenuLauk" class="item" href="/Home/Detailmenu?IdStore=3&Menu=Lauk">Lauk</a>
+                                            <a id="SubMenuMinuman" class="item" href="/Home/Detailmenu?IdStore=3&Menu=Minuman">Minuman</a>
+                                        </div>
+                                    </div>
+                                    <div class="ma-box-body ma-grad">
+
+                                        <ul id="paket" class="ma-list">
+                                            <div style="margin-left:14.5px" class="ui active inverted dimmer">
+                                                <div class="ui large text loader">Loading</div>
+                                            </div>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="ma-box-body">
-                                    <ul class="ma-list">
-                                        <li>
-                                            <a href="#">
-                                                <span class="title">Soto Betawi</span>
-                                                <span class="desc">Encang sobre</span>
-                                                <i class="ma-icon arrow-right"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="title">Nasi Rames Kumplit</span>
-                                                <span class="desc">Warung nasi kang jajang</span>
-                                                <i class="ma-icon arrow-right"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                            </div>
+                            <div class="five wide column">
+                                <div class="ma-box-container">
+                                    <div class="ma-box-header">
+                                        <h4>Telusuri</h4>
+                                        <div class="ma-tabs">
+                                            <a class="item active">Menu favorit di sekitar anda</a>
+                                        </div>
+                                    </div>
+                                    <div class="ma-box-body">
+                                        <ul class="ma-list">
+                                            <li>
+                                                <a href="#">
+                                                    <span class="title">Soto Betawi</span>
+                                                    <span class="desc">Encang sobre</span>
+                                                    <i class="ma-icon arrow-right"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span class="title">Nasi Rames Kumplit</span>
+                                                    <span class="desc">Warung nasi kang jajang</span>
+                                                    <i class="ma-icon arrow-right"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Footer Content -->
-        <div class="ma-footer">
-            <img src="/assets/img/footergrad.png" class="img-grad" />
-            <div class="ui stackable inverted divided equal height stackable grid">
-                <div class="one wide column"></div>
-                <div class="five wide column">
-                    <img src="/assets/img/murahaje-logo.png" />
-                    <div class="ma-footer-links">
-                        <div class="item"><i class="icon mail"></i> kontak@murahaje.com</div><br />
-                        <div class="item"><i class="icon phone"></i> 021-xxx-xxx</div><br />
-                        <div class="item"><i class="icon marker"></i> Jl. Kalibata Raya no 1 Jakarta Selatan Indonesia</div><br />
+            <!-- Footer Content -->
+            <div class="ma-footer">
+                <img src="/assets/img/footergrad.png" class="img-grad" />
+                <div class="ui stackable inverted divided equal height stackable grid">
+                    <div class="one wide column"></div>
+                    <div class="five wide column">
+                        <img src="/assets/img/murahaje-logo.png" />
+                        <div class="ma-footer-links">
+                            <div class="item"><i class="icon mail"></i> kontak@murahaje.com</div><br />
+                            <div class="item"><i class="icon phone"></i> 021-xxx-xxx</div><br />
+                            <div class="item"><i class="icon marker"></i> Jl. Kalibata Raya no 1 Jakarta Selatan Indonesia</div><br />
+                        </div>
                     </div>
-                </div>
-                <div class="three wide column">
-                    <h3>Tentang</h3>
-                    <div class="ma-footer-links">
-                        <a href="#">Tentang MurahAje</a>
-                        <a href="#">Karir</a>
-                        <a href="#">Berita</a>
-                        <a href="#">Hubungan Investor</a>
-                        <a href="#">Persetujuan</a>
-                        <a href="#">Cookie Policy</a>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Content Policy</a>
+                    <div class="three wide column">
+                        <h3>Tentang</h3>
+                        <div class="ma-footer-links">
+                            <a href="#">Tentang MurahAje</a>
+                            <a href="#">Karir</a>
+                            <a href="#">Berita</a>
+                            <a href="#">Hubungan Investor</a>
+                            <a href="#">Persetujuan</a>
+                            <a href="#">Cookie Policy</a>
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Content Policy</a>
+                        </div>
                     </div>
-                </div>
-                <div class="three wide column">
-                    <h3>Bertualang</h3>
-                    <div class="ma-footer-links">
-                        <a href="#">Lihat Peta</a>
-                        <a href="#">Pesen Makanan</a>
-                        <a href="#">100 Tempat Terfavorit</a>
-                        <a href="#">FAQ</a>
+                    <div class="three wide column">
+                        <h3>Bertualang</h3>
+                        <div class="ma-footer-links">
+                            <a href="#">Lihat Peta</a>
+                            <a href="#">Pesen Makanan</a>
+                            <a href="#">100 Tempat Terfavorit</a>
+                            <a href="#">FAQ</a>
+                        </div>
                     </div>
-                </div>
-                <div class="three wide column">
-                    <h3>Untuk Pemilik Tempat</h3>
-                    <div class="ma-footer-links">
-                        <a href="#">Klaim Tempat Usaha</a>
-                        <a href="#">Beriklan</a>
-                        <a href="#">FAQ</a>
-                        <a href="#">Kontak</a>
-                        <a href="#">Tips & Trik</a>
+                    <div class="three wide column">
+                        <h3>Untuk Pemilik Tempat</h3>
+                        <div class="ma-footer-links">
+                            <a href="#">Klaim Tempat Usaha</a>
+                            <a href="#">Beriklan</a>
+                            <a href="#">FAQ</a>
+                            <a href="#">Kontak</a>
+                            <a href="#">Tips & Trik</a>
+                        </div>
                     </div>
+                    <div class="one wide column"></div>
                 </div>
-                <div class="one wide column"></div>
-            </div>
-            <div class="ma-copy">Copyright &copy; 2017 MurahAje.com All Right Reserved</div>
-        </div>
-    </div>
-</div>
-
-<!-- Popup Content -->
-<div class="ma-popup">
-    <div class="ma-popup-block">
-        <div class="ma-popup-header">
-            Signup or login to MurahAje!
-        </div>
-        <div class="ma-popup-content">
-            <a href="#" class="ma-button-fb">
-                <span class="ma-icon"><img src="/assets/img/icon-fb-white.png"></span>
-                <span class="text">Lanjutkan dengan Facebook</span>
-            </a>
-            <a href="#" class="ma-button-google">
-                <span class="ma-icon"><img src="/assets/img/icon-google.png"></span>
-                <span class="text">Lanjutkan dengan Google</span>
-            </a>
-        </div>
-        <div class="ma-popup-footer">
-            <h4 class="ui center aligned basic segment">atau pake email ente sob</h4>
-            <form class="ui form ma-loginform">
-                <div class="field">
-                    <input type="text" name="mail" placeholder="Email">
-                </div>
-                <div class="field">
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-                <button class="fluid ui negative large button">Login</button>
-                <div class="ui field basic right aligned">
-                    <div class="ma-note ma-text-right">
-                        Belum punya akun? <a href="daftar">Daftar disini</a>
-                    </div>
-                </div>
-            </form>
-            <div class="footnote">
-                Dengan login, ente udah setuju ame <a href="#">Persetujuan</a>, <a href="#">Cookie Policy</a>, <a href="#">Privacy Policy</a> dan <a href="#">Content Policies</a> Murahaje!
+                <div class="ma-copy">Copyright &copy; 2017 MurahAje.com All Right Reserved</div>
             </div>
         </div>
     </div>
-</div>
-<div id="ViewMenu" class="ui basic modal">
-    <div class="content" style=" text-align: center;">
-        <div class="actions">
-            <div style="width:540px">
-                <div class="row" style=" text-align: right;">
-                    <div class="right floated">
-                        <div class="cancel">
-                            <i class="remove icon"></i>
+
+    <!-- Popup Content -->
+    <div class="ma-popup">
+        <div class="ma-popup-block">
+            <div class="ma-popup-header">
+                Signup or login to MurahAje!
+            </div>
+            <div class="ma-popup-content">
+                <a href="#" class="ma-button-fb">
+                    <span class="ma-icon"><img src="/assets/img/icon-fb-white.png"></span>
+                    <span class="text">Lanjutkan dengan Facebook</span>
+                </a>
+                <a href="#" class="ma-button-google">
+                    <span class="ma-icon"><img src="/assets/img/icon-google.png"></span>
+                    <span class="text">Lanjutkan dengan Google</span>
+                </a>
+            </div>
+            <div class="ma-popup-footer">
+                <h4 class="ui center aligned basic segment">atau pake email ente sob</h4>
+                <form class="ui form ma-loginform">
+                    <div class="field">
+                        <input type="text" name="mail" placeholder="Email">
+                    </div>
+                    <div class="field">
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                    <button class="fluid ui negative large button">Login</button>
+                    <div class="ui field basic right aligned">
+                        <div class="ma-note ma-text-right">
+                            Belum punya akun? <a href="daftar">Daftar disini</a>
+                        </div>
+                    </div>
+                </form>
+                <div class="footnote">
+                    Dengan login, ente udah setuju ame <a href="#">Persetujuan</a>, <a href="#">Cookie Policy</a>, <a href="#">Privacy Policy</a> dan <a href="#">Content Policies</a> Murahaje!
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ViewMenu" class="ui basic modal">
+        <div class="content" style=" text-align: center;">
+            <div class="actions">
+                <div style="width:540px">
+                    <div class="row" style=" text-align: right;">
+                        <div class="right floated">
+                            <div class="cancel">
+                                <i class="remove icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <img id="FoodImage" style="width:500px; height:500px;" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="AddMenu" class="ui small modal">
+        <div class="header">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="left floated">  Tambah Menu </div>
+                    <div class="right floated one wide column">
+                        <div class="actions" style=" text-align: right;">
+                            <div class="cancel">
+                                <i class="remove icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="content">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="two wide column">
+                        <div class="ui input">
+                            <input id="TxtNamaMakanan" type="text" placeholder="Nama makanan/minuman">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <img id="FoodImage" style="width:500px; height:500px;" />
+                    <div class="two wide column">
+                        <select id="TxtJenisMenu" class="ui dropdown">
+                            <option value="">Jenis</option>
+                            <option value="Lauk">Lauk</option>
+                            <option value="Minuman">Minuman</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
-<div id="AddMenu" class="ui small modal">
-    <div class="header">
-        <div class="ui grid">
-            <div class="row">
-                <div class="left floated">  Tambah Makanan </div>
-                <div class="right floated one wide column">
-                    <div class="actions" style=" text-align: right;">
-                        <div class="cancel">
-                            <i class="remove icon"></i>
+                <div class="row">
+                    <div class="two wide column">
+                        <div class="ui input">
+                            <input type="text" id="TxtDeskripsi" placeholder="Deskripsi">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="two wide column">
+                        <div class="ui labeled input">
+                            <div class="ui label">Rp.</div>
+                            <input id="TxtHarga" type="number" onkeypress="return isNumberKey(event)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="two wide column">
+                        <div class="ui input">
+                            <input type="file" id="TxtGambarMakanan" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @*<div class="right floated column">
+                            <button class=" ui positive button">Tambah</button>
+                        </div>*@
+                    <div class="right floated one wide column" style="margin-right:100px">
+                        <button id="BtnTambahMenu" class=" ui positive button">Tambah</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="eight wide column">
+                        <div>
+                            <img id="preview" height="600" width="600" alt="Preview gambar makanan" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-       
-        
-
     </div>
-    <div class="content">
-        <div class="ui grid">
-            <div class="row">
-                <div class="two wide column">
-                    <div class="ui input">
-                        <input id="TxtNamaMakanan" type="text" placeholder="Nama Makanan">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="two wide column">
-                    <div class="ui input">
-                        <input type="text" id="TxtDeskripsi" placeholder="Deskripsi">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="two wide column">
-                    <div class="ui labeled input">
-                        <div class="ui label">Rp.</div>
-                        <input id="TxtHarga" type="number" onkeypress="return isNumberKey(event)">
-                    </div>
-                </div>
-            </div> 
-            <div class="row">
-                <div class="two wide column">
-                    <div class="ui input">
-                        <input type="file" id="TxtGambarMakanan" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="eight wide column">
-                    <div>
-                        <img id="preview" height="600" width="600" alt="Masukkan gambar makanan" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @*<div class="right floated column">
-                    <button class=" ui positive button">Tambah</button>
-                </div>*@
-                <div class="right floated one wide column" style="margin-right:100px">
-                       <button id="BtnTambahMenu" class=" ui positive button">Tambah</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    var hub = $.connection.SocialHub;
-    $.connection.hub.logging = true;
-    Init()
-    function Init() {
-        $.connection.hub.start().done(function () {
-            console.log('connection ready..');
-            Page_Load();
-        });
-    }
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOB3hwNufN6l_XAObeNSlXaxMX3GZMljs"
+        type="text/javascript"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+
+    <script>
+
+        var locations = [
+            ["Jakarta", "yes", "400 University Ave, Palo Alto, CA", "", "-6.270252990396251,106.79122924804688", "http://maps.google.com/mapfiles/ms/icons/blue.png"],
+            ["Depok", "yes", "1000 Santa Cruz Ave, Menlo Park, CA", "", "-6.406742565978931,106.78985595703125", "http://maps.google.com/mapfiles/ms/icons/green.png"]
+
+        ];
 
 
-    function Page_Load() {
-        GetAllStores();
-    }
-    function GetAllStores() {
-        var IdStore = getUrlVars()["IdStore"];
-        hub.server.GetProductByIDStore(IdStore, 'Food').done(function (datas) {
-            SearchProductsByID(datas);
 
-        });
+        //<div class="box" style="background-image:url(/assets/img/demo/demo1.jpg)"></div>
+        //    <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
+        //    <div class="box" style="background-image:url(/assets/img/demo/demo3.jpg)"></div>
+        //    <div class="box" style="background-image:url(/assets/img/demo/demo4.jpg)"></div>
+        //    <div class="box" style="background-image:url(/assets/img/demo/demo5.jpg)"></div>
+        //    <div class="box" style="background-image:url(/assets/img/demo/demo3.jpg)"></div>
+        //    <div class="box" style="background-image:url(/assets/img/demo/demo2.jpg)"></div>
+        //    <div class="box" style="background-image:url(/assets/img/demo/demo4.jpg)"></div>
+        //    <div class="box" style="background-image:url(/assets/img/demo/demo1.jpg)">
+        //        <div class="layer">+27</div>
+        //    </div>
+        var hub = $.connection.SocialHub;
+        $.connection.hub.logging = true;
+        //initial
+        Init()
 
-
-    }
-    $('#detail').attr('href', '/Home/Detailhome?IdStore=' + getUrlVars()["IdStore"]);
-    $('#ulasan').attr('href', '/Home/Detailulasan?IdStore=' + getUrlVars()["IdStore"]);
-    $('#menu').attr('href', '/Home/Detailmenu?IdStore=' + getUrlVars()["IdStore"]);
-    $('#foto').attr('href', '/Home/Detailfoto?IdStore=' + getUrlVars()["IdStore"]);
-    function getUrlVars() {
-        var vars = [], hash;
-        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for (var i = 0; i < hashes.length; i++) {
-            hash = hashes[i].split('=');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-        }
-        return vars;
-    }
-    function SearchProductsByID(datas) {
-        $('#paket').empty();
-
-        var msg = '';
-        $.each(datas, function (i, obj) {
-            $('#desc').html(obj.desc);
-            $('#title').html(obj.title);
-            msg +=
-                '<li>' +
-                '	<span>' + obj.title + '</span>' +
-                '       <span class="ma-list-actions">' +
-                '      <span>Rp ' + obj.price + '</span>' +
-                '    <a onclick="FoodModal(\'' + obj.imageUrl + '\')" class="ma-icon picture"></a>' +
-                '     <a class="ma-icon heart"></a>' +
-                '   </span>' +
-                '</li>';
-        });
-        $('#paket').html(msg);
-        //$('#PanelKomentar').html(msg2);
-        //SearchProductByIdStore();
-
-    }
-    function AddMenu(url) {
-        var Title = $('#TxtNamaMakanan').val().trim();
-        var Desc = $('#TxtDeskripsi').val();
-        var Price = $('#TxtHarga').val();
-        var IdStore = getUrlVars()["IdStore"];
-        $.connection.hub.start().done(function () {
-            console.log('connection ready..');
-            hub.server.AddProduct(IdStore, Title, Desc, Price, "Food", "Food", url).done(function (Data) {
-
+        function Init() {
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                Page_Load();
             });
-        });
-    }
-    $('#BtnTambahMenu').click(function () {
-
-        var IDFileUpload = 'TxtGambarMakanan';
-        var formData = new FormData();
-        var totalFiles = document.getElementById(IDFileUpload).files.length;
-
-        for (var i = 0; i < totalFiles; i++) {
-            var file = document.getElementById(IDFileUpload).files[i];
-            formData.append(IDFileUpload, file);
         }
-        $.ajax({
-            type: 'POST',
-            url: '/api/Media',
-            data: formData,
-            dataType: 'json',
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                AddMenu(response['url']);
-            },
-            error: function (error) {
-                alert(error);
-            }
-        });
 
-    });
-    function FoodModal(url) {
-        $("#FoodImage").attr("src", url);
-        $('.ui.basic.modal')
-            .modal('show')
-            ;
-    }
-    function DispPopUpAddMenu() {
-        $('#AddMenu')
-            .modal('show')
-            ;
-    }
-    function readURL(input) {
 
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+        function Page_Load() {
+            //MenuLink
+            $('#detail').attr('href', '/Home/Detailhome?IdStore=' + getUrlVars()["IdStore"]);
+            $('#ulasan').attr('href', '/Home/Detailulasan?IdStore=' + getUrlVars()["IdStore"]);
+            $('#menu').attr('href', '/Home/Detailmenu?IdStore=' + getUrlVars()["IdStore"]);
+            $('#foto').attr('href', '/Home/Detailfoto?IdStore=' + getUrlVars()["IdStore"]);
+            //submenu
+            $('#SubMenuAll').attr('href', '/Home/Detailmenu?IdStore=' + getUrlVars()["IdStore"] + '&Menu=All');
+            $('#SubMenuPaket').attr('href', '/Home/Detailmenu?IdStore=' + getUrlVars()["IdStore"] + '&Menu=Paket');
+            $('#SubMenuLauk').attr('href', '/Home/Detailmenu?IdStore=' + getUrlVars()["IdStore"] + '&Menu=Lauk');
+            $('#SubMenuMinuman').attr('href', '/Home/Detailmenu?IdStore=' + getUrlVars()["IdStore"] + '&Menu=Minuman');
+            //end
 
-            reader.onload = function (e) {
-                $('#preview').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
+            GetAllPhotos();
+            SelectMenu();
+            initialize();
         }
-    }
-    $("#TxtGambarMakanan").change(function () {
-        readURL(this);
-    });
-    function isNumberKey(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
-    }
+        function GetAllStores(sProductCategory) {
+            var IdStore = getUrlVars()["IdStore"];
+            hub.server.GetProductByIDStore(IdStore, sProductCategory).done(function (datas) {
+                SearchProductsByID(datas);
+            });
+        }
+        function GetAllPhotos() {
+            var IdStore = getUrlVars()["IdStore"];
+            hub.server.GetProductByIDStore(IdStore, "All").done(function (datas) {
+                SearchPhotosByID(datas);
+            });
+        }
+        function GetStores() {
 
-    hub.server.GetAllStores().done(function (datas) {
-        ListStoreTemplate(datas);
+            hub.server.GetAllStores().done(function (datas) {
+                InitiateArray(datas);
+            });
+        }
 
-    });
-</script>
+        function InitiateArray(datas)
+        {
+            var store = [];
+            var arr = [];
+            //arr[0] = arr;
+            $.each(datas, function (i, obj) {
+                arr[0] = [obj.address['city'], 'yes', null, null, obj.address['longitude'] + ',' + obj.address['latitude']], "http://maps.google.com/mapfiles/ms/icons/blue.png";
+                store[i] = arr[0];
+            });
+            locations = store;
+            $('#test').html(store);
+            //locations = [
+            //    ["Jakarta", "yes", "400 University Ave, Palo Alto, CA", "", "-6.270252990396251,106.79122924804688", "http://maps.google.com/mapfiles/ms/icons/blue.png"],
+            //    ["Depok", "yes", "1000 Santa Cruz Ave, Menlo Park, CA", "", "-6.406742565978931,106.78985595703125", "http://maps.google.com/mapfiles/ms/icons/green.png"]
+
+            //];
+
+        }
+
+        function SearchPhotosByID(datas) {
+            $('#PhotoCollection').empty();
+
+            var msg = '';
+            var totalphoto = 0;
+            $.each(datas, function (i, obj) {
+                $('#desc').html(obj.desc);
+                $('#title').html(obj.title);
+                msg +=
+                    '<div class="box" style="background-image:url(' + obj.imageUrl + ')"></div>';
+                totalphoto++;
+            });
+            if (totalphoto > 9) {
+                msg += '<div class="box">' +
+                    '<div class="layer">+27</div>' +
+                    '</div>';
+            }
+            $('#PhotoCollection').html(msg);
+        }
+
+        function SelectMenu() {
+            var option = getUrlVars()["Menu"];
+
+            switch (option) {
+                case 'All':
+                    GetAllStores(option);
+                    $('#SubMenuAll').addClass('active');
+                    GetAllStores(option);
+                    break;
+                case 'Paket':
+                    GetAllStores(option);
+                    $('#SubMenuPaket').addClass('active');
+                    break;
+                case 'Lauk':
+                    $('#SubMenuLauk').addClass('active');
+                    GetAllStores(option);
+                    break;
+                case 'Minuman':
+                    GetAllStores(option);
+                    $('#SubMenuMinuman').addClass('active');
+                    break;
+                default:
+                    GetAllStores('All');
+                    $('#SubMenuAll').addClass('active');
+                    break;
+            }
+
+        }
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        function SearchProductsByID(datas) {
+            $('#paket').empty();
+
+            var msg = '';
+            $.each(datas, function (i, obj) {
+                $('#desc').html(obj.desc);
+                $('#title').html(obj.title);
+                msg +=
+                    '<li>' +
+                    '	<span>' + obj.title + '</span>' +
+                    '       <span class="ma-list-actions">' +
+                    '      <span>Rp ' + obj.price + '</span>' +
+                    '    <a onclick="FoodModal(\'' + obj.imageUrl + '\')" class="ma-icon picture"></a>' +
+                    '     <a class="ma-icon heart"></a>' +
+                    '   </span>' +
+                    '</li>';
+            });
+            $('#paket').html(msg);
+        }
+        function AddMenu(url) {
+            var Title = $('#TxtNamaMakanan').val().trim();
+            var Desc = $('#TxtDeskripsi').val();
+            var Price = $('#TxtHarga').val();
+            var IdStore = getUrlVars()["IdStore"];
+            var ProductCategory = $('#TxtJenisMenu').val();
+            $.connection.hub.start().done(function () {
+                console.log('connection ready..');
+                hub.server.AddProduct(IdStore, Title, Desc, Price, "Food", ProductCategory, url).done(function (Data) {
+                    window.location.replace('/Home/Detailmenu?IdStore=' + getUrlVars()["IdStore"] + '&Menu=' + ProductCategory);
+                });
+            });
+        }
+        $('#BtnTambahMenu').click(function () {
+
+            var IDFileUpload = 'TxtGambarMakanan';
+            var formData = new FormData();
+            var totalFiles = document.getElementById(IDFileUpload).files.length;
+
+            for (var i = 0; i < totalFiles; i++) {
+                var file = document.getElementById(IDFileUpload).files[i];
+                formData.append(IDFileUpload, file);
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/api/Media',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    AddMenu(response['url'], 'Lauk');
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            });
+
+        });
+        function FoodModal(url) {
+            $("#FoodImage").attr("src", url);
+            $('.ui.basic.modal')
+                .modal('show')
+                ;
+        }
+        function DispPopUpAddMenu() {
+            $('#AddMenu')
+                .modal('show')
+                ;
+        }
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#TxtGambarMakanan").change(function () {
+            readURL(this);
+        });
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+    //hub.server.GetAllStores().done(function (datas) {
+    //    ListStoreTemplate(datas);
+
+    //});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        var geocoder = null;
+        var map = null;
+        var customerMarker = null;
+        var gmarkers = [];
+        var closest = [];
+
+        function initialize() {
+            GetStores();
+            geocoder = new google.maps.Geocoder();
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 9,
+                center: new google.maps.LatLng(52.6699927, -0.7274620),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
+            var bounds = new google.maps.LatLngBounds();
+            document.getElementById('info').innerHTML = "found " + locations.length + " locations<br>";
+            for (i = 0; i < locations.length; i++) {
+                var coordStr = locations[i][4];
+                var coords = coordStr.split(",");
+                var pt = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
+                bounds.extend(pt);
+                marker = new google.maps.Marker({
+                    position: pt,
+                    map: map,
+                    icon: locations[i][5],
+                    address: locations[i][2],
+                    title: locations[i][0],
+                    html: locations[i][0] + "<br>" + locations[i][2]
+                });
+                gmarkers.push(marker);
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(marker.html);
+                        infowindow.open(map, marker);
+                    }
+                })
+                    (marker, i));
+            }
+            map.fitBounds(bounds);
+            codeAddress();
+
+        }
+
+        function codeAddress() {
+            var numberOfResults = 25;
+            var numberOfDrivingResults = 5;
+            geocoder.geocode({
+                'address': 'Citayam'
+            }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    closest = findClosestN(results[0].geometry.location, numberOfResults);
+                    // get driving distance
+                    closest = closest.splice(0, numberOfResults);
+                    calculateDistances(results[0].geometry.location, closest, numberOfDrivingResults);
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+
+        function findClosestN(pt, numberOfResults) {
+            var closest = [];
+            document.getElementById('info').innerHTML += "processing " + gmarkers.length + "<br>";
+            for (var i = 0; i < gmarkers.length; i++) {
+                gmarkers[i].distance = google.maps.geometry.spherical.computeDistanceBetween(pt, gmarkers[i].getPosition());
+                document.getElementById('info').innerHTML += "process " + i + ":" + gmarkers[i].getPosition().toUrlValue(6) + ":" + gmarkers[i].distance.toFixed(2) + "<br>";
+                gmarkers[i].setMap(null);
+                closest.push(gmarkers[i]);
+            }
+            closest.sort(sortByDist);
+            return closest;
+        }
+
+        function sortByDist(a, b) {
+            return (a.distance - b.distance)
+        }
+
+        function calculateDistances(pt, closest, numberOfResults) {
+            var service = new google.maps.DistanceMatrixService();
+            var request = {
+                origins: [pt],
+                destinations: [],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+            };
+            for (var i = 0; i < closest.length; i++) {
+                request.destinations.push(closest[i].getPosition());
+            }
+            service.getDistanceMatrix(request, function (response, status) {
+                if (status != google.maps.DistanceMatrixStatus.OK) {
+                    alert('Error was: ' + status);
+                } else {
+                    var origins = response.originAddresses;
+                    var destinations = response.destinationAddresses;
+                    var outputDiv = document.getElementById('side_bar');
+                    outputDiv.innerHTML = '';
+
+                    var results = response.rows[0].elements;
+                    // save title and address in record for sorting
+                    for (var i = 0; i < closest.length; i++) {
+                        results[i].title = closest[i].title;
+                        results[i].address = closest[i].address;
+                        results[i].idx_closestMark = i;
+                    }
+                    results.sort(sortByDistDM);
+                    for (var i = 0;
+                        ((i < numberOfResults) && (i < closest.length)); i++) {
+                        closest[i].setMap(map);
+                        outputDiv.innerHTML += "<a href='javascript:google.maps.event.trigger(closest[" + results[i].idx_closestMark + "],\"click\");'>" + results[i].title + '</a><br>' + results[i].address + "<br>" + results[i].distance.text + ' appoximately ' + results[i].duration.text + '<br><hr>';
+                    }
+                }
+            });
+        }
+
+        function sortByDistDM(a, b) {
+            return (a.distance.value - b.distance.value)
+        }
+
+        // Store Name[0],delivery[1],Address[2],Delivery Zone[3],Coordinates[4] data from FusionTables pizza stores example
+
+
+
+    </script>
+
+
+
+    <script type="text/javascript">
+
+    </script>

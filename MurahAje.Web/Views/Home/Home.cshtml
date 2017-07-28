@@ -52,9 +52,6 @@
                                 <select id="CbTempatMakan" name="jenis" multiple="" class="ui fluid dropdown CbTempatMakan">
                                     <option value="Warteg">Warteg</option>
                                     <option value="Warung Nasi">Warung Nasi</option>
-                                    <option value="Kaki Lima">Kaki Lima</option>
-                                    <option value="Restoran Kecil">Restoran Kecil</option>
-                                    <option value="Restoran">Restoran </option>
                                 </select>
                             </div>
                             <div class="field">
@@ -78,19 +75,19 @@
                             </div>
                             <div class="field">
                                 <div class="ui checkbox right">
-                                    <input type="checkbox" name="CBFasilitas" value="0">
+                                    <input type="checkbox" name="CBFasilitas" value="Parkir Luas">
                                     <label>Parkir Luas</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui checkbox right">
-                                    <input type="checkbox" name="CBFasilitas" value="1">
+                                    <input type="checkbox" name="CBFasilitas" value="Porsi Besar">
                                     <label>Porsi Besar</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui checkbox right">
-                                    <input type="checkbox" name="CBFasilitas" value="2">
+                                    <input type="checkbox" name="CBFasilitas" value="Prasmanan">
                                     <label>Prasmanan</label>
                                 </div>
                             </div>
@@ -209,7 +206,9 @@
                 <div class="ma-grids">
                     <div class="ma-grid-title">Yang gak kalah seru !</div>
                     <div id="DataSource" class="ui three column doubling stackable grid container">
-                        loading..
+                        <div class="ui active inverted dimmer">
+                            <div class="ui large text loader">Loading</div>
+                        </div>
                         @*<div class="column">
                             <div class="ma-col-item">
                                 <div class="ma-col-img" style="background-image:url(/assets/img/demo/demo2.jpg)">
@@ -484,6 +483,9 @@
     </div>
 </div>
 <div id="temp">0</div>
+<div id="LoadingPanel" style="display:none" class="ui active inverted dimmer">
+    <div class="ui large text loader">Loading</div>
+</div>
 <script>
     $(function () {
         var hub = $.connection.SocialHub;
@@ -669,57 +671,49 @@
             $('#DataSource').append(msg);
         }
 
-        //event
-        //$(".CbTempatMakan").append('<option value = "Kaki Lima" > Kaki Lima</option >');
-        //$(".CbTempatMakan").multiselect('refresh');
-        //$(".CbTempatMakan").multiselect({
-        //    header: false,
-        //    noneSelectedText: "Select"
-        //});
-        //var count = 2;
-            //$(".CbTempatMakan").append('<option value="option5">Option ' + ++count + '</option>');
-            //$(".CbTempatMakan").multiselect('refresh');
+
+
+        //search event
+        
         
         $(".CbTempatMakan").dropdown({
-
             onChange: function (val) {
 
-                $('#DataSource').empty();  
-                var str = "";
-                $(".CbTempatMakan option:selected").each(function () {
-                    str += $(this).val() + "||";
-                });
-                var allval = "";
-                $(".CbTempatMakan option").each(function () {
-                    allval += $(this).val() + "||";
-                });
-                allarr = allval.split('||');
-                arr = str.split('||');
-                //var sortBy = $(".CbUrutkan").dropdown('get value');
-                var arrFas = [];
-                $("input:checkbox[name=CBFasilitas]:checked").each(function () {
-                    arrFas.push($(this).val());
-                });
-
-                //var sHighestPrice = $("#maksimal").val();
-                //var sLowestPrice = $("#minimal").val();
-                //if (sHighestPrice.trim() == "") {
-                //    sHighestPrice = 0;
-                //}
-                //if (sLowestPrice.trim() == "") {
-                //    sLowestPrice = 0;
-
-                //}
-
-                $('#temp').empty();
-                $.each(arr, function (i, obj) {
-                    hub.server.GetStores("", obj, 0, 0, arrFas).done(function (datas) {
-                        if(i != arr.length-1) 
-                        ListStoreTemplate(datas);
-                    });
-                });
+                $('#DataSource').html("<img src='https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif' alt='loading' />");
+                search();
             }
         });
+
+        $("input:checkbox[name=CBFasilitas]").change(function () {
+            search();
+        });
+        function search()
+        {
+            $('#DataSource').empty();
+            var str = "";
+            $(".CbTempatMakan option:selected").each(function () {
+                str += $(this).val() + "||";
+            });
+            var allval = "";
+            $(".CbTempatMakan option").each(function () {
+                allval += $(this).val() + "||";
+            });
+            allarr = allval.split('||');
+            arr = str.split('||');
+            //var sortBy = $(".CbUrutkan").dropdown('get value');
+            var arrFas = [];
+            $("input:checkbox[name=CBFasilitas]:checked").each(function () {
+                arrFas.push($(this).val());
+            });
+
+            $.each(arr, function (i, obj) {
+                hub.server.GetStores("", obj, 0, 0, arrFas).done(function (datas) {
+                    if (i != arr.length - 1)
+                        ListStoreTemplate(datas);
+                });
+            });
+
+        }
 
     });
 </script>
