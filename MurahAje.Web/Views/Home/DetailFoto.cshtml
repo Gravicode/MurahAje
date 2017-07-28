@@ -212,78 +212,8 @@
                         </div>
                         <div class="ma-box-body ma-grad " style="max-height:initial;">
                             <div id="ListAllPhoto" class="ma-gallery">
-                                
-                                <div class="item" style="background-image:url(/assets/img/demo/demo2.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item" style="background-image:url(/assets/img/demo/demo3.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item" style="background-image:url(/assets/img/demo/demo1.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item" style="background-image:url(/assets/img/demo/demo4.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item" style="background-image:url(/assets/img/demo/demo1.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item" style="background-image:url(/assets/img/demo/demo2.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item" style="background-image:url(/assets/img/demo/demo3.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item" style="background-image:url(/assets/img/demo/demo1.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item" style="background-image:url(/assets/img/demo/demo4.jpg)">
-                                    <div class="layer">
-                                        <div>
-                                            <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>
-                                            <a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>
-                                        </div>
-                                    </div>
+                                <div id="LoadingPanel" style="display:none; margin-left:14px; width:100%" class="ui active inverted dimmer">
+                                    <div class="ui large text loader">Loading</div>
                                 </div>
                             </div>
                         </div>
@@ -413,6 +343,32 @@
 
 
     function Page_Load() {
-        GetAllStores();
+        GetAllPhotos();
+    }
+    function GetAllPhotos() {
+        var IdStore = getUrlVars()["IdStore"];
+        hub.server.GetProductByIDStore(IdStore, "All").done(function (datas) {
+            SearchProductsByID(datas);
+        });
+    }
+    function SearchProductsByID(datas) {
+        $('#ListAllPhoto').empty();
+
+        var msg = '';
+        $.each(datas, function (i, obj) {
+            $('#desc').html(obj.desc);
+            $('#title').html(obj.title);
+            msg +=
+                '<div class="item" style="background-image:url('+obj.imageUrl+')">' +
+                '<div class="layer">' +
+                '<div>' +
+                '   <a class="item" href="#"><span class="total red">21</span> <i class="icon heart red"></i> Suka</a>' +
+                '<a class="item" href="#"><span class="total blue">2</span> <i class="icon comment blue"></i> Komentar</a>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+
+        });
+        $('#ListAllPhoto').html(msg);
     }
 </script>
